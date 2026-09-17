@@ -83,13 +83,12 @@
       box-shadow: 0 8px 0px #D97706;
     }
     .category-card:active { transform: translateY(4px); box-shadow: 0 4px 0 #D97706; }
-    .card-icon { font-size: 46px; margin-bottom: 6px; }
     .card-icon-text { font-size: 34px; font-weight: 900; color: #D97706; margin-bottom: 4px; }
-    .card-name { font-size: 18px; font-weight: 900; color: #78350F; }
+    .card-name { font-size: 18px; font-weight: 900; color: #78350F; text-align: center; }
 
     .section-activities-bar {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
       max-width: 500px;
       margin-bottom: 12px;
@@ -98,12 +97,12 @@
     }
     .activity-tab-btn {
       flex: 1;
-      min-width: 85px;
+      min-width: 76px;
       background: #FFFFFF;
       border: 3px solid #3B82F6;
       border-radius: 16px;
-      padding: 8px 4px;
-      font-size: 14px;
+      padding: 8px 2px;
+      font-size: 13px;
       font-weight: 900;
       color: #1D4ED8;
       box-shadow: 0 4px 0 #2563EB;
@@ -163,137 +162,171 @@
     .item-emoji { font-size: 34px; margin: 2px 0; }
     .item-word { font-size: 15px; font-weight: 900; color: #4B5563; }
 
-    /* لعبة فين الحرف */
+    /* ألعاب الألواح */
     .game-box {
       width: 100%;
       background: white;
       border: 4px solid #10B981;
       border-radius: 22px;
-      padding: 20px 14px;
+      padding: 16px 10px;
       box-shadow: 0 6px 0 #059669;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 4px;
+      position: relative;
     }
     .game-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       color: #065F46;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    .game-options-row {
+
+    /* التوصيل التفاعلي الصريح */
+    .matching-board {
       display: flex;
-      justify-content: space-around;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      margin-top: 10px;
     }
-    .game-choice-btn {
-      flex: 1;
-      background: #EFF6FF;
-      border: 3px solid #3B82F6;
-      border-radius: 18px;
-      padding: 14px 6px;
+    .match-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 48%;
+    }
+    .match-btn {
+      background: #F3F4F6;
+      border: 4px solid #3B82F6;
+      border-radius: 20px;
+      padding: 12px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 32px;
+      font-weight: 900;
+      color: #1E3A8A;
+      box-shadow: 0 4px 0 #1D4ED8;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .match-btn.selected {
+      background: #FEF08A;
+      border-color: #EAB308;
+      transform: scale(1.04);
+    }
+    .match-btn.matched {
+      background: #DCFCE7 !important;
+      border-color: #16A34A !important;
+      color: #15803D !important;
+      box-shadow: 0 4px 0 #15803D !important;
+    }
+
+    /* التلوين بملء الشاشة */
+    .fullscreen-paint-box {
+      width: 100vw;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -10px;
+    }
+    .fullscreen-canvas {
+      width: 95vw;
+      max-width: 460px;
+      height: 66vh;
+      background: #FFFFFF;
+      border: 5px solid #F59E0B;
+      border-radius: 26px;
+      box-shadow: 0 8px 0 #D97706;
+      touch-action: none;
+    }
+    .color-palette {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      justify-content: center;
+    }
+    .color-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+    .color-dot.active { transform: scale(1.2); border-color: #111; }
+
+    /* لعبة قفز الضفدع نحو الحرف */
+    .jumping-stage {
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(180deg, #BAE6FD 0%, #E0F2FE 70%, #86EFAC 100%);
+      border: 4px solid #0284C7;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .frog-player {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 52px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .jump-target {
+      position: absolute;
+      top: 25px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid #3B82F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 34px;
       font-weight: 900;
       color: #1D4ED8;
       box-shadow: 0 5px 0 #2563EB;
       cursor: pointer;
     }
-    .game-choice-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #2563EB; }
 
-    /* حاوية لعبة التوصيل بالرسم */
-    .matching-container {
-      position: relative;
+    /* لعبة فرقعة الفقاعات */
+    .bubble-container {
       width: 100%;
-      max-width: 440px;
-      background: #FFFFFF;
-      border: 4px solid #10B981;
+      height: 320px;
+      background: radial-gradient(circle, #E0E7FF 0%, #C7D2FE 100%);
+      border: 4px solid #6366F1;
       border-radius: 24px;
-      padding: 16px 12px;
-      box-shadow: 0 8px 0 #059669;
-      margin-top: 6px;
-    }
-    .matching-columns {
-      display: flex;
-      justify-content: space-between;
       position: relative;
-      z-index: 2;
+      overflow: hidden;
+      margin-top: 10px;
     }
-    .match-col {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 42%;
-    }
-    .match-node {
-      background: #F3F4F6;
-      border: 3px solid #3B82F6;
-      border-radius: 20px;
-      padding: 12px 6px;
+    .bubble-item {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      border: 3px solid #818CF8;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 0 #1D4ED8;
+      font-size: 36px;
+      font-weight: 900;
+      color: #4338CA;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
       cursor: pointer;
-      position: relative;
+      animation: floatBubble 4s infinite ease-in-out alternate;
     }
-    .match-node.matched {
-      background: #DCFCE7 !important;
-      border-color: #16A34A !important;
-      box-shadow: 0 4px 0 #15803D !important;
-    }
-    .match-node-dot {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #EF4444;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-    .col-right .match-node-dot { left: -10px; }
-    .col-left .match-node-dot { right: -10px; }
-
-    #match-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      touch-action: none;
-    }
-
-    /* لوحة التلوين الذكية */
-    .color-palette {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .color-dot {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-    .color-dot.active { transform: scale(1.15); border-color: #111; }
-    
-    .canvas-container {
-      background: #FFFFFF;
-      border: 4px solid #F59E0B;
-      border-radius: 26px;
-      box-shadow: 0 8px 0 #D97706;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-    }
-    #paint-canvas {
-      background: #FFFFFF;
-      border-radius: 20px;
-      touch-action: none;
+    @keyframes floatBubble {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-16px) rotate(5deg); }
     }
   </style>
 </head>
@@ -312,68 +345,56 @@
         <span class="card-name">الحروف العربية وألعابها</span>
       </div>
       <div class="category-card" onclick="enterCategory('en')">
-        <span class="card-icon">🔠</span>
+        <span class="card-icon-text">A B C</span>
         <span class="card-name">الحروف الإنجليزية وألعابها</span>
       </div>
       <div class="category-card" onclick="enterCategory('numbers')">
-        <span class="card-icon">🔢</span>
+        <span class="card-icon-text">١ ٢ ٣</span>
         <span class="card-name">الأرقام وألعاب العد</span>
       </div>
       <div class="category-card" onclick="enterCategory('animals')">
-        <span class="card-icon">🦁</span>
-        <span class="card-name">عالم الحيوانات</span>
+        <span class="card-icon-text">🦁 🐮</span>
+        <span class="card-name">أصوات الحيوانات</span>
       </div>
     </div>
   </div>
 
-  <!-- شاشة القسم المدمج -->
+  <!-- شاشة الأقسام المدمجة -->
   <div id="screen-category" class="screen-panel">
-    <div style="display: flex; justify-content: space-between; width: 100%;">
-      <button class="back-btn" onclick="showScreen('screen-main')">🔙 القائمة</button>
+    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 8px;">
+      <button class="back-btn" style="margin:0;" onclick="showScreen('screen-main')">🔙 القائمة</button>
       <div id="category-title" style="font-size: 18px; font-weight: 900; color: #78350F;"></div>
     </div>
 
-    <!-- شريط الأنشطة المدمجة -->
+    <!-- شريط الأنشطة المدمجة داخل القسم -->
     <div class="section-activities-bar">
       <div class="activity-tab-btn active" id="tab-learn" onclick="switchCategoryTab('learn')">📖 الحروف</div>
-      <div class="activity-tab-btn" id="tab-find" onclick="switchCategoryTab('find')">🧐 فين الحرف؟</div>
-      <div class="activity-tab-btn" id="tab-match" onclick="switchCategoryTab('match')">✍️ وصّل بخط</div>
+      <div class="activity-tab-btn" id="tab-match" onclick="switchCategoryTab('match')">🎯 وصّل</div>
       <div class="activity-tab-btn" id="tab-color" onclick="switchCategoryTab('color')">🎨 لوّن الحرف</div>
+      <div class="activity-tab-btn" id="tab-jump" onclick="switchCategoryTab('jump')">🐸 قفز الحروف</div>
+      <div class="activity-tab-btn" id="tab-bubbles" onclick="switchCategoryTab('bubbles')">🫧 فرقعة</div>
     </div>
 
-    <!-- 1. لوحة الحروف والاستماع -->
+    <!-- 1. شاشة البطاقات العادية -->
     <div id="cat-view-learn" class="board-grid"></div>
 
-    <!-- 2. لعبة: فين الحرف؟ -->
-    <div id="cat-view-find" class="game-box" style="display: none;">
-      <div class="game-title" id="find-game-title">فين الحرف؟</div>
-      <button class="back-btn" style="background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 3px 0 #1E40AF; margin-bottom: 16px;" onclick="repeatFindAudio()">🔊 اسمع اسم الحرف تاني</button>
-      <div class="game-options-row" id="find-options-container"></div>
-    </div>
-
-    <!-- 3. لعبة: التوصيل الحي بالرسم (عمودان + خط) -->
-    <div id="cat-view-match" class="matching-container" style="display: none;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-        <div style="font-size: 16px; font-weight: 900; color: #065F46;">وصّل الحرف بالصورة المناسبة بإصبعك 👇</div>
-        <button class="back-btn" style="margin: 0; padding: 4px 10px; font-size: 12px; background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 3px 0 #1E40AF;" onclick="startMatchingGame()">تغيير ↻</button>
-      </div>
-
-      <canvas id="match-canvas"></canvas>
-
-      <div class="matching-columns">
-        <!-- عمود الحروف (يمين) -->
-        <div class="match-col col-right" id="match-col-right"></div>
-        <!-- عمود الصور (يسار) -->
-        <div class="match-col col-left" id="match-col-left"></div>
+    <!-- 2. شاشة التوصيل المباشر الصريح الموثوق للأطفال -->
+    <div id="cat-view-match" class="game-box" style="display: none;">
+      <div class="game-title">اضغط على الحرف ثم اضغط على صورته الصحيحة! 👇</div>
+      <div class="matching-board">
+        <div class="match-col" id="match-col-right"></div>
+        <div class="match-col" id="match-col-left"></div>
       </div>
     </div>
 
-    <!-- 4. لوحة التلوين الذكية داخل حدود الحرف -->
-    <div id="cat-view-color" style="display: none; flex-direction: column; align-items: center; width: 100%;">
-      <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 8px;">
-        <button class="back-btn" style="background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 3px 0 #1E40AF; margin: 0;" onclick="nextColoringChar()">حرف تاني ↻</button>
-        <button class="back-btn" style="background: #F59E0B; border-color: #D97706; box-shadow: 0 3px 0 #B45309; margin: 0;" onclick="clearCanvas()">مسح 🗑️</button>
+    <!-- 3. شاشة التلوين بملء الشاشة مع قناع ذكي -->
+    <div id="cat-view-color" class="fullscreen-paint-box" style="display: none;">
+      <div style="display: flex; justify-content: space-between; width: 95vw; max-width: 460px; margin-bottom: 6px;">
+        <button class="back-btn" style="margin: 0; padding: 4px 12px; font-size: 13px; background: #3B82F6; border-color: #1D4ED8;" onclick="nextColoringChar()">حرف تاني ↻</button>
+        <button class="back-btn" style="margin: 0; padding: 4px 12px; font-size: 13px; background: #F59E0B; border-color: #D97706;" onclick="clearCanvas()">مسح 🗑️</button>
       </div>
+
+      <canvas id="paint-canvas" class="fullscreen-canvas"></canvas>
 
       <div class="color-palette">
         <div class="color-dot active" style="background: #EF4444;" onclick="setColor('#EF4444', this)"></div>
@@ -383,10 +404,20 @@
         <div class="color-dot" style="background: #8B5CF6;" onclick="setColor('#8B5CF6', this)"></div>
         <div class="color-dot" style="background: #EC4899;" onclick="setColor('#EC4899', this)"></div>
       </div>
+    </div>
 
-      <div class="canvas-container">
-        <canvas id="paint-canvas" width="320" height="320"></canvas>
+    <!-- 4. لعبة قفز الضفدع للوصول إلى الحرف -->
+    <div id="cat-view-jump" class="game-box" style="display: none;">
+      <div class="game-title" id="jump-task-title">ساعد الضفدع يقفز على الحرف الصحيح! 🐸</div>
+      <div class="jumping-stage" id="jump-stage">
+        <div class="frog-player" id="frog-hero">🐸</div>
       </div>
+    </div>
+
+    <!-- 5. لعبة فرقعة الفقاعات والبحث عن الحرف -->
+    <div id="cat-view-bubbles" class="game-box" style="display: none;">
+      <div class="game-title" id="bubbles-task-title">فرقع فقاعة الحرف المطلوب! 🫧</div>
+      <div class="bubble-container" id="bubble-stage"></div>
     </div>
   </div>
 
@@ -399,7 +430,7 @@
         { char: "ث", name: "حَرْف الثَّاءْ", word: "ثعلب", emoji: "🦊", speech: "ثَاءْ .. ثَعْلَبْ مَكَّارْ" },
         { char: "ج", name: "حَرْف الجِيمْ", word: "جمل", emoji: "🐪", speech: "جِيمْ .. جَمَلْ سَفِينَة الصَّحْرَا" },
         { char: "ح", name: "حَرْف الحَاءْ", word: "حصان", emoji: "🐴", speech: "حَاءْ .. حُصَانْ سَرِيعْ بِيِجْرِي" },
-        { char: "خ", name: "حَرْف الخَاءْ", word: "خروف", emoji: "🐑", sound: "خَاءْ .. خَرُوفْ حُلْو وَوَدِيعْ" },
+        { char: "خ", name: "حَرْف الخَاءْ", word: "خروف", emoji: "🐑", speech: "خَاءْ .. خَرُوفْ حُلْو وَوَدِيعْ" },
         { char: "د", name: "حَرْف الدَّالْ", word: "دب", emoji: "🐻", speech: "دَالْ .. دُبْ كِبِيرْ" },
         { char: "ذ", name: "حَرْف الذَّالْ", word: "ذرة", emoji: "🌽", speech: "ذَالْ .. ذُرَة صَفْرَا طَعْمَهَا حُلْو" },
         { char: "ر", name: "حَرْف الرَّاءْ", word: "ريشة", emoji: "🪶", speech: "رَاءْ .. رِيشَة خَفِيفَة جِدّاً" },
@@ -461,9 +492,10 @@
 
       const isNum = key === 'numbers';
       document.getElementById('tab-learn').innerText = isNum ? '🔢 الأرقام' : '📖 الحروف';
-      document.getElementById('tab-find').innerText = isNum ? '🧐 فين الرقم؟' : '🧐 فين الحرف؟';
-      document.getElementById('tab-match').innerText = isNum ? '✍️ وصّل العدد' : '✍️ وصّل بخط';
+      document.getElementById('tab-match').innerText = isNum ? '🎯 وصّل العدد' : '🎯 وصّل الحرف';
       document.getElementById('tab-color').innerText = isNum ? '🎨 لوّن الرقم' : '🎨 لوّن الحرف';
+      document.getElementById('tab-jump').innerText = isNum ? '🐸 قفز الأرقام' : '🐸 قفز الحروف';
+      document.getElementById('tab-bubbles').innerText = '🫧 فرقعة';
 
       const titles = { ar: 'الحروف العربية', en: 'الحروف الإنجليزية', numbers: 'الأرقام والعد', animals: 'الحيوانات' };
       document.getElementById('category-title').innerText = titles[key] || '';
@@ -476,22 +508,26 @@
       document.getElementById('tab-' + tab).classList.add('active');
 
       document.getElementById('cat-view-learn').style.display = 'none';
-      document.getElementById('cat-view-find').style.display = 'none';
       document.getElementById('cat-view-match').style.display = 'none';
       document.getElementById('cat-view-color').style.display = 'none';
+      document.getElementById('cat-view-jump').style.display = 'none';
+      document.getElementById('cat-view-bubbles').style.display = 'none';
 
       if (tab === 'learn') {
         document.getElementById('cat-view-learn').style.display = 'grid';
         renderLearningGrid();
-      } else if (tab === 'find') {
-        document.getElementById('cat-view-find').style.display = 'block';
-        startFindGame();
       } else if (tab === 'match') {
         document.getElementById('cat-view-match').style.display = 'block';
-        setTimeout(startMatchingGame, 50);
+        startMatchingGame();
       } else if (tab === 'color') {
         document.getElementById('cat-view-color').style.display = 'flex';
         initColoringCanvas();
+      } else if (tab === 'jump') {
+        document.getElementById('cat-view-jump').style.display = 'block';
+        startJumpingGame();
+      } else if (tab === 'bubbles') {
+        document.getElementById('cat-view-bubbles').style.display = 'block';
+        startBubblesGame();
       }
     }
 
@@ -501,7 +537,7 @@
       currentCategoryData.forEach(item => {
         const div = document.createElement('div');
         div.className = 'item-card';
-        div.onclick = () => speak(item.speech || item.sound, item.lang || 'ar-EG');
+        div.onclick = () => speak(item.speech || item.name, item.lang || 'ar-EG');
         div.innerHTML = `
           <div class="item-char">${item.char}</div>
           <div class="item-emoji">${item.emoji}</div>
@@ -511,275 +547,136 @@
       });
     }
 
-    /* 1. لعبة فين الحرف */
-    let currentFindTarget = null;
-    function startFindGame() {
-      const list = currentCategoryData;
-      const target = list[Math.floor(Math.random() * list.length)];
-      currentFindTarget = target;
-
-      const wrong = list.filter(l => l.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 2);
-      const options = [target, ...wrong].sort(() => 0.5 - Math.random());
-
-      document.getElementById('find-game-title').innerText = `فِينْ (${target.name})؟ 🧐`;
-      
-      const lang = target.lang || 'ar-EG';
-      const questionText = lang === 'en-US' ? `Where is ${target.name}?` : `فِينْ ${target.name}؟`;
-      speak(questionText, lang);
-
-      const container = document.getElementById('find-options-container');
-      container.innerHTML = options.map(opt => `
-        <button class="game-choice-btn" onclick="checkFindChoice('${opt.char}')">${opt.char}</button>
-      `).join('');
-    }
-
-    function repeatFindAudio() {
-      if (currentFindTarget) {
-        const lang = currentFindTarget.lang || 'ar-EG';
-        const questionText = lang === 'en-US' ? `Where is ${currentFindTarget.name}?` : `فِينْ ${currentFindTarget.name}؟`;
-        speak(questionText, lang);
-      }
-    }
-
-    function checkFindChoice(chosen) {
-      if (chosen === currentFindTarget.char) {
-        speak("شَاطِرْ جِدّاً يَا بَطَلْ! إِجَابَة مُمْتَازَة! 🎉", currentFindTarget.lang || 'ar-EG');
-        setTimeout(startFindGame, 1700);
-      } else {
-        speak("حَاوِلْ تَانِي يَا حَبِيبِي!", currentFindTarget.lang || 'ar-EG');
-      }
-    }
-
-    /* ================= 2. لعبة التوصيل بالرسم (عمودان + خط تفاعلي) ================= */
-    let matchCanvas, matchCtx;
-    let matchPairs = [];
-    let completedMatches = [];
-    let activeLine = null;
+    /* 1. نظام التوصيل المباشر الصريح */
+    let selectedLetterBtn = null;
+    let matchPairsList = [];
 
     function startMatchingGame() {
-      matchCanvas = document.getElementById('match-canvas');
-      const container = document.getElementById('cat-view-match');
-      
-      // مطابقة أبعاد الكانفاس بدقة مع الحاوية
-      matchCanvas.width = container.clientWidth;
-      matchCanvas.height = container.clientHeight;
-      matchCtx = matchCanvas.getContext('2d');
-
-      completedMatches = [];
-      activeLine = null;
-      redrawMatchCanvas();
-
-      // اختيار 3 عناصر عشوائية للتوصيل
-      const pool = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 3);
-      matchPairs = pool;
-
+      selectedLetterBtn = null;
       const rightCol = document.getElementById('match-col-right');
       const leftCol = document.getElementById('match-col-left');
       rightCol.innerHTML = '';
       leftCol.innerHTML = '';
 
-      // العمود الأيمن (الحروف)
-      pool.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'match-node';
-        div.dataset.char = item.char;
-        div.innerHTML = `
-          <div style="font-size: 38px; font-weight: 900; color: #1E3A8A;">${item.char}</div>
-          <div class="match-node-dot"></div>
-        `;
-        rightCol.appendChild(div);
+      matchPairsList = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 3);
+
+      matchPairsList.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'match-btn';
+        btn.dataset.char = item.char;
+        btn.innerText = item.char;
+        btn.onclick = () => onSelectMatchLetter(btn);
+        rightCol.appendChild(btn);
       });
 
-      // العمود الأيسر (الصور مع الكلمات) بترتيب مختلف
-      const shuffled = [...pool].sort(() => 0.5 - Math.random());
+      const shuffled = [...matchPairsList].sort(() => 0.5 - Math.random());
       shuffled.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'match-node';
-        div.dataset.char = item.char;
-        div.innerHTML = `
-          <div style="font-size: 34px;">${item.emoji}</div>
-          <div style="font-size: 15px; font-weight: 900; color: #374151; margin-right: 6px;">${item.word}</div>
-          <div class="match-node-dot"></div>
-        `;
-        leftCol.appendChild(div);
+        const btn = document.createElement('button');
+        btn.className = 'match-btn';
+        btn.dataset.char = item.char;
+        btn.innerHTML = `${item.emoji} <span style="font-size:15px; margin-right:4px;">${item.word}</span>`;
+        btn.onclick = () => onSelectMatchTarget(btn);
+        leftCol.appendChild(btn);
       });
 
-      setupMatchingTouchEvents();
-      speak("وَصَّلْ كُلَّ حَرْف بِالصُّورَة المُنَاسِبَة!", currentCategoryData[0]?.lang || 'ar-EG');
+      speak("اضغط على الحرف ثم اضغط على صورته الصحيحة!", currentCategoryData[0]?.lang || 'ar-EG');
     }
 
-    function setupMatchingTouchEvents() {
-      const getPos = e => {
-        const rect = matchCanvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: clientX - rect.left, y: clientY - rect.top, rawX: clientX, rawY: clientY };
-      };
-
-      const start = e => {
-        const pos = getPos(e);
-        // التحقق هل بدأ الطفل اللمس من عقدة في العمود الأيمن (الحروف)؟
-        const targetNode = document.elementFromPoint(pos.rawX, pos.rawY)?.closest('#match-col-right .match-node');
-        if (targetNode && !targetNode.classList.contains('matched')) {
-          const rect = targetNode.getBoundingClientRect();
-          const canRect = matchCanvas.getBoundingClientRect();
-          const startX = rect.left - canRect.left + 5;
-          const startY = rect.top - canRect.top + (rect.height / 2);
-
-          activeLine = {
-            char: targetNode.dataset.char,
-            startX: startX,
-            startY: startY,
-            currentX: pos.x,
-            currentY: pos.y,
-            startNode: targetNode
-          };
-        }
-      };
-
-      const move = e => {
-        if (!activeLine) return;
-        const pos = getPos(e);
-        activeLine.currentX = pos.x;
-        activeLine.currentY = pos.y;
-        redrawMatchCanvas();
-      };
-
-      const stop = e => {
-        if (!activeLine) return;
-        const pos = getPos(e.changedTouches ? e.changedTouches[0] : e);
-        // أين أفلت الطفل إصبعه؟
-        const dropNode = document.elementFromPoint(pos.rawX, pos.rawY)?.closest('#match-col-left .match-node');
-
-        if (dropNode && dropNode.dataset.char === activeLine.char && !dropNode.classList.contains('matched')) {
-          // توصيل سليم 100%
-          const rect = dropNode.getBoundingClientRect();
-          const canRect = matchCanvas.getBoundingClientRect();
-          const endX = rect.right - canRect.left - 5;
-          const endY = rect.top - canRect.top + (rect.height / 2);
-
-          completedMatches.push({
-            startX: activeLine.startX,
-            startY: activeLine.startY,
-            endX: endX,
-            endY: endY
-          });
-
-          activeLine.startNode.classList.add('matched');
-          dropNode.classList.add('matched');
-
-          const matchedItem = matchPairs.find(p => p.char === activeLine.char);
-          speak(`شَاطِرْ! ${matchedItem.name} مَعَ ${matchedItem.word}`, matchedItem.lang || 'ar-EG');
-
-          if (completedMatches.length === matchPairs.length) {
-            setTimeout(() => {
-              speak("أَحْسَنْتْ يَا بَطَلْ! وَصَّلْتْ كُلَّ الحُرُوفِ صَحْ! 🎉", currentCategoryData[0]?.lang || 'ar-EG');
-              setTimeout(startMatchingGame, 2000);
-            }, 700);
-          }
-        }
-        activeLine = null;
-        redrawMatchCanvas();
-      };
-
-      matchCanvas.onmousedown = start;
-      window.onmousemove = move;
-      window.onmouseup = stop;
-
-      matchCanvas.ontouchstart = start;
-      window.ontouchmove = move;
-      window.ontouchend = stop;
+    function onSelectMatchLetter(btn) {
+      if (btn.classList.contains('matched')) return;
+      document.querySelectorAll('#match-col-right .match-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedLetterBtn = btn;
+      const found = matchPairsList.find(p => p.char === btn.dataset.char);
+      speak(found ? found.name : btn.dataset.char, found?.lang || 'ar-EG');
     }
 
-    function redrawMatchCanvas() {
-      matchCtx.clearRect(0, 0, matchCanvas.width, matchCanvas.height);
+    function onSelectMatchTarget(btn) {
+      if (!selectedLetterBtn || btn.classList.contains('matched')) return;
 
-      // رسم الخطوط المكتملة الصحيحة بلون أخضر
-      completedMatches.forEach(line => {
-        matchCtx.beginPath();
-        matchCtx.moveTo(line.startX, line.startY);
-        matchCtx.lineTo(line.endX, line.endY);
-        matchCtx.lineWidth = 7;
-        matchCtx.strokeStyle = '#10B981';
-        matchCtx.lineCap = 'round';
-        matchCtx.stroke();
-      });
+      if (btn.dataset.char === selectedLetterBtn.dataset.char) {
+        // مطابقة صحيحة
+        btn.classList.add('matched');
+        selectedLetterBtn.classList.add('matched');
+        selectedLetterBtn.classList.remove('selected');
 
-      // رسم الخط الحي أثناء السحب
-      if (activeLine) {
-        matchCtx.beginPath();
-        matchCtx.moveTo(activeLine.startX, activeLine.startY);
-        matchCtx.lineTo(activeLine.currentX, activeLine.currentY);
-        matchCtx.lineWidth = 6;
-        matchCtx.strokeStyle = '#3B82F6';
-        matchCtx.lineCap = 'round';
-        matchCtx.setLineDash([8, 6]);
-        matchCtx.stroke();
-        matchCtx.setLineDash([]);
+        const item = matchPairsList.find(p => p.char === btn.dataset.char);
+        speak(`أَحْسَنْتْ! ${item.name} مَعَ ${item.word}`, item?.lang || 'ar-EG');
+        selectedLetterBtn = null;
+
+        // التحقق من اكتمال التوصيل
+        const matchedCount = document.querySelectorAll('#match-col-right .matched').length;
+        if (matchedCount === matchPairsList.length) {
+          setTimeout(() => {
+            speak("شَاطِرْ جِدّاً يَا بَطَلْ! وَصَّلْتْ كُلَّ الحَاجَاتِ صَحْ! 🎉", currentCategoryData[0]?.lang || 'ar-EG');
+            setTimeout(startMatchingGame, 2000);
+          }, 800);
+        }
+      } else {
+        speak("حَاوِلْ تَانِي، اخْتَارْ الصُّورَة الصَّحِيحَة!", currentCategoryData[0]?.lang || 'ar-EG');
       }
     }
 
-    /* ================= 3. لوحة التلوين الذكية بحدود مغلقة ================= */
+    /* 2. التلوين الذكي بملء الشاشة */
     let canvas, ctx, painting = false;
     let currentColor = '#EF4444';
     let colorCharIdx = 0;
 
     function initColoringCanvas() {
       canvas = document.getElementById('paint-canvas');
+      // مطابقة الدقة مع الشاشة
+      canvas.width = canvas.clientWidth * window.devicePixelRatio;
+      canvas.height = canvas.clientHeight * window.devicePixelRatio;
       ctx = canvas.getContext('2d');
-      setupSmartColoring();
-      drawClippedLetter();
+      setupFullScreenColoringEvents();
+      drawHugeClippedLetter();
     }
 
-    function drawClippedLetter() {
-      ctx.restore();
+    function drawHugeClippedLetter() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.save();
-
       const item = currentCategoryData[colorCharIdx % currentCategoryData.length];
-      const font = 'bold 240px sans-serif';
 
-      // 1. رسم خلفية الحرف وظله الكرتوني
-      ctx.font = font;
+      // حرف ضخم جداً يملأ 80% من الكانفاس
+      const fontSize = Math.floor(canvas.height * 0.72);
+      ctx.font = `900 ${fontSize}px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      // رسم حدود الحرف الخارجية
-      ctx.lineWidth = 14;
-      ctx.strokeStyle = '#E2E8F0';
-      ctx.strokeText(item.char, canvas.width / 2, canvas.height / 2 + 10);
+      // رسم الحرف من الداخل بلون رمادي فاتح ليكون هو القناع
+      ctx.fillStyle = '#F1F5F9';
+      ctx.fillText(item.char, canvas.width / 2, canvas.height / 2 + 15);
 
-      // 2. تطبيق القناع الذكي: الرسم يصبح محصوراً فقط داخل جسم الحرف!
-      ctx.beginPath();
-      // استخراج مسار الحرف لقصه
-      // في الكانفاس نقوم بملء الحرف بلون رمادي خفيف جداً ونقيد الرسم داخله
-      ctx.fillStyle = '#F8FAFC';
-      ctx.fillText(item.char, canvas.width / 2, canvas.height / 2 + 10);
+      // رسم حدود الحرف الخارجية العريضة
+      ctx.lineWidth = Math.max(12, fontSize * 0.05);
+      ctx.strokeStyle = '#CBD5E1';
+      ctx.strokeText(item.char, canvas.width / 2, canvas.height / 2 + 15);
 
       speak(`يَلَّا نْلَوِّنْ ${item.name}!`, item.lang || 'ar-EG');
     }
 
     function nextColoringChar() {
       colorCharIdx++;
-      drawClippedLetter();
+      drawHugeClippedLetter();
     }
 
     function clearCanvas() {
-      drawClippedLetter();
+      drawHugeClippedLetter();
     }
 
-    function setColor(c, el) {
-      currentColor = c;
+    function setColor(color, el) {
+      currentColor = color;
       document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
       el.classList.add('active');
     }
 
-    function setupSmartColoring() {
+    function setupFullScreenColoringEvents() {
       const getPos = e => {
         const rect = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: clientX - rect.left, y: clientY - rect.top };
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
       };
 
       const start = e => {
@@ -792,39 +689,132 @@
       const move = e => {
         if (!painting) return;
         const p = getPos(e);
-        
+
         ctx.save();
-        // تقنية التلوين الذكي: الرسم يمتزج داخل الحرف فقط دون أن يشوه حدوده
+        // قفل اللون داخل الحرف بحيث لا يخرج منه أبداً
         ctx.globalCompositeOperation = 'source-atop';
         ctx.strokeStyle = currentColor;
-        ctx.lineWidth = 32; // فرشاة سميكة تناسب أصابع الطفل لملء الحرف بسرعة
+        ctx.lineWidth = Math.max(36, canvas.height * 0.08); // فرشاة سميكة تملأ بسهولة
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.lineTo(p.x, p.y);
         ctx.stroke();
         ctx.restore();
 
-        // إعادة إبراز الحدود الخارجية بعد التلوين ليظل الحرف أنيقاً
+        // إعادة تنعيم الحدود الخارجية فوق التلوين
         const item = currentCategoryData[colorCharIdx % currentCategoryData.length];
-        ctx.font = 'bold 240px sans-serif';
+        const fontSize = Math.floor(canvas.height * 0.72);
+        ctx.font = `900 ${fontSize}px sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.lineWidth = 8;
-        ctx.strokeStyle = '#CBD5E1';
-        ctx.strokeText(item.char, canvas.width / 2, canvas.height / 2 + 10);
+        ctx.lineWidth = Math.max(8, fontSize * 0.04);
+        ctx.strokeStyle = '#94A3B8';
+        ctx.strokeText(item.char, canvas.width / 2, canvas.height / 2 + 15);
       };
 
       const stop = () => { painting = false; };
 
       canvas.onmousedown = start;
-      canvas.onmousemove = move;
+      window.onmousemove = move;
       window.onmouseup = stop;
       canvas.ontouchstart = start;
-      canvas.ontouchmove = move;
+      window.ontouchmove = move;
       window.ontouchend = stop;
     }
 
-    /* الصوت المصري البشري */
+    /* 3. لعبة قفز الضفدع */
+    let jumpTargetChar = null;
+    function startJumpingGame() {
+      const stage = document.getElementById('jump-stage');
+      const frog = document.getElementById('frog-hero');
+      frog.style.left = '50%';
+      frog.style.bottom = '12px';
+
+      // إزالة أي أهداف قديمة
+      document.querySelectorAll('.jump-target').forEach(el => el.remove());
+
+      const list = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 3);
+      const target = list[Math.floor(Math.random() * list.length)];
+      jumpTargetChar = target;
+
+      document.getElementById('jump-task-title').innerText = `انقر ليقفز الضفدع نحو (${target.name})! 🐸`;
+      speak(`انقر ليقفز الضفدع نحو ${target.name}!`, target.lang || 'ar-EG');
+
+      const positions = ['15%', '50%', '85%'];
+      list.forEach((item, idx) => {
+        const bubble = document.createElement('div');
+        bubble.className = 'jump-target';
+        bubble.style.left = positions[idx];
+        bubble.style.transform = 'translateX(-50%)';
+        bubble.innerText = item.char;
+        bubble.onclick = () => onFrogJump(bubble, item);
+        stage.appendChild(bubble);
+      });
+    }
+
+    function onFrogJump(targetEl, item) {
+      const frog = document.getElementById('frog-hero');
+      const rect = targetEl.getBoundingClientRect();
+      const stageRect = document.getElementById('jump-stage').getBoundingClientRect();
+
+      // حركة قفز سلسة للضفدع
+      frog.style.left = (rect.left - stageRect.left + 36) + 'px';
+      frog.style.bottom = '180px';
+
+      setTimeout(() => {
+        if (item.char === jumpTargetChar.char) {
+          speak("عَاشْ يَا بَطَلْ! قَفْزَة صَحِيحَة! 🎉", item.lang || 'ar-EG');
+          targetEl.style.background = '#86EFAC';
+          setTimeout(startJumpingGame, 1800);
+        } else {
+          speak("أُوووبس! حَاوِلْ مَرَّة تَانِيَة!", item.lang || 'ar-EG');
+          frog.style.bottom = '12px';
+          frog.style.left = '50%';
+        }
+      }, 400);
+    }
+
+    /* 4. لعبة فرقعة الفقاعات */
+    let bubbleTargetChar = null;
+    function startBubblesGame() {
+      const stage = document.getElementById('bubble-stage');
+      stage.innerHTML = '';
+
+      const list = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 4);
+      const target = list[Math.floor(Math.random() * list.length)];
+      bubbleTargetChar = target;
+
+      document.getElementById('bubbles-task-title').innerText = `فَرْقَعْ فُقَّاعَة (${target.name})! 🫧`;
+      speak(`فَرْقَعْ فُقَّاعَة ${target.name}!`, target.lang || 'ar-EG');
+
+      const coords = [
+        { x: '12%', y: '30px' }, { x: '55%', y: '40px' },
+        { x: '25%', y: '160px' }, { x: '68%', y: '170px' }
+      ];
+
+      list.forEach((item, idx) => {
+        const b = document.createElement('div');
+        b.className = 'bubble-item';
+        b.style.left = coords[idx].x;
+        b.style.top = coords[idx].y;
+        b.innerText = item.char;
+        b.onclick = () => onPopBubble(b, item);
+        stage.appendChild(b);
+      });
+    }
+
+    function onPopBubble(bubbleEl, item) {
+      if (item.char === bubbleTargetChar.char) {
+        bubbleEl.style.transform = 'scale(1.5)';
+        bubbleEl.style.opacity = '0';
+        speak("بُوووبْ! شَاطِرْ يَا بَطَلْ! 🎉", item.lang || 'ar-EG');
+        setTimeout(startBubblesGame, 1600);
+      } else {
+        speak("دِي فُقَّاعَة تَانِيَة، حَاوِلْ مَرَّة كَمَانْ!", item.lang || 'ar-EG');
+      }
+    }
+
+    /* محرك النطق المصري */
     let cachedVoices = [];
     function loadVoices() { cachedVoices = window.speechSynthesis.getVoices(); }
     window.speechSynthesis.onvoiceschanged = loadVoices;
@@ -846,7 +836,7 @@
 
     async function forceAppUpdate() {
       if (!navigator.onLine) return alert('يرجى الاتصال بالإنترنت أولاً لتحديث اللعبة.');
-      if (confirm('تحديث اللعبة وتنزيل كل الميزات الجديدة؟')) {
+      if (confirm('تحديث اللعبة وتنزيل كل الميزات والألعاب الجديدة؟')) {
         if ('caches' in window) {
           const keys = await caches.keys();
           await Promise.all(keys.map(k => caches.delete(k)));
