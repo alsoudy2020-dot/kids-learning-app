@@ -6,6 +6,8 @@
   <title>عالم الصغار المرح 🎈</title>
   
   <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
   <meta name="theme-color" content="#F59E0B" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -42,10 +44,25 @@
       margin-bottom: 16px;
     }
     .app-title {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: #D97706;
       text-shadow: 2px 2px #fff;
+    }
+    .update-btn {
+      background: #FFFFFF;
+      border: 2px solid #D97706;
+      color: #B45309;
+      font-size: 13px;
+      font-weight: 900;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #D97706;
+    }
+    .update-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #D97706;
     }
 
     .menu-grid {
@@ -73,10 +90,10 @@
       transform: translateY(5px);
       box-shadow: 0 3px 0px #D97706;
     }
-    .card-icon { font-size: 50px; margin-bottom: 6px; }
+    .card-icon { font-size: 46px; margin-bottom: 6px; }
+    .card-icon-text { font-size: 38px; font-weight: 900; color: #D97706; line-height: 1.1; margin-bottom: 6px; }
     .card-name { font-size: 18px; font-weight: 900; color: #78350F; text-align: center; }
 
-    /* الشاشات الفرعية */
     .screen-panel {
       display: none;
       width: 100%;
@@ -103,7 +120,6 @@
       box-shadow: 0 2px 0 #991B1B;
     }
 
-    /* لوحة الحروف والبطاقات */
     .board-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -128,9 +144,9 @@
     .item-card:active {
       transform: scale(0.92);
     }
-    .item-char { font-size: 36px; font-weight: 900; color: #1E3A8A; }
-    .item-emoji { font-size: 38px; }
-    .item-word { font-size: 15px; font-weight: 900; color: #4B5563; }
+    .item-char { font-size: 38px; font-weight: 900; color: #1E3A8A; }
+    .item-emoji { font-size: 38px; margin: 2px 0; }
+    .item-word { font-size: 16px; font-weight: 900; color: #4B5563; }
 
     /* لوحة التلوين */
     .color-palette {
@@ -201,14 +217,17 @@
 </head>
 <body>
 
-  <!-- 1. الشاشة الرئيسية -->
+  <!-- الشاشة الرئيسية -->
   <div id="screen-main" style="width: 100%; max-width: 500px;">
     <div class="top-bar">
       <div class="app-title">🎈 عالم الأذكياء الصغار</div>
+      <button class="update-btn" onclick="forceAppUpdate()">🔄 تحديث اللعبة</button>
     </div>
+    
     <div class="menu-grid">
+      <!-- بطاقة الحروف العربية بأيقونة عربية مبهجة -->
       <div class="category-card" onclick="openLetters('ar')">
-        <span class="card-icon">🔤</span>
+        <span class="card-icon-text">أ ب ت</span>
         <span class="card-name">الحروف العربية</span>
       </div>
       <div class="category-card" onclick="openLetters('en')">
@@ -234,13 +253,13 @@
     </div>
   </div>
 
-  <!-- 2. لوحة البطاقات التفاعلية (حروف / حيوانات / أرقام) -->
+  <!-- لوحة الحروف والبطاقات -->
   <div id="screen-cards" class="screen-panel">
     <button class="back-btn" onclick="showScreen('screen-main')">🔙 رجوع</button>
     <div class="board-grid" id="cards-grid"></div>
   </div>
 
-  <!-- 3. لوحة تلوين الحروف -->
+  <!-- لوحة التلوين -->
   <div id="screen-coloring" class="screen-panel">
     <div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px;">
       <button class="back-btn" style="margin: 0;" onclick="showScreen('screen-main')">🔙 رجوع</button>
@@ -250,7 +269,6 @@
       </div>
     </div>
 
-    <!-- ألوان التلوين -->
     <div class="color-palette">
       <div class="color-dot active" style="background: #EF4444;" onclick="setColor('#EF4444', this)"></div>
       <div class="color-dot" style="background: #3B82F6;" onclick="setColor('#3B82F6', this)"></div>
@@ -263,7 +281,7 @@
     <canvas id="paint-canvas" width="340" height="340"></canvas>
   </div>
 
-  <!-- 4. شاشة الألعاب التعليمية (أين الحرف؟) -->
+  <!-- شاشة الألعاب -->
   <div id="screen-game" class="screen-panel">
     <button class="back-btn" onclick="showScreen('screen-main')">🔙 رجوع</button>
     <div class="game-card-box">
@@ -274,22 +292,37 @@
   </div>
 
   <script>
-    // قاعدة البيانات التعليمية للأطفال
+    // الحروف الهجائية الـ 28 كاملة مع نطق مرح باللهجة المصرية
     const DB = {
       ar: [
-        { char: "أ", word: "أرنب", emoji: "🐰", sound: "أليف .. أرنب سريع" },
-        { char: "ب", word: "بطة", emoji: "🦆", sound: "باء .. بطة تسبح" },
-        { char: "ت", word: "تفاح", emoji: "🍎", sound: "تاء .. تفاح لذيذ" },
-        { char: "ث", word: "ثعلب", emoji: "🦊", sound: "ثاء .. ثعلب مكار" },
-        { char: "ج", word: "جمل", emoji: "🐪", sound: "جيم .. جمل صبور" },
-        { char: "ح", word: "حصان", emoji: "🐴", sound: "حاء .. حصان جميل" },
-        { char: "خ", word: "خروف", emoji: "🐑", sound: "خاء .. خروف وديع" },
-        { char: "د", word: "دب", emoji: "🐻", sound: "دال .. دب كبير" },
-        { char: "ر", word: "ريشة", emoji: "🪶", sound: "راء .. ريشة خفيفة" },
-        { char: "س", word: "سمكة", emoji: "🐟", sound: "سين .. سمكة تعوم" },
-        { char: "ش", word: "شمس", emoji: "☀️", sound: "شين .. شمس مشرقة" },
-        { char: "ف", word: "فيل", emoji: "🐘", sound: "فاء .. فيل ضخم" },
-        { char: "ق", word: "قطة", emoji: "🐱", sound: "قاف .. قطة لطيفة" }
+        { char: "أ", word: "أرنب", emoji: "🐰", sound: "أَ .. أَرْنَبْ بِيْطَفْطَفْ" },
+        { char: "ب", word: "بطة", emoji: "🦆", sound: "بَ .. بَطَّة بْتِعُومْ" },
+        { char: "ت", word: "تفاح", emoji: "🍎", sound: "تَ .. تُفَّاحْ لَذِيذْ" },
+        { char: "ث", word: "ثعلب", emoji: "🦊", sound: "ثَ .. ثَعْلَبْ مَكَّارْ" },
+        { char: "ج", word: "جمل", emoji: "🐪", sound: "جِيمْ .. جَمَلْ فِي الصَّحْرَا" },
+        { char: "ح", word: "حصان", emoji: "🐴", sound: "حَ .. حُصَانْ سَرِيعْ" },
+        { char: "خ", word: "خروف", emoji: "🐑", sound: "خَ .. خَرُوفْ حُلْو" },
+        { char: "د", word: "دب", emoji: "🐻", sound: "دَالْ .. دُبْ كِبِيرْ" },
+        { char: "ذ", word: "ذرة", emoji: "🌽", sound: "ذَالْ .. ذُرَة صَفْرَا صَفْرَا" },
+        { char: "ر", word: "ريشة", emoji: "🪶", sound: "رَا .. رِيشَة خَفِيفَة" },
+        { char: "ز", word: "زرافة", emoji: "🦒", sound: "زَايْ .. زَرَافَة رَقَبِتْهَا طَوِيلَة" },
+        { char: "س", word: "سمكة", emoji: "🐟", sound: "سِينْ .. سَمَكَة فِي المَيَّا" },
+        { char: "ش", word: "شمس", emoji: "☀️", sound: "شِينْ .. شَمْس دَافْيَة" },
+        { char: "ص", word: "صقر", emoji: "🦅", sound: "صَادْ .. صَقْر بِيْطِيرْ" },
+        { char: "ض", word: "ضفدع", emoji: "🐸", sound: "ضَادْ .. ضِفْدَعْ بِيْنُطْ" },
+        { char: "ط", word: "طيارة", emoji: "✈️", sound: "طَا .. طَيَّارَة فُوقْ" },
+        { char: "ظ", word: "ظرف", emoji: "✉️", sound: "ظَا .. ظَرْف جُوَّاهْ جَوَابْ" },
+        { char: "ع", word: "عصفور", emoji: "🐦", sound: "عَيْنْ .. عُصْفُورْ صُغَيَّرْ" },
+        { char: "غ", word: "غزالة", emoji: "🦌", sound: "غَيْنْ .. غَزَالَة سَرِيعَة" },
+        { char: "ف", word: "فيل", emoji: "🐘", sound: "فَا .. فِيلْ أَبُو زَلُّومَة" },
+        { char: "ق", word: "قطة", emoji: "🐱", sound: "قَافْ .. قُطَّة نُونُو" },
+        { char: "ك", word: "كلب", emoji: "🐶", sound: "كَافْ .. كَلْب شُجَاعْ" },
+        { char: "ل", word: "ليمون", emoji: "🍋", sound: "لاَمْ .. لِيمُونْ أَصْفَرْ" },
+        { char: "م", word: "موز", emoji: "🍌", sound: "مِيمْ .. مَوْز لَذِيذْ" },
+        { char: "ن", word: "نحلة", emoji: "🐝", sound: "نُونْ .. نَحْلَة بْتِعْمِلْ عَسَلْ" },
+        { char: "هـ", word: "هرم", emoji: "🔺", sound: "هَا .. هَرَمْ عَالِي" },
+        { char: "و", word: "وردة", emoji: "🌸", sound: "وَاوْ .. وَرْدَة حَمْرَا جَمِيلَة" },
+        { char: "ي", word: "يد", emoji: "👋", sound: "يَا .. إِيدْ بْتِسَلِّمْ" }
       ],
       en: [
         { char: "A", word: "Apple", emoji: "🍎", lang: "en-US", sound: "A .. Apple" },
@@ -300,18 +333,18 @@
         { char: "F", word: "Fish", emoji: "🐟", lang: "en-US", sound: "F .. Fish" }
       ],
       numbers: [
-        { char: "1", word: "واحد", emoji: "☝️", sound: "واحد .. شمس واحدة" },
-        { char: "2", word: "اثنان", emoji: "✌️", sound: "اثنان .. عينان جميلتان" },
-        { char: "3", word: "ثلاثة", emoji: "🥉", sound: "ثلاثة .. ثلاث تفاحات" },
-        { char: "4", word: "أربعة", emoji: "🍀", sound: "أربعة .. سيارة بأربع عجلات" },
-        { char: "5", word: "خمسة", emoji: "✋", sound: "خمسة .. خمسة أصابع في اليد" }
+        { char: "1", word: "واحد", emoji: "☝️", sound: "وَاحِدْ .. رَبِّنَا وَاحِدْ" },
+        { char: "2", word: "اثنان", emoji: "✌️", sound: "اِتْنِينْ .. عِينَيَّا الاِتْنِينْ" },
+        { char: "3", word: "ثلاثة", emoji: "🥉", sound: "تَلاَتَة .. تَلاَتْ صُحَابْ" },
+        { char: "4", word: "أربعة", emoji: "🍀", sound: "أَرْبَعَة .. أَرْبَعْ عَرَبِيَّاتْ" },
+        { char: "5", word: "خمسة", emoji: "✋", sound: "خَمْسَة .. صَوَابِعْ إِيدِيَا الحِلْوَة" }
       ],
       animals: [
-        { char: "🦁", word: "أسد", emoji: "🦁", sound: "أسد .. روور ملك الغابة" },
-        { char: "🐱", word: "قطة", emoji: "🐱", sound: "مياو مياو .. قطة صغيرة" },
-        { char: "🐶", word: "كلب", emoji: "🐶", sound: "هوهو .. كلب وفي" },
-        { char: "🐮", word: "بقرة", emoji: "🐮", sound: "مووو .. بقرة تعطينا الحليب" },
-        { char: "🐥", word: "كتكوت", emoji: "🐥", sound: "صوصو صوصو .. كتكوت أصفر" }
+        { char: "🦁", word: "أسد", emoji: "🦁", sound: "أَسَدْ .. مَلِكِ الغَابَة رُوورْ" },
+        { char: "🐱", word: "قطة", emoji: "🐱", sound: "مْيَاوْ مْيَاوْ .. قُطَّة حِلْوَة" },
+        { char: "🐶", word: "كلب", emoji: "🐶", sound: "هَوْ هَوْ .. كَلْب شَاطِرْ" },
+        { char: "🐮", word: "بقرة", emoji: "🐮", sound: "مُوُوُو .. بَقَرَة تِدِّينَا اللَّبَنْ" },
+        { char: "🐥", word: "كتكوت", emoji: "🐥", sound: "صُوصُو صُوصُو .. كَتْكُوتْ صُغَيَّرْ" }
       ]
     };
 
@@ -325,15 +358,41 @@
       if(screenId === 'screen-main') document.getElementById('screen-main').style.display = 'block';
     }
 
-    function speak(text, lang = 'ar-SA') {
+    // نطق بشري مخصص ومرن
+    let cachedVoices = [];
+    function loadVoices() {
+      cachedVoices = window.speechSynthesis.getVoices();
+    }
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
+
+    function speak(text, lang = 'ar-EG') {
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
       u.lang = lang;
-      u.rate = 0.85;
+      u.rate = 0.88;  // نبرة هادئة ومناسبة لسمع الطفل
+      u.pitch = 1.25; // جعل الصوت أقرب لصوت طفل أو معلم مرح
+
+      // البحث عن صوت مصري مدمج على الجهاز
+      if (lang.startsWith('ar') && cachedVoices.length > 0) {
+        const egVoice = cachedVoices.find(v => v.lang.includes('EG') || v.name.includes('Maged') || v.name.includes('Maryam') || v.name.includes('Tarik'));
+        if (egVoice) u.voice = egVoice;
+      }
       window.speechSynthesis.speak(u);
     }
 
-    // عرض البطاقات
+    // زر تحديث التطبيق ومسح الكاش
+    async function forceAppUpdate() {
+      if (!navigator.onLine) return alert('يرجى الاتصال بالإنترنت أولاً لتحديث اللعبة.');
+      if (confirm('هل تريد تنزيل أحدث التحديثات الآن؟')) {
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k)));
+        }
+        window.location.reload(true);
+      }
+    }
+
     function openLetters(langKey) {
       showScreen('screen-cards');
       const grid = document.getElementById('cards-grid');
@@ -341,7 +400,7 @@
       DB[langKey].forEach(item => {
         const div = document.createElement('div');
         div.className = 'item-card';
-        div.onclick = () => speak(item.sound, item.lang || 'ar-SA');
+        div.onclick = () => speak(item.sound, item.lang || 'ar-EG');
         div.innerHTML = `
           <div class="item-char">${item.char}</div>
           <div class="item-emoji">${item.emoji}</div>
@@ -358,7 +417,7 @@
       DB[secKey].forEach(item => {
         const div = document.createElement('div');
         div.className = 'item-card';
-        div.onclick = () => speak(item.sound, item.lang || 'ar-SA');
+        div.onclick = () => speak(item.sound, item.lang || 'ar-EG');
         div.innerHTML = `
           <div class="item-char">${item.char}</div>
           <div class="item-emoji">${item.emoji}</div>
@@ -368,10 +427,10 @@
       });
     }
 
-    /* ================= قسم التلوين ================= */
+    /* التلوين */
     let canvas, ctx, painting = false;
     let currentColor = '#EF4444';
-    const coloringChars = ['أ', 'ب', 'ت', 'A', 'B', 'C', '1', '2', '3'];
+    const coloringChars = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'A', 'B', 'C', '1', '2', '3'];
     let colorCharIndex = 0;
 
     function openColoring() {
@@ -380,7 +439,7 @@
       ctx = canvas.getContext('2d');
       setupCanvasEvents();
       drawLetterTemplate();
-      speak("هيا نلون الحرف الجميل!", "ar-SA");
+      speak("يَلَّا نْلَوِّنْ الحَرْفِ الجَمِيلْ!", "ar-EG");
     }
 
     function drawLetterTemplate() {
@@ -397,7 +456,7 @@
     function nextColoringChar() {
       colorCharIndex = (colorCharIndex + 1) % coloringChars.length;
       drawLetterTemplate();
-      speak("حرف جديد! اختر لوناً ولونه بإصبعك", "ar-SA");
+      speak("حَرْف جَدِيدْ! اخْتَارْ لُونْ ولَوِّنْ بِصُبَاعَكْ", "ar-EG");
     }
 
     function clearCanvas() {
@@ -447,7 +506,7 @@
       window.ontouchend = stop;
     }
 
-    /* ================= ألعاب المرح ================= */
+    /* ألعاب المرح */
     let currentCorrectLetter = null;
 
     function startLetterGame() {
@@ -459,8 +518,8 @@
       const wrongOptions = list.filter(l => l.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 2);
       const options = [target, ...wrongOptions].sort(() => 0.5 - Math.random());
 
-      document.getElementById('game-title').innerText = `أين حرف (${target.char})؟ 🧐`;
-      speak(`أين حرف ${target.char}؟`, 'ar-SA');
+      document.getElementById('game-title').innerText = `فِينْ حَرْف (${target.char})؟ 🧐`;
+      speak(`فِينْ حَرْف ${target.char}؟`, 'ar-EG');
 
       const container = document.getElementById('game-options-container');
       container.innerHTML = options.map(opt => `
@@ -470,16 +529,16 @@
 
     function repeatQuestionAudio() {
       if (currentCorrectLetter) {
-        speak(`أين حرف ${currentCorrectLetter.char}؟`, 'ar-SA');
+        speak(`فِينْ حَرْف ${currentCorrectLetter.char}؟`, 'ar-EG');
       }
     }
 
     function checkGameChoice(chosen) {
       if (chosen === currentCorrectLetter.char) {
-        speak("أحسنت يا بطل! إجابة صحيحة وممتازة! 🎉", "ar-SA");
+        speak("شَاطِرْ يَا بَطَلْ! إِجَابَة صَحْ مَيَّة فِي المَيَّة! 🎉", "ar-EG");
         setTimeout(startLetterGame, 1600);
       } else {
-        speak("حاول مرة أخرى يا شاطر!", "ar-SA");
+        speak("حَاوِلْ تَانِي يَا حَبِيبِي!", "ar-EG");
       }
     }
   </script>
