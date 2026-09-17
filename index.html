@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>عالم الصغار السحري 🎈</title>
+  <title>مهارة طفل - عالم المغامرات 🎈</title>
   
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
   <link rel="apple-touch-icon" href="icon.svg" />
-  <meta name="theme-color" content="#F59E0B" />
+  <meta name="theme-color" content="#38BDF8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;900&display=swap" rel="stylesheet" />
-  <!-- مكتبة الألعاب النارية والاحتفالات للطفل -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -28,218 +27,298 @@
       touch-action: manipulation;
     }
 
-    /* خلفية كرتونية متحركة بالغيوم */
     body {
-      background: radial-gradient(circle at 50% 20%, #BAE6FD 0%, #7DD3FC 60%, #38BDF8 100%);
+      background: linear-gradient(180deg, #38BDF8 0%, #7DD3FC 50%, #FDE047 100%);
       min-height: 100vh;
-      padding: 10px 10px 105px 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
       position: relative;
+      padding: 12px 12px 105px 12px;
     }
 
-    /* غيوم عائمة في الخلفية */
-    .bg-cloud {
+    /* سماء وغيوم متحركة */
+    .bg-clouds-track {
       position: fixed;
-      font-size: 70px;
-      opacity: 0.45;
-      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      animation: floatCloud 18s linear infinite;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .cloud-sprite {
+      position: absolute;
+      font-size: 65px;
+      opacity: 0.55;
+      animation: floatCloud linear infinite;
     }
     @keyframes floatCloud {
-      0% { transform: translateX(120vw); }
-      100% { transform: translateX(-120vw); }
+      from { transform: translateX(120vw); }
+      to { transform: translateX(-120vw); }
     }
 
-    .top-bar {
+    /* الشريط العلوي الكرتوني بنمط الألعاب */
+    .game-header {
+      width: 100%;
+      max-width: 480px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 8px;
-      z-index: 2;
+      z-index: 10;
+      margin-bottom: 12px;
     }
-    .app-title {
-      font-size: 24px;
-      font-weight: 900;
-      color: #FFFFFF;
-      text-shadow: 0 4px 10px rgba(14, 116, 144, 0.6);
-      animation: pulseTitle 2.5s infinite ease-in-out;
-    }
-    @keyframes pulseTitle {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-    .update-btn {
-      background: #FFFFFF;
+    .profile-mascot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.9);
       border: 3px solid #0284C7;
-      color: #0369A1;
-      font-size: 13px;
-      font-weight: 900;
       padding: 6px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #0284C7;
-      transition: transform 0.1s;
+      border-radius: 25px;
+      box-shadow: 0 4px 0 #0369A1;
     }
-    .update-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #0284C7; }
+    .mascot-avatar { font-size: 28px; animation: bounceMascot 2s infinite ease-in-out; }
+    @keyframes bounceMascot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .star-counter {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #FEF08A, #FBBF24);
+      border: 3px solid #D97706;
+      padding: 6px 16px;
+      border-radius: 25px;
+      box-shadow: 0 4px 0 #B45309;
+      font-size: 18px;
+      font-weight: 900;
+      color: #78350F;
+    }
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+    /* خريطة عوالم "مهارة طفل" */
+    .adventure-world-map {
       width: 100%;
-      max-width: 440px;
-      margin-top: 14px;
-      z-index: 2;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 5;
+      margin-top: 8px;
     }
-
-    /* كروت رئيسية ثلاثية الأبعاد ومرنة */
-    .category-card {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
-      border: 4px solid #F59E0B;
-      border-radius: 28px;
-      padding: 20px 16px;
+    .world-island-btn {
+      background: #FFFFFF;
+      border: 4px solid;
+      border-radius: 30px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      box-shadow: 0 10px 0px #D97706, 0 15px 25px rgba(217, 119, 6, 0.3);
-      transition: transform 0.12s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      transition: transform 0.12s;
     }
-    .category-card:active {
-      transform: translateY(6px) scale(0.97);
-      box-shadow: 0 4px 0px #D97706;
+    .world-island-btn:active {
+      transform: translateY(6px);
     }
-    .card-icon-badge {
-      font-size: 38px;
-      font-weight: 900;
-      color: #D97706;
-      background: #FEF3C7;
-      padding: 8px 20px;
-      border-radius: 22px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    .island-letters {
+      border-color: #F59E0B;
+      box-shadow: 0 10px 0 #D97706, 0 15px 20px rgba(0,0,0,0.1);
     }
-    .card-name { font-size: 23px; font-weight: 900; color: #78350F; }
+    .island-letters:active { box-shadow: 0 4px 0 #D97706; }
+    
+    .island-numbers {
+      border-color: #10B981;
+      box-shadow: 0 10px 0 #059669, 0 15px 20px rgba(0,0,0,0.1);
+    }
+    .island-numbers:active { box-shadow: 0 4px 0 #059669; }
 
+    .island-english {
+      border-color: #8B5CF6;
+      box-shadow: 0 10px 0 #6D28D9, 0 15px 20px rgba(0,0,0,0.1);
+    }
+    .island-english:active { box-shadow: 0 4px 0 #6D28D9; }
+
+    .island-icon { font-size: 48px; }
+    .island-text-box { text-align: right; flex: 1; margin-right: 14px; }
+    .island-title { font-size: 22px; font-weight: 900; color: #1E293B; }
+    .island-sub { font-size: 13px; font-weight: 700; color: #64748B; margin-top: 2px; }
+
+    /* الشاشات التفاعلية داخل الأقسام */
     .screen-panel {
       display: none;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       flex-direction: column;
       align-items: center;
-      z-index: 2;
+      z-index: 5;
     }
-
-    .back-btn {
-      background: #EF4444;
-      border: 3px solid #B91C1C;
-      color: white;
+    .action-nav-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .arcade-btn {
+      border-radius: 20px;
+      padding: 8px 16px;
       font-size: 15px;
       font-weight: 900;
-      padding: 6px 16px;
-      border-radius: 20px;
-      box-shadow: 0 4px 0 #991B1B;
+      color: white;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 3px solid;
       transition: transform 0.1s;
     }
-    .back-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #991B1B; }
+    .arcade-btn:active { transform: translateY(3px); }
+    .btn-red { background: #EF4444; border-color: #B91C1C; box-shadow: 0 4px 0 #991B1B; }
+    .btn-blue { background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 4px 0 #1E40AF; }
+    .btn-green { background: #10B981; border-color: #047857; box-shadow: 0 4px 0 #065F46; }
+    .btn-amber { background: #F59E0B; border-color: #B45309; box-shadow: 0 4px 0 #92400E; }
 
-    .activities-dropdown-btn {
-      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-      border: 3px solid #1E40AF;
-      color: white;
-      font-size: 15px;
-      font-weight: 900;
-      padding: 6px 16px;
-      border-radius: 20px;
-      box-shadow: 0 4px 0 #1E3A8A;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .activities-dropdown-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1E3A8A; }
-
-    /* بطاقة كرتونية حية عائمة للطفل */
-    .single-card-fullscreen {
+    /* بطاقة الحرف السحرية التفاعلية */
+    .magic-card {
       width: 95vw;
       max-width: 440px;
-      height: 66vh;
+      height: 64vh;
       background: linear-gradient(180deg, #FFFFFF 0%, #FEFCE8 100%);
-      border: 5px solid #F59E0B;
+      border: 6px solid #F59E0B;
       border-radius: 36px;
-      box-shadow: 0 12px 0 #D97706, 0 20px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 0 #D97706, 0 20px 25px rgba(0,0,0,0.15);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      padding: 20px;
-      margin-top: 6px;
-      animation: gentleFloat 3s ease-in-out infinite alternate;
+      padding: 18px;
+      margin-top: 4px;
+      cursor: pointer;
+      animation: floatMagic 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatMagic {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-8px); }
+    }
+    .magic-card:active { transform: scale(0.96); }
+    .char-big-render { font-size: 120px; font-weight: 900; color: #1E3A8A; line-height: 1; }
+    .emoji-big-render { font-size: 110px; line-height: 1; animation: wiggle 2s infinite ease-in-out; }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+    .word-big-render { font-size: 34px; font-weight: 900; color: #1F2937; }
+
+    /* شريط اختيار الحرف السفلي */
+    .footer-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-top: 4px solid #F59E0B;
+      box-shadow: 0 -8px 25px rgba(0,0,0,0.15);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 9999;
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 28px 28px 0 0;
+    }
+    .dock-nav-btn {
+      background: #EFF6FF;
+      border: 3px solid #3B82F6;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 18px;
+      font-weight: 900;
+      color: #1D4ED8;
+      box-shadow: 0 4px 0 #2563EB;
       cursor: pointer;
     }
-    @keyframes gentleFloat {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-8px) rotate(0.5deg); }
+    .dock-nav-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #2563EB; }
+    .dock-active-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FEF3C7;
+      border: 3px solid #F59E0B;
+      border-radius: 22px;
+      padding: 4px 18px;
+      cursor: pointer;
     }
-    .single-card-fullscreen:active {
-      transform: scale(0.96);
-    }
-    .hero-char-big {
-      font-size: 115px;
-      font-weight: 900;
-      color: #1E3A8A;
-      text-shadow: 0 4px 0 #93C5FD;
-      line-height: 1;
-    }
-    .hero-emoji-big {
-      font-size: 115px;
-      line-height: 1;
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
-      animation: emojiBounce 1.8s infinite ease-in-out;
-    }
-    @keyframes emojiBounce {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.08); }
-    }
-    .hero-word-big {
-      font-size: 36px;
-      font-weight: 900;
-      color: #1F2937;
-    }
+    .dock-active-char { font-size: 36px; font-weight: 900; color: #D97706; }
 
-    /* حاويات الأنشطة */
-    .game-box-arcade {
+    /* نافذة المهارات المنبثقة */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 10000;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-backdrop.active { display: flex; }
+    .skills-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 34px 34px 0 0;
+      padding: 22px 18px;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
+      animation: popSheet 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes popSheet {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .skill-choice-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      border: 3px solid #E2E8F0;
+      background: #F8FAFC;
+      font-size: 18px;
+      font-weight: 900;
+      color: #1E293B;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+    }
+    .skill-choice-item:active { transform: scale(0.97); background: #FEF3C7; border-color: #F59E0B; }
+
+    /* ألعاب المهارات: التوصيل، التتبع، والتلوين */
+    .arcade-card-panel {
       width: 100%;
       background: #FFFFFF;
       border: 4px solid #10B981;
       border-radius: 28px;
       padding: 16px 12px;
-      box-shadow: 0 8px 0 #059669, 0 16px 25px rgba(5, 150, 105, 0.2);
+      box-shadow: 0 8px 0 #059669;
       text-align: center;
       margin-top: 4px;
     }
-
-    /* التوصيل التفاعلي مع تأثير الجيلي */
-    .matching-board {
+    .match-columns-grid {
       display: flex;
       justify-content: space-between;
       gap: 12px;
       width: 100%;
       margin-top: 10px;
     }
-    .match-col {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 48%;
-    }
-    .match-btn-arcade {
+    .match-col { display: flex; flex-direction: column; gap: 14px; width: 48%; }
+    .match-node-arcade {
       background: #F8FAFC;
       border: 4px solid #3B82F6;
       border-radius: 22px;
@@ -253,92 +332,26 @@
       color: #1E3A8A;
       box-shadow: 0 6px 0 #1D4ED8;
       cursor: pointer;
-      transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.15s;
     }
-    .match-btn-arcade:active { transform: scale(0.92); }
-    .match-btn-arcade.selected {
+    .match-node-arcade:active { transform: scale(0.94); }
+    .match-node-arcade.selected {
       background: #FEF08A;
       border-color: #EAB308;
-      transform: scale(1.06) rotate(-1deg);
+      transform: scale(1.05);
       box-shadow: 0 8px 0 #CA8A04;
     }
-    .match-btn-arcade.matched {
+    .match-node-arcade.matched {
       background: #DCFCE7 !important;
       border-color: #16A34A !important;
       color: #15803D !important;
       box-shadow: 0 5px 0 #15803D !important;
-      animation: popIn 0.3s ease;
-    }
-    @keyframes popIn {
-      0% { transform: scale(0.8); }
-      60% { transform: scale(1.15); }
-      100% { transform: scale(1); }
     }
 
-    /* الاهتزاز عند الخطأ */
-    @keyframes arcadeShake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-14px) rotate(-2deg); }
-      40%, 80% { transform: translateX(14px) rotate(2deg); }
-    }
-    .shake-error {
-      animation: arcadeShake 0.45s ease-in-out;
-      border-color: #EF4444 !important;
-      background: #FEE2E2 !important;
-    }
-
-    /* نافذة الألعاب المنبثقة */
-    .activities-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 10000;
-      align-items: flex-end;
-      justify-content: center;
-      backdrop-filter: blur(3px);
-    }
-    .activities-modal.active { display: flex; }
-    .activities-sheet {
-      background: #FFFFFF;
-      width: 100%;
-      max-width: 480px;
-      border-radius: 32px 32px 0 0;
-      padding: 22px 18px;
-      box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
-      animation: slideUpSheet 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes slideUpSheet {
-      0% { transform: translateY(100%); }
-      100% { transform: translateY(0); }
-    }
-    .modal-game-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      border-radius: 18px;
-      border: 3px solid #E2E8F0;
-      background: #F8FAFC;
-      font-size: 18px;
-      font-weight: 900;
-      color: #1E293B;
-      cursor: pointer;
-      width: 100%;
-      text-align: right;
-      transition: all 0.15s;
-    }
-    .modal-game-item:active {
-      transform: scale(0.97);
-      background: #FEF3C7;
-      border-color: #F59E0B;
-    }
-
-    /* لوحة التلوين */
+    /* التلوين والتتبع */
     .fullscreen-paint-box {
       width: 100vw;
-      height: 72vh;
+      height: 70vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -347,7 +360,7 @@
     .fullscreen-canvas {
       width: 95vw;
       max-width: 440px;
-      height: 60vh;
+      height: 58vh;
       background: #FFFFFF;
       border: 5px solid #F59E0B;
       border-radius: 28px;
@@ -367,144 +380,127 @@
       border: 3px solid white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.25);
       cursor: pointer;
-      transition: transform 0.15s;
     }
     .color-dot.active { transform: scale(1.22); border-color: #111; }
 
-    /* لوحة كتابة الحرف */
     .write-canvas-arcade {
       width: 92vw;
       max-width: 420px;
-      height: 48vh;
+      height: 46vh;
       background: #FFFFFF;
       border: 4px dashed #60A5FA;
       border-radius: 24px;
-      box-shadow: inset 0 4px 8px rgba(0,0,0,0.04);
       touch-action: none;
       margin-top: 8px;
     }
 
-    /* شريط التحكم السفلي */
-    .letter-selector-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #FFFFFF;
-      border-top: 4px solid #F59E0B;
-      box-shadow: 0 -6px 20px rgba(0,0,0,0.12);
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      z-index: 9999;
-      max-width: 500px;
-      margin: 0 auto;
-      border-radius: 24px 24px 0 0;
+    @keyframes arcadeShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-14px) rotate(-2deg); }
+      40%, 80% { transform: translateX(14px) rotate(2deg); }
     }
-    .selector-nav-btn {
-      background: #EFF6FF;
-      border: 3px solid #3B82F6;
-      border-radius: 18px;
-      padding: 8px 18px;
-      font-size: 18px;
-      font-weight: 900;
-      color: #1D4ED8;
-      cursor: pointer;
-      box-shadow: 0 4px 0 #2563EB;
-      transition: transform 0.1s;
-    }
-    .selector-nav-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #2563EB; }
-    .current-letter-display {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #FEF3C7;
-      border: 3px solid #F59E0B;
-      border-radius: 20px;
-      padding: 4px 16px;
-      cursor: pointer;
-    }
-    .current-char-badge {
-      font-size: 34px;
-      font-weight: 900;
-      color: #D97706;
+    .shake-error {
+      animation: arcadeShake 0.45s ease-in-out;
+      border-color: #EF4444 !important;
+      background: #FEE2E2 !important;
     }
   </style>
 </head>
 <body>
 
   <!-- غيوم عائمة حية تسبح في الخلفية -->
-  <div class="bg-cloud" style="top: 8%; animation-duration: 26s;">☁️</div>
-  <div class="bg-cloud" style="top: 25%; animation-duration: 34s; animation-delay: -10s;">☁️</div>
-  <div class="bg-cloud" style="top: 55%; animation-duration: 22s; animation-delay: -5s;">☁️</div>
+  <div class="bg-clouds-track">
+    <div class="cloud-sprite" style="top: 8%; animation-duration: 25s;">☁️</div>
+    <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
+    <div class="cloud-sprite" style="top: 60%; animation-duration: 28s; animation-delay: -14s;">☁️</div>
+  </div>
 
-  <!-- القائمة الرئيسية -->
-  <div id="screen-main" style="width: 100%; max-width: 500px;">
-    <div class="top-bar">
-      <div class="app-title">🎈 عالم الأذكياء السحري</div>
-      <button class="update-btn" onclick="forceAppUpdate()">🔄 تحديث اللعبة</button>
+  <!-- الشريط العلوي بنمط الألعاب مع عدّاد النجوم -->
+  <div class="game-header">
+    <div class="profile-mascot">
+      <span class="mascot-avatar">🦁</span>
+      <span style="font-size: 15px; font-weight: 900; color: #0369A1;">البطل الصغير</span>
     </div>
-    
-    <div class="menu-grid">
-      <div class="category-card" onclick="enterCategory('ar')">
-        <div class="card-name">الحروف العربية والمرح</div>
-        <span class="card-icon-badge">أ ب ت</span>
+    <div class="star-counter">
+      <span>⭐</span>
+      <span id="star-score">0</span>
+    </div>
+    <button class="arcade-btn btn-blue" style="padding: 6px 12px; font-size: 13px;" onclick="forceAppUpdate()">🔄 تحديث</button>
+  </div>
+
+  <!-- خريطة عوالم "مهارة طفل" -->
+  <div id="screen-main" class="adventure-world-map">
+    <div class="world-island-btn island-letters" onclick="enterCategory('ar')">
+      <div class="island-icon">🔤</div>
+      <div class="island-text-box">
+        <div class="island-title">جزيرة الحروف العربية</div>
+        <div class="island-sub">نطق، كتابة، وتوصيل الحروف الممتعة</div>
       </div>
-      <div class="category-card" onclick="enterCategory('en')">
-        <div class="card-name">الحروف الإنجليزية للأبطال</div>
-        <span class="card-icon-badge">A B C</span>
+      <div style="font-size: 24px;">▶</div>
+    </div>
+
+    <div class="world-island-btn island-english" onclick="enterCategory('en')">
+      <div class="island-icon">🔠</div>
+      <div class="island-text-box">
+        <div class="island-title">جزيرة الحروف الإنجليزية</div>
+        <div class="island-sub">Learn ABC with Fun Games</div>
       </div>
-      <div class="category-card" onclick="enterCategory('numbers')">
-        <div class="card-name">الأرقام والمغامرات (1-10)</div>
-        <span class="card-icon-badge">١ ٢ ٣</span>
+      <div style="font-size: 24px;">▶</div>
+    </div>
+
+    <div class="world-island-btn island-numbers" onclick="enterCategory('numbers')">
+      <div class="island-icon">🔢</div>
+      <div class="island-text-box">
+        <div class="island-title">جزيرة الأرقام والعد (1-10)</div>
+        <div class="island-sub">تعلّم الأرقام وعد الأشياء الجميلة</div>
       </div>
+      <div style="font-size: 24px;">▶</div>
     </div>
   </div>
 
-  <!-- شاشة القسم المختار -->
+  <!-- شاشة الجزيرة المفتوحة -->
   <div id="screen-category" class="screen-panel">
-    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 6px;">
-      <button class="back-btn" onclick="showScreen('screen-main'); sfxClick();">🔙 القائمة</button>
-      <div id="category-title" style="font-size: 19px; font-weight: 900; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
-      <button class="activities-dropdown-btn" onclick="toggleActivitiesModal(); sfxClick();">🎯 قائمة الألعاب ▾</button>
+    <div class="action-nav-row">
+      <button class="arcade-btn btn-red" onclick="showScreen('screen-main'); sfxClick();">🔙 الخريطة</button>
+      <div id="category-title" style="font-size: 18px; font-weight: 900; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>
+      <button class="arcade-btn btn-green" onclick="toggleSkillsModal(); sfxClick();">🎯 المهارات ▾</button>
     </div>
 
-    <!-- نافذة الألعاب المنبثقة الشاملة -->
-    <div id="activities-modal" class="activities-modal" onclick="toggleActivitiesModal()">
-      <div class="activities-sheet" onclick="event.stopPropagation()">
-        <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 14px; text-align: center;">اخْتَارِ اللُّعْبَة المُمْتِعَة 🎮</div>
-        <button class="modal-game-item" onclick="selectTabFromModal('learn')">📖 بطاقة الحرف الكبيرة</button>
-        <button class="modal-game-item" onclick="selectTabFromModal('write')">✍️ اكتب الحرف وافحص خطك</button>
-        <button class="modal-game-item" onclick="selectTabFromModal('match')">🎯 توصيل مكثف للحرف</button>
-        <button class="modal-game-item" onclick="selectTabFromModal('color')">🎨 تلوين الحرف العملاق</button>
-        <button class="back-btn" style="width: 100%; margin-top: 10px; border-radius: 16px; padding: 10px;" onclick="toggleActivitiesModal()">إلغاء ✕</button>
+    <!-- نافذة المهارات المنبثقة الشاملة -->
+    <div id="skills-modal" class="modal-backdrop" onclick="toggleSkillsModal()">
+      <div class="skills-sheet" onclick="event.stopPropagation()">
+        <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 14px; text-align: center;">اخْتَارِ المَهَارَة التَّعْلِيمِيَّة 🌟</div>
+        <button class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 بطاقة الحرف السحرية</button>
+        <button class="skill-choice-item" onclick="selectSkillFromModal('write')">✍️ تتبع واكتب الحرف</button>
+        <button class="skill-choice-item" onclick="selectSkillFromModal('match')">🎯 لعبة التوصيل المتكررة</button>
+        <button class="skill-choice-item" onclick="selectSkillFromModal('color')">🎨 تلوين الحرف العملاق</button>
+        <button class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleSkillsModal()">إغلاق ✕</button>
       </div>
     </div>
 
-    <!-- 1. البطاقة الكبيرة العائمة بملء الشاشة -->
-    <div id="cat-view-learn" class="single-card-fullscreen" onclick="speakCurrentLetter(); sfxPop();">
-      <div class="hero-char-big" id="card-hero-char">أ</div>
-      <div class="hero-emoji-big" id="card-hero-emoji">🐰</div>
-      <div class="hero-word-big" id="card-hero-word">أرنب</div>
-      <div style="font-size: 17px; font-weight: 900; color: #B45309; background: #FEF3C7; padding: 8px 24px; border-radius: 24px; box-shadow: 0 3px 0 #F59E0B;">🔊 اضغط لسماع الصوت</div>
+    <!-- 1. بطاقة الحرف السحرية بملء الشاشة -->
+    <div id="cat-view-learn" class="magic-card" onclick="speakCurrentLetter(); sfxPop(); addStar();">
+      <div class="char-big-render" id="card-hero-char">أ</div>
+      <div class="emoji-big-render" id="card-hero-emoji">🐰</div>
+      <div class="word-big-render" id="card-hero-word">أرنب</div>
+      <div style="font-size: 16px; font-weight: 900; color: #B45309; background: #FEF3C7; padding: 8px 24px; border-radius: 24px; box-shadow: 0 3px 0 #F59E0B;">🔊 اضغط للاستماع واكسب نجمة</div>
     </div>
 
-    <!-- 2. لعبة الكتابة التفاعلية -->
-    <div id="cat-view-write" class="game-box-arcade" style="display: none;">
+    <!-- 2. لعبة تتبع وكتابة الحرف -->
+    <div id="cat-view-write" class="arcade-card-panel" style="display: none;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 40px;" id="write-hero-emoji">🐰</span>
+        <span style="font-size: 38px;" id="write-hero-emoji">🐰</span>
         <span style="font-size: 20px; font-weight: 900; color: #1E3A8A;" id="write-title-text">اكتب الحرف بإصبعك</span>
-        <button class="back-btn" style="background: #F59E0B; border-color: #D97706; padding: 4px 12px; font-size: 13px;" onclick="clearWriteCanvas(); sfxClick();">مسح 🗑️</button>
+        <button class="arcade-btn btn-amber" style="padding: 4px 12px; font-size: 13px;" onclick="clearWriteCanvas(); sfxClick();">مسح 🗑️</button>
       </div>
       <canvas id="write-canvas" class="write-canvas-arcade"></canvas>
-      <button class="back-btn" style="background: #10B981; border-color: #059669; width: 100%; margin-top: 8px; padding: 12px; font-size: 18px;" onclick="verifyUserHandwriting()">تأكيد الرسمة وفحص الحرف ✅</button>
+      <button class="arcade-btn btn-green" style="width: 100%; margin-top: 10px; padding: 12px; font-size: 18px;" onclick="verifyUserHandwriting()">تأكيد وافحص خطك ✅</button>
     </div>
 
-    <!-- 3. شاشة التوصيل المكثف -->
-    <div id="cat-view-match" class="game-box-arcade" style="display: none;">
+    <!-- 3. شاشة التوصيل المكثف المكرر -->
+    <div id="cat-view-match" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 19px; font-weight: 900; color: #065F46;" id="match-instructions">وصّل بالصورة المناسبة 👇</div>
-      <div class="matching-board" id="matching-board-container">
+      <div class="match-columns-grid">
         <div class="match-col" id="match-col-right"></div>
         <div class="match-col" id="match-col-left"></div>
       </div>
@@ -513,7 +509,7 @@
     <!-- 4. شاشة التلوين العملاقة -->
     <div id="cat-view-color" class="fullscreen-paint-box" style="display: none;">
       <div style="display: flex; justify-content: space-between; width: 95vw; max-width: 440px; margin-bottom: 4px;">
-        <button class="back-btn" style="background: #F59E0B; border-color: #D97706; padding: 4px 12px; font-size: 13px;" onclick="clearColorCanvas(); sfxClick();">مسح 🗑️</button>
+        <button class="arcade-btn btn-amber" style="padding: 4px 12px; font-size: 13px;" onclick="clearColorCanvas(); sfxClick();">مسح 🗑️</button>
         <span style="font-size: 16px; font-weight: 900; color: #FFFFFF; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">لوّن داخل الحدود!</span>
       </div>
       <canvas id="paint-canvas" class="fullscreen-canvas"></canvas>
@@ -527,20 +523,28 @@
     </div>
   </div>
 
-  <!-- شريط التحكم السفلي -->
-  <div class="letter-selector-footer" id="letter-selector-bar" style="display: none;">
-    <button class="selector-nav-btn" onclick="navLetter(-1)">◀ السابق</button>
-    <div class="current-letter-display" onclick="speakCurrentLetter(); sfxPop();">
+  <!-- شريط التحكم السفلي المستمر لاختيار الحرف -->
+  <div class="footer-dock" id="letter-selector-bar" style="display: none;">
+    <button class="dock-nav-btn" onclick="navLetter(-1)">◀ السابق</button>
+    <div class="dock-active-badge" onclick="speakCurrentLetter(); sfxPop();">
       <span style="font-size: 14px; font-weight: 900; color: #78350F;">الحرف:</span>
-      <span class="current-char-badge" id="footer-selected-char">أ</span>
-      <span style="font-size: 24px;">🔊</span>
+      <span class="dock-active-char" id="footer-selected-char">أ</span>
+      <span style="font-size: 22px;">🔊</span>
     </div>
-    <button class="selector-nav-btn" onclick="navLetter(1)">التالي ▶</button>
+    <button class="dock-nav-btn" onclick="navLetter(1)">التالي ▶</button>
   </div>
 
   <script>
-    /* ================= 1. محرك المؤثرات الصوتية الكرتونية (Web Audio API) ================= */
+    /* ================= 1. نظام الصوتيات والمكافآت ================= */
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let starsTotal = parseInt(localStorage.getItem('kid_stars') || '0');
+    document.getElementById('star-score').innerText = starsTotal;
+
+    function addStar() {
+      starsTotal++;
+      localStorage.setItem('kid_stars', starsTotal);
+      document.getElementById('star-score').innerText = starsTotal;
+    }
 
     function playTone(freq, type, duration, delay = 0) {
       setTimeout(() => {
@@ -559,29 +563,22 @@
     }
 
     function sfxPop() {
-      // نغمة فقاعة مبهجة
       playTone(400, 'sine', 0.1);
       playTone(800, 'sine', 0.15, 60);
     }
 
     function sfxSuccess() {
-      // نغمة فوز واحتفال كرتونية متصاعدة
-      playTone(523.25, 'triangle', 0.15, 0);   // C5
-      playTone(659.25, 'triangle', 0.15, 120); // E5
-      playTone(783.99, 'triangle', 0.15, 240); // G5
-      playTone(1046.50, 'triangle', 0.35, 360); // C6
-      // إطلاق ألعاب نارية ونجوم متناثرة
+      addStar();
+      playTone(523.25, 'triangle', 0.15, 0);
+      playTone(659.25, 'triangle', 0.15, 120);
+      playTone(783.99, 'triangle', 0.15, 240);
+      playTone(1046.50, 'triangle', 0.35, 360);
       if (typeof confetti === 'function') {
-        confetti({
-          particleCount: 60,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
+        confetti({ particleCount: 65, spread: 70, origin: { y: 0.65 } });
       }
     }
 
     function sfxError() {
-      // نغمة خطأ طفولية خفيفة
       playTone(220, 'sawtooth', 0.25);
       playTone(180, 'sawtooth', 0.25, 150);
     }
@@ -590,7 +587,7 @@
       playTone(600, 'sine', 0.05);
     }
 
-    /* ================= 2. البيانات والنطق الصريح ================= */
+    /* ================= 2. قاعدة البيانات ================= */
     const DB = {
       ar: [
         { char: "أ", name: "أَ", word: "أرنب", emoji: "🐰", speech: "أَ .. أَرْنَبْ" },
@@ -655,19 +652,19 @@
       document.getElementById('letter-selector-bar').style.display = 'none';
 
       if(screenId === 'screen-main') {
-        document.getElementById('screen-main').style.display = 'block';
+        document.getElementById('screen-main').style.display = 'flex';
       } else {
         document.getElementById(screenId).style.display = 'flex';
         document.getElementById('letter-selector-bar').style.display = 'flex';
       }
     }
 
-    function toggleActivitiesModal() {
-      document.getElementById('activities-modal').classList.toggle('active');
+    function toggleSkillsModal() {
+      document.getElementById('skills-modal').classList.toggle('active');
     }
 
-    function selectTabFromModal(tab) {
-      toggleActivitiesModal();
+    function selectSkillFromModal(tab) {
+      toggleSkillsModal();
       sfxClick();
       switchCategoryTab(tab);
     }
@@ -679,7 +676,7 @@
       selectedLetterIndex = 0;
       showScreen('screen-category');
 
-      const titles = { ar: 'الحروف العربية', en: 'الحروف الإنجليزية', numbers: 'الأرقام من 1 إلى 10' };
+      const titles = { ar: 'جزيرة الحروف العربية', en: 'جزيرة الحروف الإنجليزية', numbers: 'جزيرة الأرقام (1-10)' };
       document.getElementById('category-title').innerText = titles[key] || '';
 
       updateFooterLetterDisplay();
@@ -734,7 +731,7 @@
       }
     }
 
-    /* 1. عرض بطاقة واحدة بملء الشاشة */
+    /* 1. البطاقة السحرية الكبيرة */
     function renderSingleFullscreenCard() {
       const item = currentCategoryData[selectedLetterIndex];
       document.getElementById('card-hero-char').innerText = item.char;
@@ -743,7 +740,7 @@
       speak(item.speech, item.lang || 'ar-EG');
     }
 
-    /* 2. لعبة كتابة الحرف التفاعلية مع الفحص الحقيقي للخطأ */
+    /* 2. لعبة الكتابة والتتبع الفاحصة */
     let writeCanvas, writeCtx, writingState = false;
     let targetLetterMaskData = null;
 
@@ -800,7 +797,7 @@
 
       for (let i = 0; i < targetLetterMaskData.length; i += 16) {
         const isLetterArea = targetLetterMaskData[i + 3] > 100;
-        const isUserDrawn = userImg[i + 2] > 150; // بكسل أزرق
+        const isUserDrawn = userImg[i + 2] > 150;
 
         if (isLetterArea) totalLetterPixels++;
         if (isLetterArea && isUserDrawn) matchedPixels++;
@@ -812,7 +809,7 @@
       if (coverageRatio > 0.18 && strayPixels < matchedPixels * 1.8) {
         sfxSuccess();
         speak("شَاطِرْ جِدّاً! كَتَبْتَ الحَرْف صَحِيحْ! 🌟", currentCategoryData[selectedLetterIndex]?.lang || 'ar-EG');
-        alert("أحسنت يا بطل! كتابة صحيحة وممتازة! 🎉");
+        alert("أحسنت يا بطل! كسبت نجمة جديدة! ⭐");
       } else {
         sfxError();
         triggerScreenShake('cat-view-write');
@@ -858,7 +855,7 @@
       window.ontouchend = stop;
     }
 
-    /* 3. لعبة التوصيل المباشر */
+    /* 3. لعبة التوصيل المتكررة */
     let selectedLetterBtn = null;
     let matchPairsList = [];
 
@@ -875,7 +872,7 @@
 
       matchPairsList.forEach(item => {
         const btn = document.createElement('button');
-        btn.className = 'match-btn-arcade';
+        btn.className = 'match-node-arcade';
         btn.dataset.char = item.char;
         btn.innerText = item.char;
         btn.onclick = () => onSelectMatchLetter(btn);
@@ -885,7 +882,7 @@
       const shuffled = [...matchPairsList].sort(() => 0.5 - Math.random());
       shuffled.forEach(item => {
         const btn = document.createElement('button');
-        btn.className = 'match-btn-arcade';
+        btn.className = 'match-node-arcade';
         btn.dataset.char = item.char;
         btn.innerHTML = `${item.emoji} <span style="font-size:15px; margin-right:4px;">${item.word}</span>`;
         btn.onclick = () => onSelectMatchTarget(btn);
@@ -899,7 +896,7 @@
     function onSelectMatchLetter(btn) {
       if (btn.classList.contains('matched')) return;
       sfxPop();
-      document.querySelectorAll('#match-col-right .match-btn-arcade').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('#match-col-right .match-node-arcade').forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       selectedLetterBtn = btn;
       const found = matchPairsList.find(p => p.char === btn.dataset.char);
@@ -1061,7 +1058,7 @@
 
     async function forceAppUpdate() {
       if (!navigator.onLine) return alert('يرجى الاتصال بالإنترنت أولاً لتحديث اللعبة.');
-      if (confirm('تحديث اللعبة وتنزيل كل الميزات والمؤثرات الجديدة؟')) {
+      if (confirm('تحديث اللعبة وتنزيل كل الميزات الجديدة؟')) {
         if ('caches' in window) {
           const keys = await caches.keys();
           await Promise.all(keys.map(k => caches.delete(k)));
