@@ -29,7 +29,7 @@
     body {
       background: linear-gradient(180deg, #FDE68A 0%, #FEF3C7 100%);
       min-height: 100vh;
-      padding: 12px;
+      padding: 10px 10px 105px 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,7 +42,7 @@
       justify-content: space-between;
       width: 100%;
       max-width: 500px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .app-title {
       font-size: 22px;
@@ -86,35 +86,6 @@
     .card-icon-text { font-size: 34px; font-weight: 900; color: #D97706; margin-bottom: 4px; }
     .card-name { font-size: 18px; font-weight: 900; color: #78350F; text-align: center; }
 
-    .section-activities-bar {
-      display: flex;
-      gap: 6px;
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 12px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .activity-tab-btn {
-      flex: 1;
-      min-width: 76px;
-      background: #FFFFFF;
-      border: 3px solid #3B82F6;
-      border-radius: 16px;
-      padding: 8px 2px;
-      font-size: 13px;
-      font-weight: 900;
-      color: #1D4ED8;
-      box-shadow: 0 4px 0 #2563EB;
-      cursor: pointer;
-      text-align: center;
-      white-space: nowrap;
-    }
-    .activity-tab-btn.active {
-      background: #3B82F6;
-      color: white;
-    }
-
     .screen-panel {
       display: none;
       width: 100%;
@@ -128,21 +99,72 @@
       background: #EF4444;
       border: 3px solid #B91C1C;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 900;
       padding: 6px 14px;
       border-radius: 18px;
       box-shadow: 0 4px 0 #991B1B;
       cursor: pointer;
-      margin-bottom: 10px;
     }
+
+    .activities-dropdown-btn {
+      background: #3B82F6;
+      border: 3px solid #1D4ED8;
+      color: white;
+      font-size: 15px;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 18px;
+      box-shadow: 0 4px 0 #1E40AF;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* نافذة قائمة الألعاب المنبثقة */
+    .activities-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 10000;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .activities-modal.active { display: flex; }
+    .activities-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 26px 26px 0 0;
+      padding: 20px 16px;
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.25);
+    }
+    .modal-game-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      border-radius: 16px;
+      border: 2px solid #E2E8F0;
+      background: #F8FAFC;
+      font-size: 16px;
+      font-weight: 900;
+      color: #1E293B;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
+    }
+    .modal-game-item:active { background: #E0E7FF; border-color: #6366F1; }
 
     .board-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       width: 100%;
-      max-height: 70vh;
+      max-height: 66vh;
       overflow-y: auto;
       padding: 4px;
     }
@@ -157,59 +179,104 @@
       box-shadow: 0 5px 0 #1D4ED8;
       cursor: pointer;
     }
-    .item-card:active { transform: scale(0.92); }
+    .item-card.active-selection {
+      border-color: #EAB308;
+      background: #FEF08A;
+      transform: scale(1.05);
+    }
     .item-char { font-size: 34px; font-weight: 900; color: #1E3A8A; }
     .item-emoji { font-size: 34px; margin: 2px 0; }
     .item-word { font-size: 15px; font-weight: 900; color: #4B5563; }
 
-    /* ألعاب الألواح */
     .game-box {
       width: 100%;
       background: white;
       border: 4px solid #10B981;
       border-radius: 22px;
-      padding: 16px 10px;
+      padding: 14px 10px;
       box-shadow: 0 6px 0 #059669;
       text-align: center;
       margin-top: 4px;
       position: relative;
     }
     .game-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 900;
       color: #065F46;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    /* التوصيل التفاعلي الصريح */
+    /* شريط اختيار الحرف السفلي */
+    .letter-selector-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-top: 4px solid #F59E0B;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 9999;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .selector-nav-btn {
+      background: #EFF6FF;
+      border: 3px solid #3B82F6;
+      border-radius: 16px;
+      padding: 6px 14px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #1D4ED8;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #2563EB;
+    }
+    .current-letter-display {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      border-radius: 16px;
+      padding: 4px 14px;
+    }
+    .current-char-badge {
+      font-size: 28px;
+      font-weight: 900;
+      color: #D97706;
+    }
+
+    /* التوصيل التفاعلي */
     .matching-board {
       display: flex;
       justify-content: space-between;
       gap: 12px;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 8px;
     }
     .match-col {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       width: 48%;
     }
     .match-btn {
       background: #F3F4F6;
       border: 4px solid #3B82F6;
       border-radius: 20px;
-      padding: 12px 6px;
+      padding: 10px 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-size: 32px;
+      gap: 6px;
+      font-size: 30px;
       font-weight: 900;
       color: #1E3A8A;
       box-shadow: 0 4px 0 #1D4ED8;
       cursor: pointer;
-      transition: all 0.15s;
     }
     .match-btn.selected {
       background: #FEF08A;
@@ -226,32 +293,31 @@
     /* التلوين بملء الشاشة */
     .fullscreen-paint-box {
       width: 100vw;
-      height: 80vh;
+      height: 72vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      margin-top: -10px;
     }
     .fullscreen-canvas {
       width: 95vw;
       max-width: 460px;
-      height: 66vh;
+      height: 60vh;
       background: #FFFFFF;
-      border: 5px solid #F59E0B;
-      border-radius: 26px;
+      border: 4px solid #F59E0B;
+      border-radius: 24px;
       box-shadow: 0 8px 0 #D97706;
       touch-action: none;
     }
     .color-palette {
       display: flex;
       gap: 10px;
-      margin-top: 8px;
+      margin-top: 6px;
       justify-content: center;
     }
     .color-dot {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 3px solid white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.25);
@@ -259,16 +325,29 @@
     }
     .color-dot.active { transform: scale(1.2); border-color: #111; }
 
-    /* لعبة قفز الضفدع نحو الحرف */
+    /* لعبة كتابة الحرف التفاعلية */
+    .write-canvas-container {
+      width: 95vw;
+      max-width: 440px;
+      height: 45vh;
+      background: #FFFFFF;
+      border: 4px dashed #3B82F6;
+      border-radius: 24px;
+      box-shadow: 0 6px 0 #2563EB;
+      touch-action: none;
+      margin-top: 8px;
+    }
+
+    /* قفز الضفدع */
     .jumping-stage {
       width: 100%;
-      height: 320px;
+      height: 290px;
       background: linear-gradient(180deg, #BAE6FD 0%, #E0F2FE 70%, #86EFAC 100%);
       border: 4px solid #0284C7;
       border-radius: 24px;
       position: relative;
       overflow: hidden;
-      margin-top: 10px;
+      margin-top: 8px;
     }
     .frog-player {
       position: absolute;
@@ -296,37 +375,57 @@
       cursor: pointer;
     }
 
-    /* لعبة فرقعة الفقاعات */
+    /* لعبة الفقاعات */
     .bubble-container {
       width: 100%;
-      height: 320px;
+      height: 330px;
       background: radial-gradient(circle, #E0E7FF 0%, #C7D2FE 100%);
       border: 4px solid #6366F1;
       border-radius: 24px;
       position: relative;
       overflow: hidden;
-      margin-top: 10px;
+      margin-top: 8px;
+    }
+    .bubble-stats-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 14px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      margin-bottom: 6px;
+      border: 2px solid #818CF8;
+      font-weight: 900;
+      font-size: 14px;
     }
     .bubble-item {
       position: absolute;
-      width: 75px;
-      height: 75px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.88);
       border: 3px solid #818CF8;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 900;
       color: #4338CA;
       box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
       cursor: pointer;
-      animation: floatBubble 4s infinite ease-in-out alternate;
+      transition: transform 0.2s, opacity 0.2s;
     }
-    @keyframes floatBubble {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-16px) rotate(5deg); }
+    .wrong-flash {
+      position: absolute;
+      inset: 0;
+      background: rgba(239, 68, 68, 0.35);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      font-weight: 900;
+      color: #EF4444;
+      z-index: 100;
     }
   </style>
 </head>
@@ -353,72 +452,103 @@
         <span class="card-name">الأرقام وألعاب العد</span>
       </div>
       <div class="category-card" onclick="enterCategory('animals')">
-        <span class="card-icon-text">🦁 🐮</span>
-        <span class="card-name">أصوات الحيوانات</span>
+        <span class="card-icon-text">🦁 🐮 🐦</span>
+        <span class="card-name">أصوات الحيوانات الحقيقية</span>
       </div>
     </div>
   </div>
 
-  <!-- شاشة الأقسام المدمجة -->
+  <!-- شاشة القسم المختار -->
   <div id="screen-category" class="screen-panel">
-    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 8px;">
-      <button class="back-btn" style="margin:0;" onclick="showScreen('screen-main')">🔙 القائمة</button>
-      <div id="category-title" style="font-size: 18px; font-weight: 900; color: #78350F;"></div>
+    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 6px;">
+      <button class="back-btn" onclick="showScreen('screen-main')">🔙 القائمة</button>
+      <div id="category-title" style="font-size: 17px; font-weight: 900; color: #78350F;"></div>
+      <button class="activities-dropdown-btn" onclick="toggleActivitiesModal()">🎯 قائمة الألعاب ▾</button>
     </div>
 
-    <!-- شريط الأنشطة المدمجة داخل القسم -->
-    <div class="section-activities-bar">
-      <div class="activity-tab-btn active" id="tab-learn" onclick="switchCategoryTab('learn')">📖 الحروف</div>
-      <div class="activity-tab-btn" id="tab-match" onclick="switchCategoryTab('match')">🎯 وصّل</div>
-      <div class="activity-tab-btn" id="tab-color" onclick="switchCategoryTab('color')">🎨 لوّن الحرف</div>
-      <div class="activity-tab-btn" id="tab-jump" onclick="switchCategoryTab('jump')">🐸 قفز الحروف</div>
-      <div class="activity-tab-btn" id="tab-bubbles" onclick="switchCategoryTab('bubbles')">🫧 فرقعة</div>
+    <!-- نافذة الألعاب المنبثقة الشاملة -->
+    <div id="activities-modal" class="activities-modal" onclick="toggleActivitiesModal()">
+      <div class="activities-sheet" onclick="event.stopPropagation()">
+        <div style="font-size: 18px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة المُمْتِعَة 🎮</div>
+        <button class="modal-game-item" onclick="selectTabFromModal('learn')">📖 عرض الحروف والبطاقات</button>
+        <button class="modal-game-item" onclick="selectTabFromModal('write')">✍️ اكتب الحرف بإصبعك (جديد)</button>
+        <button class="modal-game-item" onclick="selectTabFromModal('match')">🎯 لعبة التوصيل بالصور</button>
+        <button class="modal-game-item" onclick="selectTabFromModal('color')">🎨 تلوين الحرف العملاق</button>
+        <button class="modal-game-item" onclick="selectTabFromModal('jump')">🐸 لعبة قفز الضفدع</button>
+        <button class="modal-game-item" onclick="selectTabFromModal('bubbles')">🫧 تحدي فرقعة الفقاعات</button>
+        <button class="back-btn" style="width: 100%; margin-top: 10px; border-radius: 14px;" onclick="toggleActivitiesModal()">إلغاء ✕</button>
+      </div>
     </div>
 
-    <!-- 1. شاشة البطاقات العادية -->
+    <!-- 1. شاشة البطاقات -->
     <div id="cat-view-learn" class="board-grid"></div>
 
-    <!-- 2. شاشة التوصيل المباشر الصريح الموثوق للأطفال -->
+    <!-- 2. لعبة كتابة الحرف التفاعلية -->
+    <div id="cat-view-write" class="game-box" style="display: none;">
+      <div style="display: flex; align-items: center; justify-content: space-around; margin-bottom: 6px;">
+        <div style="font-size: 42px;" id="write-emoji-guide">🐰</div>
+        <div style="font-size: 18px; font-weight: 900; color: #1E3A8A;" id="write-word-guide">أرنب يبدأ بحرف الألف</div>
+      </div>
+      <div class="game-title">تتبّع واكتب الحرف داخل المربع بإصبعك 👇</div>
+      <canvas id="write-canvas" class="write-canvas-container"></canvas>
+      <div style="display: flex; gap: 10px; justify-content: center; margin-top: 8px;">
+        <button class="back-btn" style="background: #F59E0B; border-color: #D97706;" onclick="clearWriteCanvas()">مسح 🗑️</button>
+        <button class="back-btn" style="background: #10B981; border-color: #059669;" onclick="finishWriting()">أحسنت! تأكيد ✅</button>
+      </div>
+    </div>
+
+    <!-- 3. شاشة التوصيل -->
     <div id="cat-view-match" class="game-box" style="display: none;">
-      <div class="game-title">اضغط على الحرف ثم اضغط على صورته الصحيحة! 👇</div>
+      <div class="game-title" id="match-instructions">وصّل الحرف بالصورة الصحيحة 👇</div>
       <div class="matching-board">
         <div class="match-col" id="match-col-right"></div>
         <div class="match-col" id="match-col-left"></div>
       </div>
     </div>
 
-    <!-- 3. شاشة التلوين بملء الشاشة مع قناع ذكي -->
+    <!-- 4. شاشة التلوين -->
     <div id="cat-view-color" class="fullscreen-paint-box" style="display: none;">
-      <div style="display: flex; justify-content: space-between; width: 95vw; max-width: 460px; margin-bottom: 6px;">
-        <button class="back-btn" style="margin: 0; padding: 4px 12px; font-size: 13px; background: #3B82F6; border-color: #1D4ED8;" onclick="nextColoringChar()">حرف تاني ↻</button>
-        <button class="back-btn" style="margin: 0; padding: 4px 12px; font-size: 13px; background: #F59E0B; border-color: #D97706;" onclick="clearCanvas()">مسح 🗑️</button>
-      </div>
-
       <canvas id="paint-canvas" class="fullscreen-canvas"></canvas>
-
       <div class="color-palette">
         <div class="color-dot active" style="background: #EF4444;" onclick="setColor('#EF4444', this)"></div>
         <div class="color-dot" style="background: #3B82F6;" onclick="setColor('#3B82F6', this)"></div>
         <div class="color-dot" style="background: #10B981;" onclick="setColor('#10B981', this)"></div>
         <div class="color-dot" style="background: #F59E0B;" onclick="setColor('#F59E0B', this)"></div>
         <div class="color-dot" style="background: #8B5CF6;" onclick="setColor('#8B5CF6', this)"></div>
-        <div class="color-dot" style="background: #EC4899;" onclick="setColor('#EC4899', this)"></div>
       </div>
     </div>
 
-    <!-- 4. لعبة قفز الضفدع للوصول إلى الحرف -->
+    <!-- 5. قفز الضفدع -->
     <div id="cat-view-jump" class="game-box" style="display: none;">
-      <div class="game-title" id="jump-task-title">ساعد الضفدع يقفز على الحرف الصحيح! 🐸</div>
+      <div class="game-title" id="jump-task-title">ساعد الضفدع يقفز على الحرف المختار! 🐸</div>
       <div class="jumping-stage" id="jump-stage">
         <div class="frog-player" id="frog-hero">🐸</div>
       </div>
     </div>
 
-    <!-- 5. لعبة فرقعة الفقاعات والبحث عن الحرف -->
+    <!-- 6. لعبة الفقاعات -->
     <div id="cat-view-bubbles" class="game-box" style="display: none;">
-      <div class="game-title" id="bubbles-task-title">فرقع فقاعة الحرف المطلوب! 🫧</div>
-      <div class="bubble-container" id="bubble-stage"></div>
+      <div class="bubble-stats-bar">
+        <div>المحاولات: <span id="bubble-lives">❤️❤️❤️❤️❤️</span></div>
+        <div>النقاط: <span id="bubble-score" style="color:#2563EB;">0</span></div>
+        <div>أعلى نتيجة: <span id="bubble-highscore" style="color:#D97706;">0</span></div>
+      </div>
+      <div class="game-title" id="bubbles-task-title">فرقع كل فقاعات الحرف! 🫧</div>
+      <div class="bubble-container" id="bubble-stage">
+        <div class="wrong-flash" id="wrong-flash-overlay">✕</div>
+      </div>
     </div>
+  </div>
+
+  <!-- شريط اختيار الحرف الثابت في الأسفل -->
+  <div class="letter-selector-footer" id="letter-selector-bar" style="display: none;">
+    <button class="selector-nav-btn" onclick="navLetter(-1)">◀ السابق</button>
+    <div class="current-letter-display" onclick="speakCurrentLetter()">
+      <span style="font-size: 13px; font-weight: 900; color: #78350F;">الحالي:</span>
+      <span class="current-char-badge" id="footer-selected-char">أ</span>
+      <span style="font-size: 20px;">🔊</span>
+    </div>
+    <button class="selector-nav-btn" onclick="navLetter(1)">التالي ▶</button>
   </div>
 
   <script>
@@ -430,7 +560,7 @@
         { char: "ث", name: "حَرْف الثَّاءْ", word: "ثعلب", emoji: "🦊", speech: "ثَاءْ .. ثَعْلَبْ مَكَّارْ" },
         { char: "ج", name: "حَرْف الجِيمْ", word: "جمل", emoji: "🐪", speech: "جِيمْ .. جَمَلْ سَفِينَة الصَّحْرَا" },
         { char: "ح", name: "حَرْف الحَاءْ", word: "حصان", emoji: "🐴", speech: "حَاءْ .. حُصَانْ سَرِيعْ بِيِجْرِي" },
-        { char: "خ", name: "حَرْف الخَاءْ", word: "خروف", emoji: "🐑", speech: "خَاءْ .. خَرُوفْ حُلْو وَوَدِيعْ" },
+        { char: "خ", name: "حَرْف الخَاءْ", word: "خروف", emoji: "🐑", sound: "خَاءْ .. خَرُوفْ حُلْو وَوَدِيعْ" },
         { char: "د", name: "حَرْف الدَّالْ", word: "دب", emoji: "🐻", speech: "دَالْ .. دُبْ كِبِيرْ" },
         { char: "ذ", name: "حَرْف الذَّالْ", word: "ذرة", emoji: "🌽", speech: "ذَالْ .. ذُرَة صَفْرَا طَعْمَهَا حُلْو" },
         { char: "ر", name: "حَرْف الرَّاءْ", word: "ريشة", emoji: "🪶", speech: "رَاءْ .. رِيشَة خَفِيفَة جِدّاً" },
@@ -468,46 +598,100 @@
         { char: "4", name: "رَقَمْ أَرْبَعَة", word: "4 عجلات", emoji: "🚗", speech: "رَقَمْ أَرْبَعَة .. عَرَبِيَّة بِأَرْبَعْ عِجَلاَتْ" },
         { char: "5", name: "رَقَمْ خَمْسَة", word: "5 أصابع", emoji: "✋", speech: "رَقَمْ خَمْسَة .. خَمْس صَوَابِعْ فِي الإِيدْ" }
       ],
+      // أصوات الحيوانات الحقيقية عبر محرك الصوتيات المحلي
       animals: [
-        { char: "🦁", name: "أَسَدْ", word: "أسد", emoji: "🦁", speech: "أَسَدْ .. مَلِكِ الغَابَة رُوورْ" },
-        { char: "🐱", name: "قُطَّة", word: "قطة", emoji: "🐱", speech: "مْيَاوْ مْيَاوْ .. قُطَّة شَقِيَّة" },
-        { char: "🐶", name: "كَلْب", word: "كلب", emoji: "🐶", speech: "هَوْ هَوْ .. كَلْب شَاطِرْ" },
-        { char: "🐮", name: "بَقَرَة", word: "بقرة", emoji: "🐮", speech: "مُوُوُو .. بَقَرَة تِدِّينَا اللَّبَنْ الحِلْو" }
+        { char: "🦁", name: "أَسَدْ", word: "أسد", emoji: "🦁", soundType: "roar" },
+        { char: "🐱", name: "قُطَّة", word: "قطة", emoji: "🐱", soundType: "meow" },
+        { char: "🐶", name: "كَلْب", word: "كلب", emoji: "🐶", soundType: "bark" },
+        { char: "🐮", name: "بَقَرَة", word: "بقرة", emoji: "🐮", soundType: "moo" },
+        { char: "🐦", name: "عُصْفُورْ", word: "عصفور", emoji: "🐦", soundType: "bird" },
+        { char: "🐴", name: "حُصَانْ", word: "حصان", emoji: "🐴", soundType: "horse" },
+        { char: "🐘", name: "فِيلْ", word: "فيل", emoji: "🐘", soundType: "elephant" },
+        { char: "🐑", name: "خَرُوفْ", word: "خروف", emoji: "🐑", soundType: "sheep" },
+        { char: "🐸", name: "ضِفْدَعْ", word: "ضفدع", emoji: "🐸", soundType: "croak" },
+        { char: "🦆", name: "بَطَّة", word: "بطة", emoji: "🦆", soundType: "quack" },
+        { char: "🐝", name: "نَحْلَة", word: "نحلة", emoji: "🐝", soundType: "buzz" },
+        { char: "🐺", name: "ذِئْبْ", word: "ذئب", emoji: "🐺", soundType: "wolf" }
       ]
     };
 
     let currentCategoryKey = 'ar';
     let currentCategoryData = [];
+    let selectedLetterIndex = 0;
+    let currentActiveTab = 'learn';
 
     function showScreen(screenId) {
       document.getElementById('screen-main').style.display = 'none';
       document.getElementById('screen-category').style.display = 'none';
-      document.getElementById(screenId).style.display = screenId === 'screen-main' ? 'block' : 'flex';
+      document.getElementById('letter-selector-bar').style.display = 'none';
+
+      if(screenId === 'screen-main') {
+        document.getElementById('screen-main').style.display = 'block';
+      } else {
+        document.getElementById(screenId).style.display = 'flex';
+        if (currentCategoryKey !== 'animals') {
+          document.getElementById('letter-selector-bar').style.display = 'flex';
+        }
+      }
+    }
+
+    function toggleActivitiesModal() {
+      document.getElementById('activities-modal').classList.toggle('active');
+    }
+
+    function selectTabFromModal(tab) {
+      toggleActivitiesModal();
+      switchCategoryTab(tab);
     }
 
     function enterCategory(key) {
       currentCategoryKey = key;
       currentCategoryData = DB[key];
+      selectedLetterIndex = 0;
       showScreen('screen-category');
 
-      const isNum = key === 'numbers';
-      document.getElementById('tab-learn').innerText = isNum ? '🔢 الأرقام' : '📖 الحروف';
-      document.getElementById('tab-match').innerText = isNum ? '🎯 وصّل العدد' : '🎯 وصّل الحرف';
-      document.getElementById('tab-color').innerText = isNum ? '🎨 لوّن الرقم' : '🎨 لوّن الحرف';
-      document.getElementById('tab-jump').innerText = isNum ? '🐸 قفز الأرقام' : '🐸 قفز الحروف';
-      document.getElementById('tab-bubbles').innerText = '🫧 فرقعة';
-
-      const titles = { ar: 'الحروف العربية', en: 'الحروف الإنجليزية', numbers: 'الأرقام والعد', animals: 'الحيوانات' };
+      const titles = { ar: 'الحروف العربية', en: 'الحروف الإنجليزية', numbers: 'الأرقام والعد', animals: 'أصوات الحيوانات الحقيقية' };
       document.getElementById('category-title').innerText = titles[key] || '';
 
+      updateFooterLetterDisplay();
       switchCategoryTab('learn');
     }
 
-    function switchCategoryTab(tab) {
-      document.querySelectorAll('.activity-tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tab-' + tab).classList.add('active');
+    function navLetter(step) {
+      const len = currentCategoryData.length;
+      selectedLetterIndex = (selectedLetterIndex + step + len) % len;
+      updateFooterLetterDisplay();
+      refreshActiveActivity();
+    }
 
+    function updateFooterLetterDisplay() {
+      const item = currentCategoryData[selectedLetterIndex];
+      document.getElementById('footer-selected-char').innerText = item.char;
+      speakCurrentLetter();
+    }
+
+    function speakCurrentLetter() {
+      const item = currentCategoryData[selectedLetterIndex];
+      if (currentCategoryKey === 'animals') {
+        playAnimalSound(item.soundType);
+      } else {
+        speak(item.name || item.char, item.lang || 'ar-EG');
+      }
+    }
+
+    function refreshActiveActivity() {
+      if (currentActiveTab === 'learn') renderLearningGrid();
+      else if (currentActiveTab === 'write') initWritingCanvas();
+      else if (currentActiveTab === 'match') startMatchingGame();
+      else if (currentActiveTab === 'color') drawHugeClippedLetter();
+      else if (currentActiveTab === 'jump') startJumpingGame();
+      else if (currentActiveTab === 'bubbles') resetBubblesGame();
+    }
+
+    function switchCategoryTab(tab) {
+      currentActiveTab = tab;
       document.getElementById('cat-view-learn').style.display = 'none';
+      document.getElementById('cat-view-write').style.display = 'none';
       document.getElementById('cat-view-match').style.display = 'none';
       document.getElementById('cat-view-color').style.display = 'none';
       document.getElementById('cat-view-jump').style.display = 'none';
@@ -516,6 +700,9 @@
       if (tab === 'learn') {
         document.getElementById('cat-view-learn').style.display = 'grid';
         renderLearningGrid();
+      } else if (tab === 'write') {
+        document.getElementById('cat-view-write').style.display = 'block';
+        initWritingCanvas();
       } else if (tab === 'match') {
         document.getElementById('cat-view-match').style.display = 'block';
         startMatchingGame();
@@ -527,17 +714,24 @@
         startJumpingGame();
       } else if (tab === 'bubbles') {
         document.getElementById('cat-view-bubbles').style.display = 'block';
-        startBubblesGame();
+        resetBubblesGame();
       }
     }
 
     function renderLearningGrid() {
       const grid = document.getElementById('cat-view-learn');
       grid.innerHTML = '';
-      currentCategoryData.forEach(item => {
+      currentCategoryData.forEach((item, idx) => {
         const div = document.createElement('div');
-        div.className = 'item-card';
-        div.onclick = () => speak(item.speech || item.name, item.lang || 'ar-EG');
+        div.className = 'item-card' + (idx === selectedLetterIndex ? ' active-selection' : '');
+        div.onclick = () => {
+          selectedLetterIndex = idx;
+          updateFooterLetterDisplay();
+          renderLearningGrid();
+          if (currentCategoryKey === 'animals') {
+            playAnimalSound(item.soundType);
+          }
+        };
         div.innerHTML = `
           <div class="item-char">${item.char}</div>
           <div class="item-emoji">${item.emoji}</div>
@@ -547,7 +741,194 @@
       });
     }
 
-    /* 1. نظام التوصيل المباشر الصريح */
+    /* ================= 1. لعبة كتابة وتتبّع الحرف ================= */
+    let writeCanvas, writeCtx, writingState = false;
+
+    function initWritingCanvas() {
+      writeCanvas = document.getElementById('write-canvas');
+      writeCanvas.width = writeCanvas.clientWidth * window.devicePixelRatio;
+      writeCanvas.height = writeCanvas.clientHeight * window.devicePixelRatio;
+      writeCtx = writeCanvas.getContext('2d');
+      setupWritingEvents();
+      drawLetterGuideTrace();
+    }
+
+    function drawLetterGuideTrace() {
+      writeCtx.clearRect(0, 0, writeCanvas.width, writeCanvas.height);
+      const item = currentCategoryData[selectedLetterIndex];
+
+      document.getElementById('write-emoji-guide').innerText = item.emoji;
+      document.getElementById('write-word-guide').innerText = `${item.word} تبدأ بـ (${item.name})`;
+
+      const fontSize = Math.floor(writeCanvas.height * 0.75);
+      writeCtx.font = `900 ${fontSize}px sans-serif`;
+      writeCtx.textAlign = 'center';
+      writeCtx.textBaseline = 'middle';
+
+      // رسم الحرف كخطوط إرشادية منقطة ليكتب الطفل فوقها
+      writeCtx.lineWidth = 6;
+      writeCtx.strokeStyle = '#CBD5E1';
+      writeCtx.setLineDash([12, 10]);
+      writeCtx.strokeText(item.char, writeCanvas.width / 2, writeCanvas.height / 2 + 10);
+      writeCtx.setLineDash([]);
+
+      speak(`يَلَّا نِكْتِبْ ${item.name} بِصُبَاعْنَا!`, item.lang || 'ar-EG');
+    }
+
+    function clearWriteCanvas() {
+      drawLetterGuideTrace();
+    }
+
+    function finishWriting() {
+      speak("خَطَّكْ جَمِيلْ جِدّاً يَا بَطَلْ! مُمْتَازْ! 🌟", currentCategoryData[selectedLetterIndex]?.lang || 'ar-EG');
+    }
+
+    function setupWritingEvents() {
+      const getPos = e => {
+        const rect = writeCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const scaleX = writeCanvas.width / rect.width;
+        const scaleY = writeCanvas.height / rect.height;
+        return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
+      };
+
+      const start = e => {
+        writingState = true;
+        writeCtx.beginPath();
+        const p = getPos(e);
+        writeCtx.moveTo(p.x, p.y);
+      };
+
+      const move = e => {
+        if (!writingState) return;
+        const p = getPos(e);
+        writeCtx.strokeStyle = '#2563EB';
+        writeCtx.lineWidth = 26; // خط كتابة سميك ممتع ومريح
+        writeCtx.lineCap = 'round';
+        writeCtx.lineJoin = 'round';
+        writeCtx.lineTo(p.x, p.y);
+        writeCtx.stroke();
+      };
+
+      const stop = () => { writingState = false; };
+
+      writeCanvas.onmousedown = start;
+      window.onmousemove = move;
+      window.onmouseup = stop;
+      writeCanvas.ontouchstart = start;
+      window.ontouchmove = move;
+      window.ontouchend = stop;
+    }
+
+    /* ================= 2. محرك أصوات الحيوانات الحقيقية بدون إنترنت ================= */
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playAnimalSound(type) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const now = audioCtx.currentTime;
+
+      if (type === 'roar') {
+        // زئير الأسد: تردد منخفض مع ضوضاء خشنة
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(90, now);
+        osc.frequency.exponentialRampToValueAtTime(45, now + 1.2);
+        gain.gain.setValueAtTime(0.8, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 1.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.2);
+      } else if (type === 'meow') {
+        // مواء القطة: نغمة ناعمة تصعد ثم تهبط
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(420, now);
+        osc.frequency.exponentialRampToValueAtTime(750, now + 0.35);
+        osc.frequency.exponentialRampToValueAtTime(320, now + 0.9);
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.9);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.9);
+      } else if (type === 'bark') {
+        // نباح الكلب: دفعتين سريعتين
+        [0, 0.22].forEach(offset => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(280, now + offset);
+          osc.frequency.exponentialRampToValueAtTime(120, now + offset + 0.16);
+          gain.gain.setValueAtTime(0.6, now + offset);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + offset + 0.16);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + offset);
+          osc.stop(now + offset + 0.16);
+        });
+      } else if (type === 'bird') {
+        // زقزقة العصفور: تردد عالي وسريع
+        [0, 0.15, 0.3].forEach(offset => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(2200, now + offset);
+          osc.frequency.exponentialRampToValueAtTime(3400, now + offset + 0.08);
+          gain.gain.setValueAtTime(0.3, now + offset);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + offset + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + offset);
+          osc.stop(now + offset + 0.08);
+        });
+      } else if (type === 'moo') {
+        // خوار البقرة: تردد بطيء عميق
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(110, now);
+        osc.frequency.exponentialRampToValueAtTime(95, now + 1.4);
+        gain.gain.setValueAtTime(0.5, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 1.4);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.4);
+      } else if (type === 'horse') {
+        // صهيل الحصان
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.linearRampToValueAtTime(800, now + 0.4);
+        osc.frequency.linearRampToValueAtTime(350, now + 1.1);
+        gain.gain.setValueAtTime(0.4, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 1.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.1);
+      } else {
+        // صوت مرح للحيوانات الأخرى
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(180, now);
+        osc.frequency.exponentialRampToValueAtTime(90, now + 0.5);
+        gain.gain.setValueAtTime(0.5, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.5);
+      }
+    }
+
+    /* ================= 3. باقي الألعاب (توصيل، تلوين، قفز، فقاعات) ================= */
     let selectedLetterBtn = null;
     let matchPairsList = [];
 
@@ -558,7 +939,9 @@
       rightCol.innerHTML = '';
       leftCol.innerHTML = '';
 
-      matchPairsList = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 3);
+      const targetItem = currentCategoryData[selectedLetterIndex];
+      const others = currentCategoryData.filter((_, i) => i !== selectedLetterIndex).sort(() => 0.5 - Math.random()).slice(0, 2);
+      matchPairsList = [targetItem, ...others].sort(() => 0.5 - Math.random());
 
       matchPairsList.forEach(item => {
         const btn = document.createElement('button');
@@ -574,12 +957,13 @@
         const btn = document.createElement('button');
         btn.className = 'match-btn';
         btn.dataset.char = item.char;
-        btn.innerHTML = `${item.emoji} <span style="font-size:15px; margin-right:4px;">${item.word}</span>`;
+        btn.innerHTML = `${item.emoji} <span style="font-size:14px; margin-right:4px;">${item.word}</span>`;
         btn.onclick = () => onSelectMatchTarget(btn);
         leftCol.appendChild(btn);
       });
 
-      speak("اضغط على الحرف ثم اضغط على صورته الصحيحة!", currentCategoryData[0]?.lang || 'ar-EG');
+      document.getElementById('match-instructions').innerText = `وصّل (${targetItem.name}) بصورته الصحيحة! 👇`;
+      speak(`وصّل ${targetItem.name} بالصورة الصحيحة!`, targetItem.lang || 'ar-EG');
     }
 
     function onSelectMatchLetter(btn) {
@@ -595,7 +979,6 @@
       if (!selectedLetterBtn || btn.classList.contains('matched')) return;
 
       if (btn.dataset.char === selectedLetterBtn.dataset.char) {
-        // مطابقة صحيحة
         btn.classList.add('matched');
         selectedLetterBtn.classList.add('matched');
         selectedLetterBtn.classList.remove('selected');
@@ -604,27 +987,23 @@
         speak(`أَحْسَنْتْ! ${item.name} مَعَ ${item.word}`, item?.lang || 'ar-EG');
         selectedLetterBtn = null;
 
-        // التحقق من اكتمال التوصيل
         const matchedCount = document.querySelectorAll('#match-col-right .matched').length;
         if (matchedCount === matchPairsList.length) {
           setTimeout(() => {
-            speak("شَاطِرْ جِدّاً يَا بَطَلْ! وَصَّلْتْ كُلَّ الحَاجَاتِ صَحْ! 🎉", currentCategoryData[0]?.lang || 'ar-EG');
-            setTimeout(startMatchingGame, 2000);
-          }, 800);
+            speak("شَاطِرْ جِدّاً يَا بَطَلْ! إِجَابَة صَحِيحَة! 🎉", currentCategoryData[0]?.lang || 'ar-EG');
+            setTimeout(startMatchingGame, 1800);
+          }, 600);
         }
       } else {
         speak("حَاوِلْ تَانِي، اخْتَارْ الصُّورَة الصَّحِيحَة!", currentCategoryData[0]?.lang || 'ar-EG');
       }
     }
 
-    /* 2. التلوين الذكي بملء الشاشة */
     let canvas, ctx, painting = false;
     let currentColor = '#EF4444';
-    let colorCharIdx = 0;
 
     function initColoringCanvas() {
       canvas = document.getElementById('paint-canvas');
-      // مطابقة الدقة مع الشاشة
       canvas.width = canvas.clientWidth * window.devicePixelRatio;
       canvas.height = canvas.clientHeight * window.devicePixelRatio;
       ctx = canvas.getContext('2d');
@@ -634,33 +1013,20 @@
 
     function drawHugeClippedLetter() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const item = currentCategoryData[colorCharIdx % currentCategoryData.length];
-
-      // حرف ضخم جداً يملأ 80% من الكانفاس
+      const item = currentCategoryData[selectedLetterIndex];
       const fontSize = Math.floor(canvas.height * 0.72);
       ctx.font = `900 ${fontSize}px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      // رسم الحرف من الداخل بلون رمادي فاتح ليكون هو القناع
       ctx.fillStyle = '#F1F5F9';
       ctx.fillText(item.char, canvas.width / 2, canvas.height / 2 + 15);
 
-      // رسم حدود الحرف الخارجية العريضة
       ctx.lineWidth = Math.max(12, fontSize * 0.05);
       ctx.strokeStyle = '#CBD5E1';
       ctx.strokeText(item.char, canvas.width / 2, canvas.height / 2 + 15);
 
       speak(`يَلَّا نْلَوِّنْ ${item.name}!`, item.lang || 'ar-EG');
-    }
-
-    function nextColoringChar() {
-      colorCharIdx++;
-      drawHugeClippedLetter();
-    }
-
-    function clearCanvas() {
-      drawHugeClippedLetter();
     }
 
     function setColor(color, el) {
@@ -689,20 +1055,17 @@
       const move = e => {
         if (!painting) return;
         const p = getPos(e);
-
         ctx.save();
-        // قفل اللون داخل الحرف بحيث لا يخرج منه أبداً
         ctx.globalCompositeOperation = 'source-atop';
         ctx.strokeStyle = currentColor;
-        ctx.lineWidth = Math.max(36, canvas.height * 0.08); // فرشاة سميكة تملأ بسهولة
+        ctx.lineWidth = Math.max(36, canvas.height * 0.08);
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.lineTo(p.x, p.y);
         ctx.stroke();
         ctx.restore();
 
-        // إعادة تنعيم الحدود الخارجية فوق التلوين
-        const item = currentCategoryData[colorCharIdx % currentCategoryData.length];
+        const item = currentCategoryData[selectedLetterIndex];
         const fontSize = Math.floor(canvas.height * 0.72);
         ctx.font = `900 ${fontSize}px sans-serif`;
         ctx.textAlign = 'center';
@@ -722,23 +1085,20 @@
       window.ontouchend = stop;
     }
 
-    /* 3. لعبة قفز الضفدع */
-    let jumpTargetChar = null;
     function startJumpingGame() {
       const stage = document.getElementById('jump-stage');
       const frog = document.getElementById('frog-hero');
       frog.style.left = '50%';
       frog.style.bottom = '12px';
 
-      // إزالة أي أهداف قديمة
       document.querySelectorAll('.jump-target').forEach(el => el.remove());
 
-      const list = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 3);
-      const target = list[Math.floor(Math.random() * list.length)];
-      jumpTargetChar = target;
+      const target = currentCategoryData[selectedLetterIndex];
+      const others = currentCategoryData.filter((_, i) => i !== selectedLetterIndex).sort(() => 0.5 - Math.random()).slice(0, 2);
+      const list = [target, ...others].sort(() => 0.5 - Math.random());
 
-      document.getElementById('jump-task-title').innerText = `انقر ليقفز الضفدع نحو (${target.name})! 🐸`;
-      speak(`انقر ليقفز الضفدع نحو ${target.name}!`, target.lang || 'ar-EG');
+      document.getElementById('jump-task-title').innerText = `اقفز نحو (${target.name})! 🐸`;
+      speak(`ساعد الضفدع يقفز على ${target.name}!`, target.lang || 'ar-EG');
 
       const positions = ['15%', '50%', '85%'];
       list.forEach((item, idx) => {
@@ -747,74 +1107,130 @@
         bubble.style.left = positions[idx];
         bubble.style.transform = 'translateX(-50%)';
         bubble.innerText = item.char;
-        bubble.onclick = () => onFrogJump(bubble, item);
+        bubble.onclick = () => onFrogJump(bubble, item, target);
         stage.appendChild(bubble);
       });
     }
 
-    function onFrogJump(targetEl, item) {
+    function onFrogJump(targetEl, item, target) {
       const frog = document.getElementById('frog-hero');
       const rect = targetEl.getBoundingClientRect();
       const stageRect = document.getElementById('jump-stage').getBoundingClientRect();
 
-      // حركة قفز سلسة للضفدع
       frog.style.left = (rect.left - stageRect.left + 36) + 'px';
-      frog.style.bottom = '180px';
+      frog.style.bottom = '165px';
 
       setTimeout(() => {
-        if (item.char === jumpTargetChar.char) {
-          speak("عَاشْ يَا بَطَلْ! قَفْزَة صَحِيحَة! 🎉", item.lang || 'ar-EG');
+        if (item.char === target.char) {
+          speak("عَاشْ يَا بَطَلْ! قَفْزَة مُمْتَازَة! 🎉", item.lang || 'ar-EG');
           targetEl.style.background = '#86EFAC';
-          setTimeout(startJumpingGame, 1800);
+          setTimeout(startJumpingGame, 1600);
         } else {
           speak("أُوووبس! حَاوِلْ مَرَّة تَانِيَة!", item.lang || 'ar-EG');
           frog.style.bottom = '12px';
           frog.style.left = '50%';
         }
-      }, 400);
+      }, 350);
     }
 
-    /* 4. لعبة فرقعة الفقاعات */
-    let bubbleTargetChar = null;
-    function startBubblesGame() {
+    let bubbleScore = 0;
+    let bubbleLives = 5;
+    let bubbleHighScore = localStorage.getItem('bubble_high_score') || 0;
+
+    function resetBubblesGame() {
+      bubbleScore = 0;
+      bubbleLives = 5;
+      updateBubbleUI();
+      renderBubblesBatch();
+      const target = currentCategoryData[selectedLetterIndex];
+      document.getElementById('bubbles-task-title').innerText = `فرقع كل فقاعات (${target.name})! 🫧`;
+      speak(`فرقع كل فقاعات ${target.name}!`, target.lang || 'ar-EG');
+    }
+
+    function updateBubbleUI() {
+      document.getElementById('bubble-score').innerText = bubbleScore;
+      document.getElementById('bubble-highscore').innerText = bubbleHighScore;
+      let hearts = '';
+      for (let i = 0; i < bubbleLives; i++) hearts += '❤️';
+      document.getElementById('bubble-lives').innerText = hearts || '💔';
+    }
+
+    function renderBubblesBatch() {
       const stage = document.getElementById('bubble-stage');
-      stage.innerHTML = '';
+      stage.querySelectorAll('.bubble-item').forEach(b => b.remove());
 
-      const list = [...currentCategoryData].sort(() => 0.5 - Math.random()).slice(0, 4);
-      const target = list[Math.floor(Math.random() * list.length)];
-      bubbleTargetChar = target;
+      const target = currentCategoryData[selectedLetterIndex];
+      const others = currentCategoryData.filter((_, i) => i !== selectedLetterIndex);
 
-      document.getElementById('bubbles-task-title').innerText = `فَرْقَعْ فُقَّاعَة (${target.name})! 🫧`;
-      speak(`فَرْقَعْ فُقَّاعَة ${target.name}!`, target.lang || 'ar-EG');
+      const batchItems = [
+        target, target,
+        others[Math.floor(Math.random() * others.length)],
+        others[Math.floor(Math.random() * others.length)],
+        others[Math.floor(Math.random() * others.length)],
+        others[Math.floor(Math.random() * others.length)]
+      ].sort(() => 0.5 - Math.random());
 
-      const coords = [
-        { x: '12%', y: '30px' }, { x: '55%', y: '40px' },
-        { x: '25%', y: '160px' }, { x: '68%', y: '170px' }
+      const positions = [
+        { l: '10%', t: '20px' }, { l: '42%', t: '20px' }, { l: '74%', t: '20px' },
+        { l: '15%', t: '160px' }, { l: '48%', t: '160px' }, { l: '76%', t: '160px' }
       ];
 
-      list.forEach((item, idx) => {
+      batchItems.forEach((item, idx) => {
         const b = document.createElement('div');
         b.className = 'bubble-item';
-        b.style.left = coords[idx].x;
-        b.style.top = coords[idx].y;
+        b.style.left = positions[idx].l;
+        b.style.top = positions[idx].t;
         b.innerText = item.char;
-        b.onclick = () => onPopBubble(b, item);
+        b.onclick = () => onPopBubbleInteractive(b, item);
         stage.appendChild(b);
       });
     }
 
-    function onPopBubble(bubbleEl, item) {
-      if (item.char === bubbleTargetChar.char) {
+    function onPopBubbleInteractive(bubbleEl, item) {
+      const target = currentCategoryData[selectedLetterIndex];
+
+      if (item.char === target.char) {
         bubbleEl.style.transform = 'scale(1.5)';
         bubbleEl.style.opacity = '0';
-        speak("بُوووبْ! شَاطِرْ يَا بَطَلْ! 🎉", item.lang || 'ar-EG');
-        setTimeout(startBubblesGame, 1600);
+        bubbleEl.style.pointerEvents = 'none';
+
+        bubbleScore++;
+        if (bubbleScore > bubbleHighScore) {
+          bubbleHighScore = bubbleScore;
+          localStorage.setItem('bubble_high_score', bubbleHighScore);
+        }
+        updateBubbleUI();
+
+        if (bubbleScore % 5 === 0) {
+          speak("مُمْتَازْ جِدّاً! سُوبَرْ بَطَلْ! 🌟", target.lang || 'ar-EG');
+        }
+
+        const remainingCorrect = [...document.querySelectorAll('#bubble-stage .bubble-item')].filter(el => el.innerText === target.char && el.style.opacity !== '0');
+        if (remainingCorrect.length === 0) {
+          setTimeout(renderBubblesBatch, 600);
+        }
       } else {
-        speak("دِي فُقَّاعَة تَانِيَة، حَاوِلْ مَرَّة كَمَانْ!", item.lang || 'ar-EG');
+        showWrongFeedback();
+        bubbleLives--;
+        updateBubbleUI();
+
+        if (bubbleLives <= 0) {
+          speak("حَاوِلْ مَرَّة تَانْيَة يَا بَطَلْ! انْتَهَتِ المُحَاوَلاَتْ!", target.lang || 'ar-EG');
+          alert(`انتهت المحاولات! النتيجة: ${bubbleScore} — أعلى نتيجة: ${bubbleHighScore}`);
+          resetBubblesGame();
+        } else {
+          speak("غَلَطْ! اخْتَارْ فُقَّاعَة " + target.name, target.lang || 'ar-EG');
+        }
       }
     }
 
-    /* محرك النطق المصري */
+    function showWrongFeedback() {
+      const overlay = document.getElementById('wrong-flash-overlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => { overlay.style.display = 'none'; }, 350);
+    }
+
+    /* الصوت المصري */
     let cachedVoices = [];
     function loadVoices() { cachedVoices = window.speechSynthesis.getVoices(); }
     window.speechSynthesis.onvoiceschanged = loadVoices;
