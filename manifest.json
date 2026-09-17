@@ -1,0 +1,16 @@
+{
+  "name": "عالم الصغار المرح",
+  "short_name": "ألعاب الصغار",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FEF3C7",
+  "theme_color": "#F59E0B",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
