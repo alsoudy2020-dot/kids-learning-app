@@ -520,7 +520,7 @@
     <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
   </div>
 
-  <div class="version-stamp">الإصدار 5.1 - التسلسل والتناوب المؤكد ✔</div>
+  <div class="version-stamp">الإصدار 5.2 - تدرج هادئ للموسيقى ✔</div>
 
   <div class="game-header">
     <div class="profile-mascot">
@@ -566,7 +566,7 @@
       <div style="font-size: 44px; pointer-events: none;">🎹</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الآلة الموسيقية والألعاب</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">عزف النغمات والذاكرة وتحدي الأشكال</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">عزف النغمات الهادئة والذاكرة والألعاب</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -583,7 +583,7 @@
     <div id="skills-modal" class="modal-backdrop" onclick="toggleSkillsModal()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
         <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة 🌟</div>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحروف المتسلسلة (يتناوب بين الحروف التي تعلمتها)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحروف المتسلسلة (تناوب الحروف السابقة)</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 2. بطاقة الحرف الكبيرة</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('match')">🔄 3. توصيل متجدد الحروف والصور</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 4. صيد البالونات الطائرة (متسلسلة بالتناوب)</button>
@@ -677,7 +677,7 @@
     <div id="brain-menu-modal" class="modal-backdrop" onclick="toggleBrainGamesMenu()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
         <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ لُعْبَة الذَّكَاء 🧠</div>
-        <button type="button" class="skill-choice-item" onclick="switchBrainGame('simon')">🎹 1. الآلة الموسيقية المتصاعدة (صوت مؤكد)</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('simon')">🎹 1. الآلة الموسيقية المتصاعدة (تدرج هادئ للأطفال)</button>
         <button type="button" class="skill-choice-item" onclick="switchBrainGame('memory')">🃏 2. الذاكرة المتدرجة (مستوى سهل يبدأ بزوجين)</button>
         <button type="button" class="skill-choice-item" onclick="switchBrainGame('odd')">🔍 3. اكتشف الشيء المختلف</button>
         <button type="button" class="skill-choice-item" onclick="switchBrainGame('sorting')">🧺 4. فرز الأطعمة والألوان في الصناديق</button>
@@ -688,21 +688,21 @@
       </div>
     </div>
 
-    <!-- 1. الآلة الموسيقية -->
+    <!-- 1. الآلة الموسيقية الهادئة المتدرجة ببطء وإتقان -->
     <div id="subgame-simon" class="arcade-card-panel" style="border-color: #F59E0B;">
       <div id="audio-enable-banner" style="background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 14px; padding: 8px; margin-bottom: 10px; cursor: pointer;" onclick="enableAudioAndPlayWelcome()">
         <div style="font-size: 15px; font-weight: 900; color: #B45309;">اضغط هنا لتفعيل الصوت أولاً 🎵</div>
       </div>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-        <span style="font-size: 16px; font-weight: 900; color: #B45309;" id="simon-notes-count">عدد النغمات: 2</span>
+        <span style="font-size: 16px; font-weight: 900; color: #B45309;" id="simon-notes-count">عدد النغمات: 1</span>
         <span style="font-size: 14px; font-weight: 900; color: #15803D;" id="simon-streak">جولات النجاح: 0</span>
       </div>
       <div style="font-size: 16px; font-weight: 900; color: #78350F; margin-bottom: 8px;" id="simon-status">اضغط "ابدأ العزف" واستمع 🎵</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 280px; margin: 0 auto;">
-        <button type="button" id="simon-btn-0" style="height: 100px; background: #EF4444; border-radius: 20px; border: 4px solid #B91C1C; cursor: pointer; outline: none; transition: transform 0.1s;" onclick="onSimonClick(0)"></button>
-        <button type="button" id="simon-btn-1" style="height: 100px; background: #3B82F6; border-radius: 20px; border: 4px solid #1D4ED8; cursor: pointer; outline: none; transition: transform 0.1s;" onclick="onSimonClick(1)"></button>
-        <button type="button" id="simon-btn-2" style="height: 100px; background: #10B981; border-radius: 20px; border: 4px solid #047857; cursor: pointer; outline: none; transition: transform 0.1s;" onclick="onSimonClick(2)"></button>
-        <button type="button" id="simon-btn-3" style="height: 100px; background: #F59E0B; border-radius: 20px; border: 4px solid #B45309; cursor: pointer; outline: none; transition: transform 0.1s;" onclick="onSimonClick(3)"></button>
+        <button type="button" id="simon-btn-0" style="height: 100px; background: #EF4444; border-radius: 20px; border: 4px solid #B91C1C; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(0)"></button>
+        <button type="button" id="simon-btn-1" style="height: 100px; background: #3B82F6; border-radius: 20px; border: 4px solid #1D4ED8; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(1)"></button>
+        <button type="button" id="simon-btn-2" style="height: 100px; background: #10B981; border-radius: 20px; border: 4px solid #047857; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(2)"></button>
+        <button type="button" id="simon-btn-3" style="height: 100px; background: #F59E0B; border-radius: 20px; border: 4px solid #B45309; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(3)"></button>
       </div>
       <button type="button" class="arcade-btn btn-amber" style="margin-top: 12px; font-size: 16px; padding: 10px 24px;" onclick="startSimonRound()">ابدأ العزف ▶</button>
     </div>
@@ -1047,23 +1047,19 @@
       else if (tab === 'write') initWritingCanvas();
     }
 
-    /* 0. اختبار الحرف المتسلسل التراكمي (التصحيح الدقيق) */
+    /* 0. اختبار الحرف المتسلسل التراكمي */
     function startPick4Game() {
       const container = document.getElementById('pick4-grid-container');
       if (!container) return;
       container.innerHTML = '';
 
-      // 1. تحديد النطاق التراكمي من أول حرف وحتى الحرف الحالي المختار
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
-
-      // 2. اختيار الحرف المستهدف عشوائياً من داخل النطاق المسموح (لتناوب الأسئلة بين أ وب مثلاً)
       const target = availablePool[Math.floor(Math.random() * availablePool.length)];
 
       const instructions = document.getElementById('pick4-instructions');
       if (instructions) instructions.innerText = `فِينْ حَرْف (${target.name})؟ اضغط عليه 👇`;
       speak(`فِينْ حَرْف ${target.name}؟`, target.lang || 'ar-EG');
 
-      // 3. اختيار 3 خيارات أخرى مختلفة لتشتيت الطفل من القاموس
       const others = currentCategoryData.filter(item => item.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 3);
       const options = [target, ...others].sort(() => 0.5 - Math.random());
 
@@ -1104,7 +1100,6 @@
       speak(item.speech, item.lang || 'ar-EG');
     }
 
-    /* التوصيل المتجدد */
     let selectedLetterBtn = null;
     let matchPairsList = [];
 
@@ -1116,7 +1111,6 @@
       rightCol.innerHTML = '';
       leftCol.innerHTML = '';
 
-      // سحب عشوائي من النطاق التراكمي
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
       const targetItem = availablePool[Math.floor(Math.random() * availablePool.length)];
 
@@ -1213,7 +1207,6 @@
       stage.innerHTML = '';
       if (balloonInterval) clearInterval(balloonInterval);
 
-      // سحب الحرف المطلوب عشوائياً من النطاق التراكمي
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
       const target = availablePool[Math.floor(Math.random() * availablePool.length)];
 
@@ -1249,7 +1242,6 @@
             b.dataset.popped = "true";
             setTimeout(() => b.remove(), 200);
             speak("أَحْسَنْتْ! بَالُونْ رَائِعْ! 🎉", target.lang || 'ar-EG');
-            // تغيير الحرف المستهدف للتالي في الجولة التالية
             setTimeout(startBalloonGame, 1000);
           } else {
             loseOneLife(`غَلَطْ! اخْتَارْ بَالُونْ ${target.name}`);
@@ -1378,7 +1370,6 @@
 
       stage.querySelectorAll('.jump-target').forEach(el => el.remove());
 
-      // سحب عشوائي من النطاق التراكمي
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
       const target = availablePool[Math.floor(Math.random() * availablePool.length)];
 
@@ -1427,7 +1418,6 @@
       if (!stage) return;
       stage.innerHTML = '';
 
-      // سحب عشوائي من النطاق التراكمي
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
       const target = availablePool[Math.floor(Math.random() * availablePool.length)];
 
@@ -1615,20 +1605,35 @@
       else if (gameKey === 'speed') initSpeedGame();
     }
 
-    /* 1. الآلة الموسيقية */
+    /* 1. الآلة الموسيقية المتدرجة ببطء وهدوء للأطفال */
     const simonMusicalPitches = [261.63, 329.63, 392.00, 523.25];
     let simonSeq = [];
     let simonUserStep = 0;
     let simonStreak = 0;
 
+    // حساب عدد النغمات بناءً على جولات النجاح التراكمية
+    function getSimonNotesCount() {
+      if (simonStreak < 6) {
+        return 1; // أول 6 مرات: نغمة واحدة فقط
+      } else if (simonStreak < 16) {
+        return 2; // الـ 10 مرات التالية (من 6 إلى 15): نغمتان اثنتان
+      } else if (simonStreak < 26) {
+        return 3; // الـ 10 مرات التالية: 3 نغمات
+      } else if (simonStreak < 36) {
+        return 4; // الـ 10 مرات التالية: 4 نغمات
+      } else {
+        return 5; // بعدها: 5 نغمات
+      }
+    }
+
     function playSimonNote(idx) {
       getSafeAudioContext();
       const freq = simonMusicalPitches[idx] || 350;
-      playTone(freq, 'sine', 0.35);
+      playTone(freq, 'sine', 0.45); // رنين هادئ ومريح
     }
 
     function updateSimonUI() {
-      const notesCount = Math.min(6, 2 + Math.floor(simonStreak / 2));
+      const notesCount = getSimonNotesCount();
       const nc = document.getElementById('simon-notes-count');
       const st = document.getElementById('simon-streak');
       if (nc) nc.innerText = `عدد النغمات: ${notesCount}`;
@@ -1637,7 +1642,7 @@
 
     function startSimonRound() {
       getSafeAudioContext();
-      const length = Math.min(6, 2 + Math.floor(simonStreak / 2));
+      const length = getSimonNotesCount();
       simonSeq = [];
       for (let i = 0; i < length; i++) {
         simonSeq.push(Math.floor(Math.random() * 4));
@@ -1645,30 +1650,31 @@
       simonUserStep = 0;
       updateSimonUI();
       const st = document.getElementById('simon-status');
-      if (st) st.innerText = 'استمع واحفظ النغمات 🎶';
+      if (st) st.innerText = 'استمع واحفظ النغمة 🎶';
       playSimonSequence();
     }
 
     function playSimonSequence() {
       simonSeq.forEach((val, idx) => {
+        // بطء هادئ: ثانية كاملة (1000ms) بين النغمة والأخرى لتركيز الطفل
         setTimeout(() => {
           const btn = document.getElementById('simon-btn-' + val);
           if (btn) {
             btn.style.opacity = '0.35';
-            btn.style.transform = 'scale(0.94)';
+            btn.style.transform = 'scale(0.92)';
             playSimonNote(val);
             setTimeout(() => { 
               btn.style.opacity = '1'; 
               btn.style.transform = 'scale(1)';
-            }, 280);
+            }, 450);
           }
           if (idx === simonSeq.length - 1) {
             setTimeout(() => {
               const st = document.getElementById('simon-status');
-              if (st) st.innerText = 'دورك الآن! اعزف نفس النغمات 🎵';
-            }, 350);
+              if (st) st.innerText = 'دورك الآن! اضغط نفس اللون 🎵';
+            }, 500);
           }
-        }, idx * 650);
+        }, idx * 1000);
       });
     }
 
@@ -1677,7 +1683,7 @@
       const btn = document.getElementById('simon-btn-' + val);
       if (btn) {
         btn.style.transform = 'scale(0.92)';
-        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 150);
+        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
       }
 
       if (simonSeq.length === 0) return;
@@ -1689,8 +1695,8 @@
           simonStreak++;
           updateSimonUI();
           const st = document.getElementById('simon-status');
-          if (st) st.innerText = 'أحسنت! عزفت النغمات كاملة 🎵';
-          setTimeout(startSimonRound, 1400);
+          if (st) st.innerText = 'أحسنت! إجابة ممتازة 🎵';
+          setTimeout(startSimonRound, 1500);
         }
       } else {
         loseOneLife("نَغْمَة خَاطِئَة!");
