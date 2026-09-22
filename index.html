@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>عالم الصغار السحري 🎈</title>
   
   <link rel="manifest" href="manifest.json" />
@@ -22,20 +22,19 @@
       padding: 0;
       font-family: 'Tajawal', sans-serif;
       user-select: none;
-      -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
 
     body {
-      background: radial-gradient(circle at 50% 20%, #7DD3FC 0%, #38BDF8 60%, #0284C7 100%);
+      background: linear-gradient(180deg, #38BDF8 0%, #7DD3FC 50%, #FDE047 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
       position: relative;
-      padding: 10px 10px 115px 10px;
+      padding: 10px 10px 105px 10px;
     }
 
     .bg-clouds-track {
@@ -50,25 +49,25 @@
     }
     .cloud-sprite {
       position: absolute;
-      font-size: 70px;
-      opacity: 0.45;
+      font-size: 65px;
+      opacity: 0.55;
       animation: floatCloud linear infinite;
     }
     @keyframes floatCloud {
-      from { transform: translateX(125vw); }
-      to { transform: translateX(-125vw); }
+      from { transform: translateX(120vw); }
+      to { transform: translateX(-120vw); }
     }
 
     .version-stamp {
-      background: linear-gradient(135deg, #10B981, #059669);
+      background: #059669;
       color: #FFFFFF;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 900;
       padding: 3px 14px;
       border-radius: 14px;
       margin-bottom: 6px;
       z-index: 10;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     }
 
     .game-header {
@@ -80,32 +79,31 @@
       z-index: 10;
       margin-bottom: 8px;
     }
-    .profile-pill {
+    .profile-mascot {
       display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.94);
       border: 3px solid #0284C7;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 25px;
-      box-shadow: 0 5px 0 #0369A1;
+      box-shadow: 0 4px 0 #0369A1;
       font-size: 14px;
       font-weight: 900;
       color: #0369A1;
     }
-    .chest-progress-btn {
+    .score-lives-box {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #FEF08A, #F59E0B);
-      border: 3px solid #D97706;
-      padding: 6px 14px;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 3px solid #F59E0B;
+      padding: 5px 12px;
       border-radius: 25px;
-      box-shadow: 0 5px 0 #B45309;
+      box-shadow: 0 4px 0 #D97706;
       font-size: 14px;
       font-weight: 900;
-      color: #78350F;
-      cursor: pointer;
+      color: #B45309;
     }
 
     .adventure-world-map {
@@ -127,14 +125,14 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform 0.12s;
       outline: none;
     }
-    .world-island-btn:active { transform: translateY(6px) scale(0.98); }
-    .island-letters { border-color: #F59E0B; box-shadow: 0 10px 0 #D97706; }
-    .island-english { border-color: #8B5CF6; box-shadow: 0 10px 0 #6D28D9; }
-    .island-numbers { border-color: #10B981; box-shadow: 0 10px 0 #059669; }
-    .island-minigames { border-color: #EC4899; box-shadow: 0 10px 0 #BE185D; }
+    .world-island-btn:active { transform: translateY(5px); }
+    .island-letters { border-color: #F59E0B; box-shadow: 0 9px 0 #D97706; }
+    .island-english { border-color: #8B5CF6; box-shadow: 0 9px 0 #6D28D9; }
+    .island-numbers { border-color: #10B981; box-shadow: 0 9px 0 #059669; }
+    .island-minigames { border-color: #EC4899; box-shadow: 0 9px 0 #BE185D; }
 
     .screen-panel {
       display: none;
@@ -152,8 +150,8 @@
       margin-bottom: 8px;
     }
     .arcade-btn {
-      border-radius: 22px;
-      padding: 8px 16px;
+      border-radius: 20px;
+      padding: 8px 14px;
       font-size: 14px;
       font-weight: 900;
       color: white;
@@ -166,18 +164,38 @@
       transition: transform 0.1s;
     }
     .arcade-btn:active { transform: translateY(3px); }
-    .btn-red { background: #EF4444; border-color: #B91C1C; box-shadow: 0 5px 0 #991B1B; }
-    .btn-blue { background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 5px 0 #1E40AF; }
-    .btn-green { background: #10B981; border-color: #047857; box-shadow: 0 5px 0 #065F46; }
-    .btn-amber { background: #F59E0B; border-color: #B45309; box-shadow: 0 5px 0 #92400E; }
-    .btn-pink { background: #EC4899; border-color: #BE185D; box-shadow: 0 5px 0 #9D174D; }
+    .btn-red { background: #EF4444; border-color: #B91C1C; box-shadow: 0 4px 0 #991B1B; }
+    .btn-blue { background: #3B82F6; border-color: #1D4ED8; box-shadow: 0 4px 0 #1E40AF; }
+    .btn-green { background: #10B981; border-color: #047857; box-shadow: 0 4px 0 #065F46; }
+    .btn-amber { background: #F59E0B; border-color: #B45309; box-shadow: 0 4px 0 #92400E; }
+    .btn-pink { background: #EC4899; border-color: #BE185D; box-shadow: 0 4px 0 #9D174D; }
+
+    .magic-card {
+      width: 95vw;
+      max-width: 440px;
+      height: 64vh;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FEFCE8 100%);
+      border: 6px solid #F59E0B;
+      border-radius: 34px;
+      box-shadow: 0 12px 0 #D97706;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 20px 16px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+    .char-big-render { font-size: 115px; font-weight: 900; color: #1E3A8A; line-height: 1.1; }
+    .emoji-big-render { font-size: 115px; line-height: 1.25; overflow: visible; }
+    .word-big-render { font-size: 36px; font-weight: 900; color: #1F2937; }
 
     .footer-dock {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.98);
+      background: #FFFFFF;
       border-top: 4px solid #F59E0B;
       box-shadow: 0 -8px 25px rgba(0,0,0,0.15);
       padding: 10px 16px;
@@ -187,7 +205,7 @@
       z-index: 9999;
       max-width: 480px;
       margin: 0 auto;
-      border-radius: 28px 28px 0 0;
+      border-radius: 26px 26px 0 0;
     }
     .dock-nav-btn {
       background: #EFF6FF;
@@ -212,122 +230,44 @@
     }
     .dock-active-char { font-size: 34px; font-weight: 900; color: #D97706; }
 
-    /* ================= لعبة القفز الكرتونية (Mario Runner Style) ================= */
-    .mario-stage-container {
-      width: 100%;
-      height: 330px;
-      background: linear-gradient(180deg, #60A5FA 0%, #BAE6FD 65%, #86EFAC 65%, #22C55E 72%, #B45309 72%, #78350F 100%);
-      border: 5px solid #1E3A8A;
-      border-radius: 26px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 6px;
-    }
-    .runner-hero {
-      position: absolute;
-      bottom: 92px;
-      left: 60px;
-      font-size: 52px;
-      z-index: 20;
-      transition: bottom 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    }
-    .runner-box-target {
-      position: absolute;
-      top: 55px;
-      width: 68px;
-      height: 68px;
-      background: linear-gradient(135deg, #FEF08A, #F59E0B);
-      border: 4px solid #B45309;
-      border-radius: 18px;
-      box-shadow: 0 6px 0 #78350F;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      font-weight: 900;
-      color: #78350F;
-      z-index: 15;
-      animation: floatMarioBlock 1.5s infinite ease-in-out alternate;
-    }
-    @keyframes floatMarioBlock {
-      from { transform: translateY(0); }
-      to { transform: translateY(-8px); }
-    }
-    .runner-jump-button {
-      width: 100%;
-      margin-top: 12px;
-      height: 64px;
-      background: linear-gradient(135deg, #22C55E, #16A34A);
-      border: 4px solid #14532D;
-      border-radius: 26px;
-      color: white;
-      font-size: 24px;
-      font-weight: 900;
-      box-shadow: 0 8px 0 #14532D, 0 12px 20px rgba(0,0,0,0.2);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      outline: none;
-    }
-    .runner-jump-button:active {
-      transform: translateY(6px);
-      box-shadow: 0 2px 0 #14532D;
-    }
-
-    /* الشخصية الكرتونية الحية وصندوق الكنز */
-    .mascot-companion {
-      position: fixed;
-      bottom: 85px;
-      left: 12px;
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-    }
-    .mascot-speech-bubble {
-      background: #FFFFFF;
-      border: 3px solid #0284C7;
-      border-radius: 16px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 900;
-      color: #0369A1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      margin-bottom: 4px;
-      white-space: nowrap;
-    }
-    .mascot-avatar-char {
-      font-size: 55px;
-      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.2));
-    }
-    .chest-modal-overlay {
+    .modal-backdrop {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 100001;
-      align-items: center;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 10000;
+      align-items: flex-end;
       justify-content: center;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(4px);
     }
-    .chest-modal-overlay.active { display: flex; }
-    .chest-card-popup {
-      background: linear-gradient(180deg, #FEFCE8 0%, #FFFFFF 100%);
-      border: 6px solid #F59E0B;
-      border-radius: 36px;
-      width: 90%;
-      max-width: 380px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    .modal-backdrop.active { display: flex; }
+    .skills-sheet {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 32px 32px 0 0;
+      padding: 20px 18px;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .skill-choice-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-radius: 18px;
+      border: 3px solid #E2E8F0;
+      background: #F8FAFC;
+      font-size: 16px;
+      font-weight: 900;
+      color: #1E293B;
+      cursor: pointer;
+      width: 100%;
+      text-align: right;
     }
 
-    /* ألعاب المهارات الأخرى */
     .arcade-card-panel {
       width: 100%;
       background: #FFFFFF;
@@ -338,6 +278,7 @@
       text-align: center;
       margin-top: 4px;
     }
+
     .pick4-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -359,23 +300,171 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.1s;
       outline: none;
     }
-    .magic-card {
-      width: 95vw;
-      max-width: 440px;
-      height: 62vh;
-      background: linear-gradient(180deg, #FFFFFF 0%, #FEFCE8 100%);
-      border: 6px solid #F59E0B;
-      border-radius: 36px;
-      box-shadow: 0 12px 0 #D97706;
+    .pick4-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 #2563EB;
+    }
+
+    .match-columns-grid {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .match-col { display: flex; flex-direction: column; gap: 14px; width: 48%; }
+    .match-node-arcade {
+      background: #F8FAFC;
+      border: 4px solid #3B82F6;
+      border-radius: 22px;
+      padding: 12px 6px;
+      display: flex;
       align-items: center;
-      justify-content: space-evenly;
-      padding: 20px 16px;
-      margin-top: 4px;
+      justify-content: center;
+      gap: 8px;
+      font-size: 34px;
+      font-weight: 900;
+      color: #1E3A8A;
+      box-shadow: 0 6px 0 #1D4ED8;
       cursor: pointer;
+      transition: all 0.15s;
+    }
+    .match-node-arcade.selected { background: #FEF08A; border-color: #EAB308; }
+    .match-node-arcade.matched { background: #DCFCE7 !important; border-color: #16A34A !important; color: #15803D !important; }
+
+    .balloon-sky-stage {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(180deg, #60A5FA 0%, #93C5FD 70%, #BAE6FD 100%);
+      border: 4px solid #2563EB;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .flying-balloon {
+      position: absolute;
+      width: 78px;
+      height: 98px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 900;
+      color: #FFFFFF;
+      cursor: pointer;
+      box-shadow: inset -6px -6px 12px rgba(0,0,0,0.15), 0 8px 15px rgba(0,0,0,0.15);
+      animation: riseBalloon 6.8s linear forwards;
+    }
+    .flying-balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      width: 2px;
+      height: 14px;
+      background: #FFFFFF;
+    }
+    @keyframes riseBalloon {
+      from { bottom: -110px; }
+      to { bottom: 420px; }
+    }
+
+    .jumping-stage {
+      width: 100%;
+      height: 310px;
+      background: linear-gradient(180deg, #BAE6FD 0%, #E0F2FE 70%, #86EFAC 100%);
+      border: 4px solid #0284C7;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .frog-player {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 54px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .jump-target {
+      position: absolute;
+      top: 25px;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid #3B82F6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: #1D4ED8;
+      box-shadow: 0 5px 0 #2563EB;
+      cursor: pointer;
+    }
+
+    .bubble-container {
+      width: 100%;
+      height: 320px;
+      background: radial-gradient(circle, #E0E7FF 0%, #C7D2FE 100%);
+      border: 4px solid #6366F1;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    .bubble-item {
+      position: absolute;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 3px solid #818CF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: #4338CA;
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+      cursor: pointer;
+    }
+
+    .memory-grid {
+      display: grid;
+      gap: 12px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .memory-card {
+      background: #FEF08A;
+      border: 4px solid #EAB308;
+      border-radius: 20px;
+      height: 95px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      cursor: pointer;
+      box-shadow: 0 5px 0 #CA8A04;
+    }
+    .memory-card.flipped { background: #FFFFFF; border-color: #3B82F6; }
+
+    @keyframes arcadeShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-14px) rotate(-2deg); }
+      40%, 80% { transform: translateX(14px) rotate(2deg); }
+    }
+    .shake-error {
+      animation: arcadeShake 0.45s ease-in-out;
+      border-color: #EF4444 !important;
+      background: #FEE2E2 !important;
     }
   </style>
 </head>
@@ -386,56 +475,53 @@
     <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
   </div>
 
-  <div class="version-stamp">الإصدار 6.5 - مغامرة قفز سيمبا (سوبر ماريو) 🍄</div>
+  <div class="version-stamp">الإصدار 7.0 - النسخة المستقرة المصلحة بالكامل ✔</div>
 
   <div class="game-header">
-    <div class="profile-pill">
+    <div class="profile-mascot">
       <span>🦁</span>
-      <span id="player-score-badge">نجوم: 0 ⭐</span>
+      <span id="player-score-badge">نقاط: 0</span>
     </div>
-    
-    <div class="chest-progress-btn" onclick="openChestModal()">
-      <span>🎁 صندوق الكنز:</span>
-      <span id="chest-count-badge">0/5</span>
+    <div class="score-lives-box">
+      <span id="lives-counter-badge">❤️❤️❤️❤️❤️</span>
     </div>
-
     <button type="button" class="arcade-btn btn-blue" style="padding: 6px 12px; font-size: 13px;" onclick="forceAppUpdate()">🔄 تحديث</button>
   </div>
 
   <!-- خريطة الجزر الرئيسية -->
   <div id="screen-main" class="adventure-world-map">
     <button type="button" class="world-island-btn island-letters" onclick="enterCategory('ar')">
-      <div style="font-size: 46px; pointer-events: none;">🔤</div>
+      <div style="font-size: 44px; pointer-events: none;">🔤</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف العربية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">مغامرة قفز سيمبا، واختبارات الحروف</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">اختبارات متسلسلة وتناوب الحروف السابقة</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
 
     <button type="button" class="world-island-btn island-english" onclick="enterCategory('en')">
-      <div style="font-size: 46px; pointer-events: none;">🔠</div>
+      <div style="font-size: 44px; pointer-events: none;">🔠</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف الإنجليزية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">ABC Jump Adventure with Simba</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">Sequential ABC Random Test</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
 
     <button type="button" class="world-island-btn island-numbers" onclick="enterCategory('numbers')">
-      <div style="font-size: 46px; pointer-events: none;">🔢</div>
+      <div style="font-size: 44px; pointer-events: none;">🔢</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الأرقام (1 إلى 10)</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">قفز وصيد صناديق الأرقام الذهبية</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">تسلسل الأرقام واختبارات متنوعة</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
 
     <button type="button" class="world-island-btn island-minigames" onclick="openMiniGamesWorld()">
-      <div style="font-size: 46px; pointer-events: none;">🍄</div>
+      <div style="font-size: 44px; pointer-events: none;">🎹</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
-        <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة ألعاب القفز والموسيقى</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">لعبة مغامرة ماريو والبيانو الهادئ</div>
+        <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الآلة الموسيقية والألعاب</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">عزف النغمات الهادئة والذاكرة والألعاب</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -446,118 +532,152 @@
     <div class="action-nav-row">
       <button type="button" class="arcade-btn btn-red" onclick="showScreen('screen-main'); sfxClick();">🔙 الخريطة</button>
       <div id="category-title" style="font-size: 18px; font-weight: 900; color: #FFFFFF;"></div>
-      <button type="button" class="arcade-btn btn-green" onclick="toggleSkillsModal(); sfxClick();">🎯 قائمة الألعاب ▾</button>
+      <button type="button" class="arcade-btn btn-green" onclick="toggleSkillsModal(); sfxClick();">🎯 دليل الألعاب ▾</button>
     </div>
 
+    <!-- نافذة الألعاب المنبثقة -->
     <div id="skills-modal" class="modal-backdrop" onclick="toggleSkillsModal()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
         <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة 🌟</div>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('mariorunner')">🦘 1. مغامرة قفز سيمبا (سوبر ماريو - جديد)</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 2. اختبار الحروف المتسلسلة (تناوب الحروف السابقة)</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 3. بطاقة الحرف الكبيرة الناطقة</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحروف المتسلسلة (تناوب الحروف السابقة)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 2. بطاقة الحرف الكبيرة الناطقة</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('match')">🔄 3. توصيل متجدد الحروف والصور</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 4. صيد البالونات الطائرة (متسلسلة بالتناوب)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('jump')">🐸 5. قفز الضفدع نحو الحرف</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('bubbles')">🫧 6. صيد وفرقعة الفقاعات</button>
         <button type="button" class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleSkillsModal()">إغلاق ✕</button>
       </div>
     </div>
 
-    <!-- 1. لعبة مغامرة قفز سيمبا الحركية (Mario Runner Style) -->
-    <div id="cat-view-mariorunner" class="arcade-card-panel" style="display: none; border-color: #3B82F6;">
-      <div style="font-size: 19px; font-weight: 900; color: #1E3A8A;" id="mario-task-title">ساعد سيمبا يقفز ويصدم الصندوق! 🦁</div>
-      
-      <div class="mario-stage-container" id="mario-stage-arena">
-        <!-- بطل اللعبة: سيمبا -->
-        <div class="runner-hero" id="runner-hero-char">🦁</div>
-        <!-- الصناديق المعلقة الحاملة للحروف -->
-        <div class="runner-box-target" id="mario-box-0" style="left: 20px;" onclick="onHitMarioBox(0)">أ</div>
-        <div class="runner-box-target" id="mario-box-1" style="left: 130px;" onclick="onHitMarioBox(1)">ب</div>
-        <div class="runner-box-target" id="mario-box-2" style="left: 240px;" onclick="onHitMarioBox(2)">ت</div>
-      </div>
-
-      <!-- زر القفز الكبير للطفل -->
-      <button type="button" class="runner-jump-button" onclick="performMarioJump()">
-        <span>🦘 اضغط هنا للقفز والنط!</span>
-      </button>
-    </div>
-
-    <!-- 2. اختبار الحروف المتسلسلة -->
+    <!-- 1. اختبار الحرف المتسلسل التراكمي -->
     <div id="cat-view-pick4" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 20px; font-weight: 900; color: #1D4ED8;" id="pick4-instructions">اضغط على الحرف المطلوب 👇</div>
       <div class="pick4-grid" id="pick4-grid-container"></div>
     </div>
 
-    <!-- 3. البطاقة الكبيرة -->
-    <div id="cat-view-learn" class="magic-card" onclick="speakCurrentLetter(); sfxPop(); addScoreAndProgress(1);">
+    <!-- 2. البطاقة الكبيرة -->
+    <div id="cat-view-learn" class="magic-card" onclick="speakCurrentLetter(); sfxPop(); addGameScore(5);">
       <div class="char-big-render" id="card-hero-char">أ</div>
       <div class="emoji-big-render" id="card-hero-emoji">🐰</div>
       <div class="word-big-render" id="card-hero-word">أرنب</div>
-      <div style="font-size: 16px; font-weight: 900; color: #B45309; background: #FEF3C7; padding: 8px 24px; border-radius: 24px; box-shadow: 0 4px 0 #F59E0B;">🔊 اضغط للاستماع وكسب نجوم</div>
+      <div style="font-size: 16px; font-weight: 900; color: #B45309; background: #FEF3C7; padding: 8px 24px; border-radius: 24px; box-shadow: 0 3px 0 #F59E0B;">🔊 اضغط للاستماع وكسب نقاط</div>
+    </div>
+
+    <!-- 3. لعبة التوصيل -->
+    <div id="cat-view-match" class="arcade-card-panel" style="display: none;">
+      <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="match-instructions">وصّل الحرف بصورته المناسبة 👇</div>
+      <div class="match-columns-grid">
+        <div class="match-col" id="match-col-right"></div>
+        <div class="match-col" id="match-col-left"></div>
+      </div>
+    </div>
+
+    <!-- 4. صيد البالونات الطائرة -->
+    <div id="cat-view-balloon" class="arcade-card-panel" style="display: none;">
+      <div style="font-size: 18px; font-weight: 900; color: #1D4ED8;" id="balloon-task-title">اصطد بالون الحرف قبل أن يطير! 🎈</div>
+      <div class="balloon-sky-stage" id="balloon-stage"></div>
+    </div>
+
+    <!-- 5. قفز الضفدع -->
+    <div id="cat-view-jump" class="arcade-card-panel" style="display: none;">
+      <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="jump-task-title">ساعد الضفدع يقفز على الحرف! 🐸</div>
+      <div class="jumping-stage" id="jump-stage">
+        <div class="frog-player" id="frog-hero">🐸</div>
+      </div>
+    </div>
+
+    <!-- 6. فرقعة الفقاعات -->
+    <div id="cat-view-bubbles" class="arcade-card-panel" style="display: none;">
+      <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="bubbles-task-title">فرقع فقاعة الحرف المطلوب! 🫧</div>
+      <div class="bubble-container" id="bubble-stage"></div>
     </div>
   </div>
 
-  <!-- جزيرة الألعاب وقسم الموسيقى -->
+  <!-- جزيرة ألعاب الذكاء والمرح -->
   <div id="screen-minigames" class="screen-panel">
     <div class="action-nav-row">
       <button type="button" class="arcade-btn btn-red" onclick="showScreen('screen-main'); sfxClick();">🔙 الخريطة</button>
-      <div style="font-size: 18px; font-weight: 900; color: #FFFFFF;">جزيرة القفز والبيانو 🍄</div>
+      <div style="font-size: 18px; font-weight: 900; color: #FFFFFF;">ألعاب الذكاء والآلة الموسيقية 🎹</div>
       <button type="button" class="arcade-btn btn-pink" onclick="toggleBrainGamesMenu(); sfxClick();">قائمة الألعاب ▾</button>
     </div>
 
     <div id="brain-menu-modal" class="modal-backdrop" onclick="toggleBrainGamesMenu()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
-        <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة 🌟</div>
-        <button type="button" class="skill-choice-item" onclick="switchBrainGame('mario')">🦘 1. مغامرة قفز سيمبا (سوبر ماريو)</button>
-        <button type="button" class="skill-choice-item" onclick="switchBrainGame('simon')">🎹 2. الآلة الموسيقية الهادئة</button>
-        <button type="button" class="skill-choice-item" onclick="switchBrainGame('chestbox')">🏆 3. خزانة جوائزي وألعابي المفتوحة</button>
+        <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ لُعْبَة الذَّكَاء 🧠</div>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('simon')">🎹 1. الآلة الموسيقية المتصاعدة (تدرج هادئ للأطفال)</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('memory')">🃏 2. الذاكرة المتدرجة (مستوى سهل يبدأ بزوجين)</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('odd')">🔍 3. اكتشف الشيء المختلف</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('sorting')">🧺 4. فرز الأطعمة والألوان في الصناديق</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('shadow')">👥 5. مطابقة الظل الكرتوني</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('count')">🔢 6. عدّ الأشياء الساقطة واختيار الرقم</button>
+        <button type="button" class="skill-choice-item" onclick="switchBrainGame('speed')">⚡ 7. سرعة البديهة وفرقعة الأشكال</button>
         <button type="button" class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleBrainGamesMenu()">إغلاق ✕</button>
       </div>
     </div>
 
-    <!-- لعبة ماريو داخل جزيرة الألعاب -->
-    <div id="subgame-mario" class="arcade-card-panel" style="border-color: #3B82F6;">
-      <div style="font-size: 19px; font-weight: 900; color: #1E3A8A;" id="mario-task-title-minigame">اقفز واجمع الصناديق الذهبية! 🍄</div>
-      <div class="mario-stage-container">
-        <div class="runner-hero" id="runner-hero-char-mini">🦁</div>
-        <div class="runner-box-target" id="mario-box-mini-0" style="left: 20px;" onclick="onHitMarioBoxMini(0)">⭐</div>
-        <div class="runner-box-target" id="mario-box-mini-1" style="left: 130px;" onclick="onHitMarioBoxMini(1)">🎁</div>
-        <div class="runner-box-target" id="mario-box-mini-2" style="left: 240px;" onclick="onHitMarioBoxMini(2)">🎈</div>
+    <!-- 1. الآلة الموسيقية الهادئة -->
+    <div id="subgame-simon" class="arcade-card-panel" style="border-color: #F59E0B;">
+      <div id="audio-enable-banner" style="background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 14px; padding: 8px; margin-bottom: 10px; cursor: pointer;" onclick="enableAudioAndPlayWelcome()">
+        <div style="font-size: 15px; font-weight: 900; color: #B45309;">اضغط هنا لتفعيل الصوت أولاً 🎵</div>
       </div>
-      <button type="button" class="runner-jump-button" onclick="performMarioJumpMini()">
-        <span>🦘 اضغط هنا للقفز والنط!</span>
-      </button>
-    </div>
-
-    <!-- الآلة الموسيقية -->
-    <div id="subgame-simon" class="arcade-card-panel" style="display: none; border-color: #F59E0B;">
-      <div style="font-size: 16px; font-weight: 900; color: #78350F; margin-bottom: 8px;">استمع واحفظ النغمات 🎵</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-size: 16px; font-weight: 900; color: #B45309;" id="simon-notes-count">عدد النغمات: 1</span>
+        <span style="font-size: 14px; font-weight: 900; color: #15803D;" id="simon-streak">جولات النجاح: 0</span>
+      </div>
+      <div style="font-size: 16px; font-weight: 900; color: #78350F; margin-bottom: 8px;" id="simon-status">اضغط "ابدأ العزف" واستمع 🎵</div>
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 280px; margin: 0 auto;">
-        <button type="button" id="simon-btn-0" style="height: 100px; background: #EF4444; border-radius: 20px; border: 4px solid #B91C1C; cursor: pointer;" onclick="onSimonClick(0)"></button>
-        <button type="button" id="simon-btn-1" style="height: 100px; background: #3B82F6; border-radius: 20px; border: 4px solid #1D4ED8; cursor: pointer;" onclick="onSimonClick(1)"></button>
-        <button type="button" id="simon-btn-2" style="height: 100px; background: #10B981; border-radius: 20px; border: 4px solid #047857; cursor: pointer;" onclick="onSimonClick(2)"></button>
-        <button type="button" id="simon-btn-3" style="height: 100px; background: #F59E0B; border-radius: 20px; border: 4px solid #B45309; cursor: pointer;" onclick="onSimonClick(3)"></button>
+        <button type="button" id="simon-btn-0" style="height: 100px; background: #EF4444; border-radius: 20px; border: 4px solid #B91C1C; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(0)"></button>
+        <button type="button" id="simon-btn-1" style="height: 100px; background: #3B82F6; border-radius: 20px; border: 4px solid #1D4ED8; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(1)"></button>
+        <button type="button" id="simon-btn-2" style="height: 100px; background: #10B981; border-radius: 20px; border: 4px solid #047857; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(2)"></button>
+        <button type="button" id="simon-btn-3" style="height: 100px; background: #F59E0B; border-radius: 20px; border: 4px solid #B45309; cursor: pointer; outline: none; transition: transform 0.15s;" onclick="onSimonClick(3)"></button>
       </div>
       <button type="button" class="arcade-btn btn-amber" style="margin-top: 12px; font-size: 16px; padding: 10px 24px;" onclick="startSimonRound()">ابدأ العزف ▶</button>
     </div>
 
-    <!-- خزانة الجوائز -->
-    <div id="subgame-chestbox" class="arcade-card-panel" style="display: none; border-color: #F59E0B;">
-      <div style="font-size: 18px; font-weight: 900; color: #B45309; margin-bottom: 6px;">🏆 ألعابي وجوائزي المفتوحة</div>
-      <div id="unlocked-toys-grid" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; min-height: 120px; padding: 12px;"></div>
+    <!-- 2. الذاكرة -->
+    <div id="subgame-memory" class="arcade-card-panel" style="display: none; border-color: #EC4899;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-size: 16px; font-weight: 900; color: #9D174D;" id="memory-lvl-label">المستوى 1 (4 بطاقات)</span>
+        <button type="button" class="arcade-btn btn-pink" style="padding: 4px 10px; font-size: 12px;" onclick="resetMemoryGame()">إعادة ↻</button>
+      </div>
+      <div class="memory-grid" id="memory-grid" style="grid-template-columns: repeat(2, 1fr);"></div>
     </div>
-  </div>
 
-  <!-- الشخصية الكرتونية المرافقة الحية (سيمبا الصغير) -->
-  <div class="mascot-companion" onclick="tickleMascot()">
-    <div class="mascot-speech-bubble" id="mascot-bubble">أهلاً يا بطل! هيا نقفز ونلعب! 🦁</div>
-    <div class="mascot-avatar-char" id="mascot-avatar">🦁</div>
-  </div>
+    <!-- 3. الشيء المختلف -->
+    <div id="subgame-odd" class="arcade-card-panel" style="display: none; border-color: #10B981;">
+      <div style="font-size: 18px; font-weight: 900; color: #047857; margin-bottom: 10px;">أين الشكل المختلف؟ 🔍</div>
+      <div id="odd-grid" style="display: flex; justify-content: space-around; gap: 8px;"></div>
+    </div>
 
-  <!-- نافذة فتح صندوق المفاجآت السحري -->
-  <div class="chest-modal-overlay" id="chest-modal-overlay" onclick="closeChestModal()">
-    <div class="chest-card-popup" onclick="event.stopPropagation()">
-      <div style="font-size: 22px; font-weight: 900; color: #B45309; margin-bottom: 12px;">صندوق المفاجآت السحري! 🎁</div>
-      <div style="font-size: 85px; cursor: pointer;" id="modal-chest-box" onclick="unlockChestPrize()">📦</div>
-      <div style="font-size: 95px; display: none;" id="modal-toy-reveal">🚗</div>
-      <div style="font-size: 16px; font-weight: 900; color: #1E293B; margin-top: 12px;" id="modal-chest-msg">اضغط على الصندوق لتفتحه وتكسب لعبة جديدة!</div>
-      <button type="button" class="arcade-btn btn-green" style="margin-top: 16px; width: 100%; border-radius: 20px; padding: 10px;" onclick="closeChestModal()">متابعة اللعب 🎉</button>
+    <!-- 4. فرز الألوان -->
+    <div id="subgame-sorting" class="arcade-card-panel" style="display: none; border-color: #8B5CF6;">
+      <div style="font-size: 17px; font-weight: 900; color: #6D28D9; margin-bottom: 6px;">ضع العنصر في الصندوق المناسب! 🧺</div>
+      <div id="sorting-current-item" style="font-size: 65px; margin: 10px 0;">🍎</div>
+      <div style="display: flex; justify-content: space-around; gap: 10px;">
+        <button type="button" class="arcade-btn btn-red" style="flex:1; padding:12px;" onclick="checkSortingChoice('red')">الأحمر 🟥</button>
+        <button type="button" class="arcade-btn btn-amber" style="flex:1; padding:12px;" onclick="checkSortingChoice('yellow')">الأصفر 🟨</button>
+        <button type="button" class="arcade-btn btn-green" style="flex:1; padding:12px;" onclick="checkSortingChoice('green')">الأخضر 🟩</button>
+      </div>
+    </div>
+
+    <!-- 5. مطابقة الظل -->
+    <div id="subgame-shadow" class="arcade-card-panel" style="display: none; border-color: #0284C7;">
+      <div style="font-size: 18px; font-weight: 900; color: #0369A1; margin-bottom: 8px;">ما هو الشكل الذي يطابق هذا الظل؟ 👥</div>
+      <div id="shadow-target-display" style="font-size: 75px; filter: brightness(0); margin-bottom: 12px;">🐰</div>
+      <div id="shadow-options-row" style="display: flex; justify-content: space-around; gap: 8px;"></div>
+    </div>
+
+    <!-- 6. عدّ الأشياء -->
+    <div id="subgame-count" class="arcade-card-panel" style="display: none; border-color: #D97706;">
+      <div style="font-size: 18px; font-weight: 900; color: #B45309; margin-bottom: 8px;">كم عدد النجوم على الشاشة؟ 🔢</div>
+      <div id="count-items-display" style="font-size: 40px; min-height: 80px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px;"></div>
+      <div id="count-options-row" style="display: flex; justify-content: space-around; gap: 8px; margin-top: 10px;"></div>
+    </div>
+
+    <!-- 7. سرعة البديهة -->
+    <div id="subgame-speed" class="arcade-card-panel" style="display: none; border-color: #EC4899;">
+      <div style="font-size: 17px; font-weight: 900; color: #BE185D; margin-bottom: 6px;" id="speed-task-title">اضغط بسرعة على الشكل المطلوب! ⚡</div>
+      <div id="speed-items-arena" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;"></div>
     </div>
   </div>
 
@@ -573,7 +693,6 @@
   </div>
 
   <script>
-    /* محرك الصوتيات التفاعلي */
     let audioCtx = null;
     function getSafeAudioContext() {
       if (!audioCtx) {
@@ -587,8 +706,60 @@
       }
       return audioCtx;
     }
+
+    function enableAudioAndPlayWelcome() {
+      const ctx = getSafeAudioContext();
+      if (ctx) {
+        const banner = document.getElementById('audio-enable-banner');
+        if (banner) banner.style.display = 'none';
+        playTone(523.25, 'sine', 0.2);
+        speak("تم تفعيل الصوت بنجاح! هيا نعزف معاً!", "ar-EG");
+      }
+    }
+
     window.addEventListener('touchstart', getSafeAudioContext, { passive: true });
     window.addEventListener('click', getSafeAudioContext, { passive: true });
+
+    let gameScore = 0;
+    let gameLives = 5;
+    try {
+      gameScore = parseInt(localStorage.getItem('kid_app_score') || '0', 10) || 0;
+    } catch (e) {
+      gameScore = 0;
+    }
+
+    function updateScoreBoard() {
+      const scoreBadge = document.getElementById('player-score-badge');
+      const livesBadge = document.getElementById('lives-counter-badge');
+      if (scoreBadge) scoreBadge.innerText = `نقاط: ${gameScore}`;
+      if (livesBadge) {
+        let hearts = '';
+        for (let i = 0; i < gameLives; i++) hearts += '❤️';
+        livesBadge.innerText = hearts || '💔 صفر';
+      }
+    }
+
+    function addGameScore(pts) {
+      gameScore += pts;
+      try { localStorage.setItem('kid_app_score', gameScore); } catch (e) {}
+      updateScoreBoard();
+    }
+
+    function loseOneLife(customMsg) {
+      gameLives--;
+      updateScoreBoard();
+      sfxError();
+      if (customMsg) speak(customMsg, 'ar-EG');
+
+      if (gameLives <= 0) {
+        setTimeout(() => {
+          speak("انْتَهَتِ القُلُوبُ الخَمْسَة! حَاوِلْ مَرَّةً أُخْرَى يَا بَطَلْ!", "ar-EG");
+          alert(`انتهت القلوب الخمسة! نتيجتك: ${gameScore} نقطة. سنبدأ من جديد!`);
+          gameLives = 5;
+          updateScoreBoard();
+        }, 500);
+      }
+    }
 
     function playTone(freq, type, duration, delay = 0) {
       setTimeout(() => {
@@ -610,164 +781,81 @@
       }, delay);
     }
 
-    function sfxJump() {
-      playTone(320, 'sine', 0.1);
-      playTone(640, 'triangle', 0.18, 50);
+    function sfxPop() {
+      playTone(400, 'sine', 0.1);
+      playTone(800, 'sine', 0.15, 60);
     }
 
-    function sfxPop() {
-      playTone(400, 'sine', 0.08);
-      playTone(850, 'sine', 0.12, 50);
+    function triggerPureConfetti() {
+      const colors = ['#EF4444', '#3B82F6', '#10B981', '#F59E0B', '#EC4899'];
+      for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.style.cssText = `position:fixed; left:${Math.random()*80 + 10}vw; top:65vh; width:10px; height:10px; background:${colors[Math.floor(Math.random()*colors.length)]}; border-radius:50%; z-index:999999; pointer-events:none; transition: all 0.8s ease-out;`;
+        document.body.appendChild(p);
+        setTimeout(() => {
+          p.style.transform = `translate(${(Math.random()-0.5)*180}px, -${Math.random()*220 + 80}px) scale(0)`;
+          p.style.opacity = '0';
+        }, 20);
+        setTimeout(() => { p.remove(); }, 900);
+      }
     }
 
     function sfxSuccess() {
+      addGameScore(10);
       playTone(523.25, 'triangle', 0.15, 0);
-      playTone(659.25, 'triangle', 0.15, 110);
-      playTone(783.99, 'triangle', 0.15, 220);
-      playTone(1046.50, 'triangle', 0.35, 330);
+      playTone(659.25, 'triangle', 0.15, 120);
+      playTone(783.99, 'triangle', 0.15, 240);
+      playTone(1046.50, 'triangle', 0.35, 360);
+      triggerPureConfetti();
     }
 
     function sfxError() {
-      playTone(240, 'sawtooth', 0.2);
+      playTone(220, 'sawtooth', 0.25);
+      playTone(180, 'sawtooth', 0.25, 150);
     }
 
     function sfxClick() {
       playTone(600, 'sine', 0.05);
     }
 
-    /* نظام النجوم وصندوق المكافآت */
-    let gameScore = 0;
-    let chestProgress = 0;
-    let unlockedToys = [];
-
-    try {
-      gameScore = parseInt(localStorage.getItem('kid_app_score') || '0', 10) || 0;
-      chestProgress = parseInt(localStorage.getItem('kid_app_chest_prog') || '0', 10) || 0;
-      unlockedToys = JSON.parse(localStorage.getItem('kid_app_toys') || '["🚗", "⭐", "🎈"]');
-    } catch (e) {
-      unlockedToys = ["🚗", "⭐", "🎈"];
-    }
-
-    const TOY_CATALOG = ['🏎️', '🚀', '🦖', '🦁', '🧸', '👑', '🚁', '🦄', '🚂', '🛸'];
-
-    function updateScoreBoard() {
-      const scoreBadge = document.getElementById('player-score-badge');
-      const chestBadge = document.getElementById('chest-count-badge');
-      if (scoreBadge) scoreBadge.innerText = `نجوم: ${gameScore} ⭐`;
-      if (chestBadge) chestBadge.innerText = `${chestProgress}/5`;
-      renderUnlockedToys();
-    }
-
-    function addScoreAndProgress(pts = 1) {
-      gameScore += pts;
-      chestProgress += pts;
-      if (chestProgress >= 5) {
-        chestProgress = 0;
-        setTimeout(openChestModal, 450);
-      }
-      try {
-        localStorage.setItem('kid_app_score', gameScore);
-        localStorage.setItem('kid_app_chest_prog', chestProgress);
-      } catch (e) {}
-      updateScoreBoard();
-    }
-
-    function openChestModal() {
-      sfxSuccess();
-      const modal = document.getElementById('chest-modal-overlay');
-      const box = document.getElementById('modal-chest-box');
-      const toy = document.getElementById('modal-toy-reveal');
-      const msg = document.getElementById('modal-chest-msg');
-
-      box.style.display = 'inline-block';
-      toy.style.display = 'none';
-      msg.innerText = "اضغط على الصندوق لتفتحه وتكسب لعبة جديدة!";
-      modal.classList.add('active');
-      speak("افتح صندوق المفاجآت السحري يا بطل!", "ar-EG");
-    }
-
-    function unlockChestPrize() {
-      const box = document.getElementById('modal-chest-box');
-      const toy = document.getElementById('modal-toy-reveal');
-      const msg = document.getElementById('modal-chest-msg');
-
-      box.style.display = 'none';
-      const randomToy = TOY_CATALOG[Math.floor(Math.random() * TOY_CATALOG.length)];
-      if (!unlockedToys.includes(randomToy)) unlockedToys.push(randomToy);
-
-      try { localStorage.setItem('kid_app_toys', JSON.stringify(unlockedToys)); } catch (e) {}
-
-      toy.innerText = randomToy;
-      toy.style.display = 'inline-block';
-      msg.innerText = "مبروك! كسبت لعبة جديدة في خزانة ألعابك! 🎉";
-      sfxSuccess();
-      speak("وااااو! مبروك يا بطل كسبت لعبة جديدة!", "ar-EG");
-      renderUnlockedToys();
-    }
-
-    function closeChestModal() {
-      document.getElementById('chest-modal-overlay').classList.remove('active');
-    }
-
-    function renderUnlockedToys() {
-      const grid = document.getElementById('unlocked-toys-grid');
-      if (!grid) return;
-      grid.innerHTML = '';
-      unlockedToys.forEach(t => {
-        const item = document.createElement('div');
-        item.style.cssText = 'width: 65px; height: 65px; background: white; border: 3px solid #F59E0B; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);';
-        item.innerText = t;
-        grid.appendChild(item);
-      });
-    }
-
-    function tickleMascot() {
-      sfxPop();
-      const phrases = ["أنت شاطر وعبقري! 🦁", "هيا نقفز معاً! 🦘", "دغدغتني! ههههههه! 😂"];
-      const p = phrases[Math.floor(Math.random() * phrases.length)];
-      document.getElementById('mascot-bubble').innerText = p;
-      speak(p, "ar-EG");
-    }
-
-    /* قاعدة البيانات */
     const DB = {
       ar: [
-        { char: "أ", name: "أَلِفْ", word: "أرنب", emoji: "🐰", speech: "أَلِفْ .. أَرْنَبْ" },
-        { char: "ب", name: "بَاءْ", word: "بطة", emoji: "🦆", speech: "بَاءْ .. بَطَّة" },
-        { char: "ت", name: "تَاءْ", word: "تفاح", emoji: "🍎", speech: "تَاءْ .. تُفَّاحْ" },
-        { char: "ث", name: "ثَاءْ", word: "ثعلب", emoji: "🦊", speech: "ثَاءْ .. ثَعْلَبْ" },
-        { char: "ج", name: "جِيمْ", word: "جمل", emoji: "🐪", speech: "جِيمْ .. جَمَلْ" },
-        { char: "ح", name: "حَاءْ", word: "حصان", emoji: "🐴", speech: "حَاءْ .. حُصَانْ" },
-        { char: "خ", name: "خَاءْ", word: "خروف", emoji: "🐑", speech: "خَاءْ .. خَرُوفْ" },
-        { char: "د", name: "دَالْ", word: "دب", emoji: "🐻", speech: "دَالْ .. دُبْ" },
-        { char: "ذ", name: "ذَالْ", word: "ذرة", emoji: "🌽", speech: "ذَالْ .. ذُرَة" },
-        { char: "ر", name: "رَاءْ", word: "ريشة", emoji: "🪶", speech: "رَاءْ .. رِيشَة" },
-        { char: "ز", name: "زَايْ", word: "زرافة", emoji: "🦒", speech: "زَايْ .. زَرَافَة" },
-        { char: "س", name: "سِينْ", word: "سمكة", emoji: "🐟", speech: "سِينْ .. سَمَكَة" },
-        { char: "ش", name: "شِينْ", word: "شمس", emoji: "☀️", speech: "شِينْ .. شَمْس" },
-        { char: "ص", name: "صَادْ", word: "صقر", emoji: "🦅", speech: "صَادْ .. صَقْر" },
-        { char: "ض", name: "ضَادْ", word: "ضفدع", emoji: "🐸", speech: "ضَادْ .. ضِفْدَعْ" },
-        { char: "ط", name: "طَاءْ", word: "طيارة", emoji: "✈️", speech: "طَاءْ .. طَيَّارَة" },
-        { char: "ظ", name: "ظَّاءْ", word: "ظرف", emoji: "✉️", speech: "ظَّاءْ .. ظَرْف" },
-        { char: "ع", name: "عَيْنْ", word: "عصفور", emoji: "🐦", speech: "عَيْنْ .. عُصْفُورْ" },
-        { char: "غ", name: "غَيْنْ", word: "غزالة", emoji: "🦌", speech: "غَيْنْ .. غَزَالَة" },
-        { char: "ف", name: "فَاءْ", word: "فيل", emoji: "🐘", speech: "فَاءْ .. فِيلْ" },
-        { char: "ق", name: "قَافْ", word: "قطة", emoji: "🐱", speech: "قَافْ .. قُطَّة" },
-        { char: "ك", name: "كَافْ", word: "كلب", emoji: "🐶", speech: "كَافْ .. كَلْب" },
-        { char: "ل", name: "لاَّمْ", word: "ليمون", emoji: "🍋", speech: "لاَّمْ .. لِيمُونْ" },
-        { char: "م", name: "مِيمْ", word: "موز", emoji: "🍌", speech: "مِيمْ .. مَوْز" },
-        { char: "ن", name: "نُونْ", word: "نحلة", emoji: "🐝", speech: "نُونْ .. نَحْلَة" },
-        { char: "هـ", name: "هَاءْ", word: "هرم", emoji: "🔺", speech: "هَاءْ .. هَرَمْ" },
-        { char: "و", name: "وَاوْ", word: "وردة", emoji: "🌸", speech: "وَاوْ .. وَرْدَة" },
-        { char: "ي", name: "يَاءْ", word: "يد", emoji: "👋", speech: "يَاءْ .. إِيدْ" }
+        { char: "أ", name: "أَلِفْ", word: "أرنب", emoji: "🐰", speech: "أَلِفْ .. أَرْنَبْ", altWords: [{ w: "أسد", e: "🦁" }] },
+        { char: "ب", name: "بَاءْ", word: "بطة", emoji: "🦆", speech: "بَاءْ .. بَطَّة", altWords: [{ w: "بيت", e: "🏠" }] },
+        { char: "ت", name: "تَاءْ", word: "تفاح", emoji: "🍎", speech: "تَاءْ .. تُفَّاحْ", altWords: [{ w: "تمساح", e: "🐊" }] },
+        { char: "ث", name: "ثَاءْ", word: "ثعلب", emoji: "🦊", speech: "ثَاءْ .. ثَعْلَبْ", altWords: [{ w: "ثعبان", e: "🐍" }] },
+        { char: "ج", name: "جِيمْ", word: "جمل", emoji: "🐪", speech: "جِيمْ .. جَمَلْ", altWords: [{ w: "جزر", e: "🥕" }] },
+        { char: "ح", name: "حَاءْ", word: "حصان", emoji: "🐴", speech: "حَاءْ .. حُصَانْ", altWords: [{ w: "حوت", e: "🐋" }] },
+        { char: "خ", name: "خَاءْ", word: "خروف", emoji: "🐑", speech: "خَاءْ .. خَرُوفْ", altWords: [{ w: "خيار", e: "🥒" }] },
+        { char: "د", name: "دَالْ", word: "دب", emoji: "🐻", speech: "دَالْ .. دُبْ", altWords: [{ w: "ديك", e: "🐓" }] },
+        { char: "ذ", name: "ذَالْ", word: "ذرة", emoji: "🌽", speech: "ذَالْ .. ذُرَة", altWords: [{ w: "ذئب", e: "🐺" }] },
+        { char: "ر", name: "رَاءْ", word: "ريشة", emoji: "🪶", speech: "رَاءْ .. رِيشَة", altWords: [{ w: "رمان", e: "🍎" }] },
+        { char: "ز", name: "زَايْ", word: "زرافة", emoji: "🦒", speech: "زَايْ .. زَرَافَة", altWords: [{ w: "زهرة", e: "🌸" }] },
+        { char: "س", name: "سِينْ", word: "سمكة", emoji: "🐟", speech: "سِينْ .. سَمَكَة", altWords: [{ w: "سيارة", e: "🚗" }] },
+        { char: "ش", name: "شِينْ", word: "شمس", emoji: "☀️", speech: "شِينْ .. شَمْس", altWords: [{ w: "شجرة", e: "🌳" }] },
+        { char: "ص", name: "صَادْ", word: "صقر", emoji: "🦅", speech: "صَادْ .. صَقْر", altWords: [{ w: "صاروخ", e: "🚀" }] },
+        { char: "ض", name: "ضَادْ", word: "ضفدع", emoji: "🐸", speech: "ضَادْ .. ضِفْدَعْ", altWords: [{ w: "ضوء", e: "💡" }] },
+        { char: "ط", name: "طَاءْ", word: "طيارة", emoji: "✈️", speech: "طَاءْ .. طَيَّارَة", altWords: [{ w: "طبلة", e: "🥁" }] },
+        { char: "ظ", name: "ظَّاءْ", word: "ظرف", emoji: "✉️", speech: "ظَّاءْ .. ظَرْف", altWords: [{ w: "ظل", e: "👥" }] },
+        { char: "ع", name: "عَيْنْ", word: "عصفور", emoji: "🐦", speech: "عَيْنْ .. عُصْفُورْ", altWords: [{ w: "عنب", e: "🍇" }] },
+        { char: "غ", name: "غَيْنْ", word: "غزالة", emoji: "🦌", speech: "غَيْنْ .. غَزَالَة", altWords: [{ w: "غيمة", e: "☁️" }] },
+        { char: "ف", name: "فَاءْ", word: "فيل", emoji: "🐘", speech: "فَاءْ .. فِيلْ", altWords: [{ w: "فراولة", e: "🍓" }] },
+        { char: "ق", name: "قَافْ", word: "قطة", emoji: "🐱", speech: "قَافْ .. قُطَّة", altWords: [{ w: "قمر", e: "🌙" }] },
+        { char: "ك", name: "كَافْ", word: "كلب", emoji: "🐶", speech: "كَافْ .. كَلْب", altWords: [{ w: "كتاب", e: "📖" }] },
+        { char: "ل", name: "لاَّمْ", word: "ليمون", emoji: "🍋", speech: "لاَّمْ .. لِيمُونْ", altWords: [{ w: "لبن", e: "🥛" }] },
+        { char: "م", name: "مِيمْ", word: "موز", emoji: "🍌", speech: "مِيمْ .. مَوْز", altWords: [{ w: "مفتاح", e: "🔑" }] },
+        { char: "ن", name: "نُونْ", word: "نحلة", emoji: "🐝", speech: "نُونْ .. نَحْلَة", altWords: [{ w: "نجم", e: "⭐" }] },
+        { char: "هـ", name: "هَاءْ", word: "هرم", emoji: "🔺", speech: "هَاءْ .. هَرَمْ", altWords: [{ w: "هدية", e: "🎁" }] },
+        { char: "و", name: "وَاوْ", word: "وردة", emoji: "🌸", speech: "وَاوْ .. وَرْدَة", altWords: [{ w: "ولد", e: "👦" }] },
+        { char: "ي", name: "يَاءْ", word: "يد", emoji: "👋", speech: "يَاءْ .. إِيدْ", altWords: [{ w: "يمامة", e: "🕊️" }] }
       ],
       en: [
-        { char: "A", name: "Letter A", word: "Apple", emoji: "🍎", lang: "en-US", speech: "Letter A .. Apple" },
-        { char: "B", name: "Letter B", word: "Ball", emoji: "⚽", lang: "en-US", speech: "Letter B .. Ball" },
-        { char: "C", name: "Letter C", word: "Cat", emoji: "🐱", lang: "en-US", speech: "Letter C .. Cat" },
-        { char: "D", name: "Letter D", word: "Dog", emoji: "🐶", lang: "en-US", speech: "Letter D .. Dog" },
-        { char: "E", name: "Letter E", word: "Elephant", emoji: "🐘", lang: "en-US", speech: "Letter E .. Elephant" },
-        { char: "F", name: "Letter F", word: "Fish", emoji: "🐟", lang: "en-US", speech: "Letter F .. Fish" }
+        { char: "A", name: "Letter A", word: "Apple", emoji: "🍎", lang: "en-US", speech: "Letter A .. Apple", altWords: [{ w: "Ant", e: "🐜" }] },
+        { char: "B", name: "Letter B", word: "Ball", emoji: "⚽", lang: "en-US", speech: "Letter B .. Ball", altWords: [{ w: "Banana", e: "🍌" }] },
+        { char: "C", name: "Letter C", word: "Cat", emoji: "🐱", lang: "en-US", speech: "Letter C .. Cat", altWords: [{ w: "Car", e: "🚗" }] },
+        { char: "D", name: "Letter D", word: "Dog", emoji: "🐶", lang: "en-US", speech: "Letter D .. Dog", altWords: [{ w: "Duck", e: "🦆" }] },
+        { char: "E", name: "Letter E", word: "Elephant", emoji: "🐘", lang: "en-US", speech: "Letter E .. Elephant", altWords: [{ w: "Egg", e: "🥚" }] },
+        { char: "F", name: "Letter F", word: "Fish", emoji: "🐟", lang: "en-US", speech: "Letter F .. Fish", altWords: [{ w: "Frog", e: "🐸" }] }
       ],
       numbers: [
         { char: "1", name: "رَقَمْ وَاحِدْ", word: "شمس واحدة", emoji: "☀️", speech: "رَقَمْ وَاحِدْ .. شَمْس وَاحْدَة" },
@@ -786,9 +874,30 @@
     let currentCategoryKey = 'ar';
     let currentCategoryData = [];
     let selectedLetterIndex = 0;
-    let currentActiveTab = 'mariorunner';
+    let currentActiveTab = 'pick4';
+
+    let balloonInterval = null;
+    let activeBalloonTimeouts = [];
+
+    function cleanupActiveTimers() {
+      if (balloonInterval) {
+        clearInterval(balloonInterval);
+        balloonInterval = null;
+      }
+      activeBalloonTimeouts.forEach(t => clearTimeout(t));
+      activeBalloonTimeouts = [];
+
+      const stage = document.getElementById('balloon-stage');
+      if (stage) stage.innerHTML = '';
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
 
     function showScreen(screenId) {
+      cleanupActiveTimers();
+
       const screens = ['screen-main', 'screen-category', 'screen-minigames'];
       screens.forEach(s => {
         const el = document.getElementById(s);
@@ -803,7 +912,8 @@
     }
 
     function toggleSkillsModal() {
-      document.getElementById('skills-modal').classList.toggle('active');
+      const m = document.getElementById('skills-modal');
+      if (m) m.classList.toggle('active');
     }
 
     function selectSkillFromModal(tab) {
@@ -820,16 +930,17 @@
       showScreen('screen-category');
 
       const titles = { ar: 'جزيرة الحروف العربية', en: 'جزيرة الحروف الإنجليزية', numbers: 'جزيرة الأرقام (1-10)' };
-      document.getElementById('category-title').innerText = titles[key] || '';
+      const titleEl = document.getElementById('category-title');
+      if (titleEl) titleEl.innerText = titles[key] || '';
 
       updateFooterLetterDisplay();
-      switchCategoryTab('mariorunner');
+      switchCategoryTab('pick4');
     }
 
     function openMiniGamesWorld() {
       sfxPop();
       showScreen('screen-minigames');
-      switchBrainGame('mario');
+      switchBrainGame('simon');
     }
 
     function navLetter(step) {
@@ -842,7 +953,8 @@
 
     function updateFooterLetterDisplay() {
       const item = currentCategoryData[selectedLetterIndex];
-      document.getElementById('footer-selected-char').innerText = item.char;
+      const charBadge = document.getElementById('footer-selected-char');
+      if (charBadge && item) charBadge.innerText = item.char;
       speakCurrentLetter();
     }
 
@@ -852,14 +964,19 @@
     }
 
     function refreshActiveActivity() {
-      if (currentActiveTab === 'mariorunner') startMarioRunnerGame();
-      else if (currentActiveTab === 'pick4') startPick4Game();
+      cleanupActiveTimers();
+      if (currentActiveTab === 'pick4') startPick4Game();
       else if (currentActiveTab === 'learn') renderSingleFullscreenCard();
+      else if (currentActiveTab === 'match') startMatchingGame();
+      else if (currentActiveTab === 'balloon') startBalloonGame();
+      else if (currentActiveTab === 'jump') startJumpingGame();
+      else if (currentActiveTab === 'bubbles') startBubblesGame();
     }
 
     function switchCategoryTab(tab) {
+      cleanupActiveTimers();
       currentActiveTab = tab;
-      const tabs = ['mariorunner', 'pick4', 'learn'];
+      const tabs = ['pick4', 'learn', 'match', 'balloon', 'jump', 'bubbles'];
       tabs.forEach(t => {
         const el = document.getElementById('cat-view-' + t);
         if (el) el.style.display = 'none';
@@ -868,166 +985,694 @@
       const active = document.getElementById('cat-view-' + tab);
       if (active) active.style.display = (tab === 'learn') ? 'flex' : 'block';
 
-      if (tab === 'mariorunner') startMarioRunnerGame();
-      else if (tab === 'pick4') startPick4Game();
+      if (tab === 'pick4') startPick4Game();
       else if (tab === 'learn') renderSingleFullscreenCard();
+      else if (tab === 'match') startMatchingGame();
+      else if (tab === 'balloon') startBalloonGame();
+      else if (tab === 'jump') startJumpingGame();
+      else if (tab === 'bubbles') startBubblesGame();
     }
 
-    /* ================= 1. لعبة مغامرة قفز سيمبا (سوبر ماريو) ================= */
-    let marioTargetItem = null;
-    let marioBoxOptions = [];
-
-    function startMarioRunnerGame() {
-      // سحب عشوائي من الحروف المتعلمة حتى الحرف الحالي
-      const pool = currentCategoryData.slice(0, selectedLetterIndex + 1);
-      marioTargetItem = pool[Math.floor(Math.random() * pool.length)];
-
-      document.getElementById('mario-task-title').innerText = `اقفز واصدم صندوق (${marioTargetItem.name})! 🍄`;
-      speak(`اقفز واصدم صندوق ${marioTargetItem.name}!`, targetLang());
-
-      const others = currentCategoryData.filter(i => i.char !== marioTargetItem.char).sort(() => 0.5 - Math.random()).slice(0, 2);
-      marioBoxOptions = [marioTargetItem, ...others].sort(() => 0.5 - Math.random());
-
-      for (let i = 0; i < 3; i++) {
-        const box = document.getElementById('mario-box-' + i);
-        box.innerText = marioBoxOptions[i].char;
-        box.style.background = 'linear-gradient(135deg, #FEF08A, #F59E0B)';
-      }
-
-      const hero = document.getElementById('runner-hero-char');
-      hero.style.bottom = '92px';
-      hero.style.left = '60px';
-    }
-
-    function targetLang() {
-      return (currentCategoryKey === 'en') ? 'en-US' : 'ar-EG';
-    }
-
-    function performMarioJump() {
-      sfxJump();
-      const hero = document.getElementById('runner-hero-char');
-      // قفزة للأعلى مثل ماريو
-      hero.style.bottom = '190px';
-      setTimeout(() => {
-        hero.style.bottom = '92px';
-      }, 350);
-    }
-
-    function onHitMarioBox(idx) {
-      performMarioJump();
-      const chosen = marioBoxOptions[idx];
-      const box = document.getElementById('mario-box-' + idx);
-
-      setTimeout(() => {
-        if (chosen.char === marioTargetItem.char) {
-          sfxSuccess();
-          box.style.background = '#86EFAC';
-          addScoreAndProgress(1);
-          speak("عَاشْ يَا بَطَلْ! قَفْزَة مُمْتَازَة! 🎉", targetLang());
-          setTimeout(startMarioRunnerGame, 1200);
-        } else {
-          sfxError();
-          document.getElementById('mascot-bubble').innerText = `أوووبس! ابحث عن ${marioTargetItem.name}`;
-          speak(`أُوووبس! اصدم صندوق ${marioTargetItem.name}!`, targetLang());
-        }
-      }, 250);
-    }
-
-    /* لعبة ماريو داخل جزيرة الألعاب */
-    function performMarioJumpMini() {
-      sfxJump();
-      const hero = document.getElementById('runner-hero-char-mini');
-      hero.style.bottom = '190px';
-      setTimeout(() => { hero.style.bottom = '92px'; }, 350);
-    }
-
-    function onHitMarioBoxMini(idx) {
-      performMarioJumpMini();
-      sfxSuccess();
-      addScoreAndProgress(1);
-      speak("شاطر يا بطل قفزة رائعة!", "ar-EG");
-    }
-
-    /* اختبار الحروف السريع */
+    /* 1. اختبار الحرف المتسلسل التراكمي */
     function startPick4Game() {
       const container = document.getElementById('pick4-grid-container');
       if (!container) return;
       container.innerHTML = '';
 
-      const pool = currentCategoryData.slice(0, selectedLetterIndex + 1);
-      const target = pool[Math.floor(Math.random() * pool.length)];
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const target = availablePool[Math.floor(Math.random() * availablePool.length)];
 
-      document.getElementById('pick4-instructions').innerText = `فِينْ حَرْف (${target.name})؟ اضغط عليه 👇`;
-      speak(`فِينْ حَرْف ${target.name}؟`, targetLang());
+      const instructions = document.getElementById('pick4-instructions');
+      if (instructions) instructions.innerText = `فِينْ حَرْف (${target.name})؟ اضغط عليه 👇`;
+      speak(`فِينْ حَرْف ${target.name}؟`, target.lang || 'ar-EG');
 
-      const others = currentCategoryData.filter(i => i.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 3);
+      const others = currentCategoryData.filter(item => item.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 3);
       const options = [target, ...others].sort(() => 0.5 - Math.random());
 
-      options.forEach(opt => {
+      const bgColors = ['#EFF6FF', '#FEFCE8', '#ECFDF5', '#FDF2F8'];
+      const borderColors = ['#3B82F6', '#EAB308', '#10B981', '#EC4899'];
+
+      options.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'pick4-btn';
         btn.innerText = opt.char;
+        btn.style.backgroundColor = bgColors[idx % bgColors.length];
+        btn.style.borderColor = borderColors[idx % borderColors.length];
+        btn.style.boxShadow = `0 8px 0 ${borderColors[idx % borderColors.length]}`;
+
         btn.onclick = () => {
           if (opt.char === target.char) {
             sfxSuccess();
             btn.style.background = '#86EFAC';
-            addScoreAndProgress(1);
-            speak("شَاطِرْ! صَحْ! 🎉", targetLang());
+            speak("شَاطِرْ! صَحْ! 🎉", target.lang || 'ar-EG');
             setTimeout(startPick4Game, 650);
           } else {
-            sfxError();
-            speak(`غَلَطْ! فِينْ حَرْف ${target.name}؟`, targetLang());
+            loseOneLife(`غَلَطْ! فِينْ حَرْف ${target.name}؟`);
+            triggerShakeElement(btn);
           }
         };
+
         container.appendChild(btn);
       });
     }
 
     function renderSingleFullscreenCard() {
       const item = currentCategoryData[selectedLetterIndex];
+      if (!item) return;
       document.getElementById('card-hero-char').innerText = item.char;
       document.getElementById('card-hero-emoji').innerText = item.emoji;
       document.getElementById('card-hero-word').innerText = item.word;
-      speak(item.speech, targetLang());
+      speak(item.speech, item.lang || 'ar-EG');
     }
 
-    /* ألعاب الجزيرة */
+    /* 2. التوصيل المتجدد */
+    let selectedLetterBtn = null;
+    let matchPairsList = [];
+
+    function startMatchingGame() {
+      selectedLetterBtn = null;
+      const rightCol = document.getElementById('match-col-right');
+      const leftCol = document.getElementById('match-col-left');
+      if (!rightCol || !leftCol) return;
+      rightCol.innerHTML = '';
+      leftCol.innerHTML = '';
+
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const targetItem = availablePool[Math.floor(Math.random() * availablePool.length)];
+
+      let targetWordObj = { w: targetItem.word, e: targetItem.emoji };
+      if (targetItem.altWords && targetItem.altWords.length > 0 && Math.random() > 0.3) {
+        targetWordObj = targetItem.altWords[Math.floor(Math.random() * targetItem.altWords.length)];
+      }
+
+      const activeTargetInstance = {
+        char: targetItem.char,
+        name: targetItem.name,
+        word: targetWordObj.w,
+        emoji: targetWordObj.e
+      };
+
+      const others = currentCategoryData.filter(i => i.char !== targetItem.char).sort(() => 0.5 - Math.random()).slice(0, 2);
+      const distractors = others.map(o => {
+        let wObj = { w: o.word, e: o.emoji };
+        if (o.altWords && Math.random() > 0.5) wObj = o.altWords[Math.floor(Math.random() * o.altWords.length)];
+        return { char: o.char, name: o.name, word: wObj.w, emoji: wObj.e };
+      });
+
+      matchPairsList = [activeTargetInstance, ...distractors].sort(() => 0.5 - Math.random());
+
+      matchPairsList.forEach(item => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'match-node-arcade';
+        btn.dataset.char = item.char;
+        btn.innerText = item.char;
+        btn.onclick = () => onSelectMatchLetter(btn);
+        rightCol.appendChild(btn);
+      });
+
+      const shuffledImages = [...matchPairsList].sort(() => 0.5 - Math.random());
+      shuffledImages.forEach(item => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'match-node-arcade';
+        btn.dataset.char = item.char;
+        btn.innerHTML = `<span style="font-size:38px; pointer-events:none;">${item.emoji}</span> <span style="font-size:15px; margin-right:4px; pointer-events:none;">${item.word}</span>`;
+        btn.onclick = () => onSelectMatchTarget(btn);
+        leftCol.appendChild(btn);
+      });
+
+      document.getElementById('match-instructions').innerText = `وصّل (${targetItem.name}) بصورته المناسبة 👇`;
+      speak(`فِينْ صُورَة ${targetItem.name}؟`, targetItem.lang || 'ar-EG');
+    }
+
+    function onSelectMatchLetter(btn) {
+      if (btn.classList.contains('matched')) return;
+      sfxPop();
+      document.querySelectorAll('#match-col-right .match-node-arcade').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedLetterBtn = btn;
+      const found = matchPairsList.find(p => p.char === btn.dataset.char);
+      speak(found ? found.name : btn.dataset.char, found?.lang || 'ar-EG');
+    }
+
+    function onSelectMatchTarget(btn) {
+      if (!selectedLetterBtn || btn.classList.contains('matched')) return;
+
+      if (btn.dataset.char === selectedLetterBtn.dataset.char) {
+        sfxSuccess();
+        btn.classList.add('matched');
+        selectedLetterBtn.classList.add('matched');
+        selectedLetterBtn.classList.remove('selected');
+
+        const item = matchPairsList.find(p => p.char === btn.dataset.char);
+        speak(`أَحْسَنْتْ! ${item.name} .. ${item.word}`, item?.lang || 'ar-EG');
+        selectedLetterBtn = null;
+
+        setTimeout(() => {
+          startMatchingGame();
+        }, 850);
+      } else {
+        loseOneLife(`غَلَطْ! فِينْ الصُّورَةُ الصَّحِيحَة؟`);
+        triggerShakeElement(btn);
+        triggerShakeElement(selectedLetterBtn);
+      }
+    }
+
+    function triggerShakeElement(el) {
+      if (!el) return;
+      el.classList.add('shake-error');
+      setTimeout(() => el.classList.remove('shake-error'), 450);
+    }
+
+    /* 3. صيد البالونات المتسلسلة التراكمية */
+    function startBalloonGame() {
+      cleanupActiveTimers();
+      const stage = document.getElementById('balloon-stage');
+      if (!stage) return;
+      stage.innerHTML = '';
+
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const target = availablePool[Math.floor(Math.random() * availablePool.length)];
+
+      document.getElementById('balloon-task-title').innerText = `اصطد بالون (${target.name}) قبل أن يطير! 🎈`;
+      speak(`اصطد بالون ${target.name}!`, target.lang || 'ar-EG');
+
+      const colors = ['#EF4444', '#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899'];
+
+      const spawnBalloon = () => {
+        if (currentActiveTab !== 'balloon') {
+          cleanupActiveTimers();
+          return;
+        }
+        const b = document.createElement('div');
+        b.className = 'flying-balloon';
+        b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        b.style.left = (Math.random() * 75 + 5) + '%';
+        const durationSec = Math.random() * 2.5 + 4.8;
+        b.style.animationDuration = durationSec + 's';
+
+        const isTarget = Math.random() < 0.45;
+        const charObj = isTarget ? target : currentCategoryData[Math.floor(Math.random() * currentCategoryData.length)];
+        
+        b.innerText = charObj.char;
+        b.dataset.charVal = charObj.char;
+        b.dataset.isTarget = (charObj.char === target.char) ? "yes" : "no";
+
+        b.onclick = () => {
+          if (b.dataset.isTarget === "yes") {
+            sfxSuccess();
+            b.style.transform = 'scale(1.5)';
+            b.style.opacity = '0';
+            b.dataset.popped = "true";
+            setTimeout(() => b.remove(), 200);
+            speak("أَحْسَنْتْ! بَالُونْ رَائِعْ! 🎉", target.lang || 'ar-EG');
+            setTimeout(startBalloonGame, 1000);
+          } else {
+            loseOneLife(`غَلَطْ! اخْتَارْ بَالُونْ ${target.name}`);
+            triggerShakeElement(b);
+          }
+        };
+
+        stage.appendChild(b);
+
+        const escapeTimeout = setTimeout(() => {
+          if (currentActiveTab === 'balloon' && b.parentNode && b.dataset.isTarget === "yes" && b.dataset.popped !== "true") {
+            b.remove();
+            loseOneLife(`فَاتَكَ بَالُونْ ${target.name}!`);
+          } else if (b.parentNode) {
+            b.remove();
+          }
+        }, durationSec * 1000 - 150);
+
+        activeBalloonTimeouts.push(escapeTimeout);
+      };
+
+      spawnBalloon();
+      balloonInterval = setInterval(spawnBalloon, 1400);
+    }
+
+    /* 4. قفز الضفدع */
+    function startJumpingGame() {
+      const stage = document.getElementById('jump-stage');
+      const frog = document.getElementById('frog-hero');
+      if (!stage || !frog) return;
+      frog.style.left = '50%';
+      frog.style.bottom = '12px';
+
+      stage.querySelectorAll('.jump-target').forEach(el => el.remove());
+
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const target = availablePool[Math.floor(Math.random() * availablePool.length)];
+
+      const others = currentCategoryData.filter(i => i.char !== target.char).sort(() => 0.5 - Math.random()).slice(0, 2);
+      const list = [target, ...others].sort(() => 0.5 - Math.random());
+
+      document.getElementById('jump-task-title').innerText = `اقفز نحو (${target.name})! 🐸`;
+      speak(`ساعد الضفدع يقفز على ${target.name}!`, target.lang || 'ar-EG');
+
+      const positions = ['15%', '50%', '85%'];
+      list.forEach((item, idx) => {
+        const bubble = document.createElement('div');
+        bubble.className = 'jump-target';
+        bubble.style.left = positions[idx];
+        bubble.style.transform = 'translateX(-50%)';
+        bubble.innerText = item.char;
+        bubble.onclick = () => onFrogJump(bubble, item, target);
+        stage.appendChild(bubble);
+      });
+    }
+
+    function onFrogJump(targetEl, item, target) {
+      const frog = document.getElementById('frog-hero');
+      const rect = targetEl.getBoundingClientRect();
+      const stageRect = document.getElementById('jump-stage').getBoundingClientRect();
+
+      frog.style.left = (rect.left - stageRect.left + 38) + 'px';
+      frog.style.bottom = '175px';
+
+      setTimeout(() => {
+        if (item.char === target.char) {
+          sfxSuccess();
+          speak("عَاشْ يَا بَطَلْ! قَفْزَة مُمْتَازَة! 🎉", item.lang || 'ar-EG');
+          targetEl.style.background = '#86EFAC';
+          setTimeout(startJumpingGame, 1500);
+        } else {
+          loseOneLife(`أُوووبس! لَيْسَ هَذَا حَرْف ${target.name}!`);
+          frog.style.bottom = '12px';
+          frog.style.left = '50%';
+        }
+      }, 350);
+    }
+
+    /* 5. فرقعة الفقاعات */
+    function startBubblesGame() {
+      const stage = document.getElementById('bubble-stage');
+      if (!stage) return;
+      stage.innerHTML = '';
+
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const target = availablePool[Math.floor(Math.random() * availablePool.length)];
+
+      const others = currentCategoryData.filter(i => i.char !== target.char);
+
+      document.getElementById('bubbles-task-title').innerText = `فرقع فقاعة (${target.name})! 🫧`;
+      speak(`فرقع فقاعة ${target.name}!`, target.lang || 'ar-EG');
+
+      const batch = [
+        target,
+        others[Math.floor(Math.random() * others.length)],
+        others[Math.floor(Math.random() * others.length)],
+        others[Math.floor(Math.random() * others.length)]
+      ].sort(() => 0.5 - Math.random());
+
+      const coords = [
+        { x: '12%', y: '25px' }, { x: '58%', y: '30px' },
+        { x: '20%', y: '160px' }, { x: '66%', y: '170px' }
+      ];
+
+      batch.forEach((item, idx) => {
+        const b = document.createElement('div');
+        b.className = 'bubble-item';
+        b.style.left = coords[idx].x;
+        b.style.top = coords[idx].y;
+        b.innerText = item.char;
+        b.onclick = () => {
+          if (item.char === target.char) {
+            b.style.transform = 'scale(1.6)';
+            b.style.opacity = '0';
+            sfxSuccess();
+            speak("بُوووبْ! شَاطِرْ يَا بَطَلْ! 🎉", item.lang || 'ar-EG');
+            setTimeout(startBubblesGame, 1400);
+          } else {
+            loseOneLife(`غَلَطْ! اخْتَارْ فُقَّاعَة ${target.name}`);
+            triggerShakeElement(b);
+          }
+        };
+        stage.appendChild(b);
+      });
+    }
+
+    /* ================= ألعاب الذكاء والمرح ================= */
     function toggleBrainGamesMenu() {
-      document.getElementById('brain-menu-modal').classList.toggle('active');
+      const m = document.getElementById('brain-menu-modal');
+      if (m) m.classList.toggle('active');
     }
 
     function switchBrainGame(gameKey) {
-      document.getElementById('brain-menu-modal').classList.remove('active');
-      ['mario', 'simon', 'chestbox'].forEach(g => {
-        document.getElementById('subgame-' + g).style.display = 'none';
+      cleanupActiveTimers();
+      const m = document.getElementById('brain-menu-modal');
+      if (m) m.classList.remove('active');
+
+      const subgames = ['simon', 'memory', 'odd', 'sorting', 'shadow', 'count', 'speed'];
+      subgames.forEach(g => {
+        const el = document.getElementById('subgame-' + g);
+        if (el) el.style.display = 'none';
       });
-      document.getElementById('subgame-' + gameKey).style.display = 'block';
+
+      const activeEl = document.getElementById('subgame-' + gameKey);
+      if (activeEl) activeEl.style.display = 'block';
+
+      if (gameKey === 'simon') { simonStreak = 0; updateSimonUI(); }
+      else if (gameKey === 'memory') resetMemoryGame();
+      else if (gameKey === 'odd') initOddGame();
+      else if (gameKey === 'sorting') initSortingGame();
+      else if (gameKey === 'shadow') initShadowGame();
+      else if (gameKey === 'count') initCountGame();
+      else if (gameKey === 'speed') initSpeedGame();
     }
 
-    /* الآلة الموسيقية */
+    /* 1. الآلة الموسيقية */
     const simonMusicalPitches = [261.63, 329.63, 392.00, 523.25];
     let simonSeq = [];
     let simonUserStep = 0;
+    let simonStreak = 0;
+
+    function getSimonNotesCount() {
+      if (simonStreak < 6) return 1;
+      else if (simonStreak < 16) return 2;
+      else if (simonStreak < 26) return 3;
+      else if (simonStreak < 36) return 4;
+      else return 5;
+    }
+
+    function playSimonNote(idx) {
+      getSafeAudioContext();
+      const freq = simonMusicalPitches[idx] || 350;
+      playTone(freq, 'sine', 0.45);
+    }
+
+    function updateSimonUI() {
+      const notesCount = getSimonNotesCount();
+      const nc = document.getElementById('simon-notes-count');
+      const st = document.getElementById('simon-streak');
+      if (nc) nc.innerText = `عدد النغمات: ${notesCount}`;
+      if (st) st.innerText = `جولات النجاح: ${simonStreak}`;
+    }
 
     function startSimonRound() {
-      simonSeq = [Math.floor(Math.random() * 4)];
+      getSafeAudioContext();
+      const length = getSimonNotesCount();
+      simonSeq = [];
+      for (let i = 0; i < length; i++) {
+        simonSeq.push(Math.floor(Math.random() * 4));
+      }
       simonUserStep = 0;
-      playTone(simonMusicalPitches[simonSeq[0]], 'sine', 0.45);
+      updateSimonUI();
+      const st = document.getElementById('simon-status');
+      if (st) st.innerText = 'استمع واحفظ النغمة 🎶';
+      playSimonSequence();
+    }
+
+    function playSimonSequence() {
+      simonSeq.forEach((val, idx) => {
+        setTimeout(() => {
+          const btn = document.getElementById('simon-btn-' + val);
+          if (btn) {
+            btn.style.opacity = '0.35';
+            btn.style.transform = 'scale(0.92)';
+            playSimonNote(val);
+            setTimeout(() => { 
+              btn.style.opacity = '1'; 
+              btn.style.transform = 'scale(1)';
+            }, 450);
+          }
+          if (idx === simonSeq.length - 1) {
+            setTimeout(() => {
+              const st = document.getElementById('simon-status');
+              if (st) st.innerText = 'دورك الآن! اضغط نفس اللون 🎵';
+            }, 500);
+          }
+        }, idx * 1000);
+      });
     }
 
     function onSimonClick(val) {
-      playTone(simonMusicalPitches[val], 'sine', 0.4);
-      if (simonSeq.length > 0 && val === simonSeq[simonUserStep]) {
-        sfxSuccess();
-        addScoreAndProgress(1);
-        speak("أحسنت نغمة صحيحة!", "ar-EG");
+      playSimonNote(val);
+      const btn = document.getElementById('simon-btn-' + val);
+      if (btn) {
+        btn.style.transform = 'scale(0.92)';
+        setTimeout(() => { btn.style.transform = 'scale(1)'; }, 180);
       }
+
+      if (simonSeq.length === 0) return;
+
+      if (val === simonSeq[simonUserStep]) {
+        simonUserStep++;
+        if (simonUserStep === simonSeq.length) {
+          sfxSuccess();
+          simonStreak++;
+          updateSimonUI();
+          const st = document.getElementById('simon-status');
+          if (st) st.innerText = 'أحسنت! إجابة ممتازة 🎵';
+          setTimeout(startSimonRound, 1500);
+        }
+      } else {
+        loseOneLife("نَغْمَة خَاطِئَة!");
+        const st = document.getElementById('simon-status');
+        if (st) st.innerText = 'خطأ! اضغط "ابدأ العزف" للمحاولة مجدداً';
+        simonSeq = [];
+      }
+    }
+
+    /* 2. الذاكرة */
+    let memoryLevel = 1;
+    let memoryFlipped = [];
+    let memoryMatchedCount = 0;
+
+    function resetMemoryGame() {
+      const grid = document.getElementById('memory-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      memoryFlipped = [];
+      memoryMatchedCount = 0;
+
+      const pairsCount = memoryLevel === 1 ? 2 : (memoryLevel === 2 ? 3 : 4);
+      grid.style.gridTemplateColumns = pairsCount === 2 ? 'repeat(2, 1fr)' : (pairsCount === 3 ? 'repeat(3, 1fr)' : 'repeat(4, 1fr)');
+      document.getElementById('memory-lvl-label').innerText = `المستوى ${memoryLevel} (${pairsCount * 2} بطاقات)`;
+
+      const allItems = ['🐰', '🦁', '🍎', '⭐', '🚗', '🎈'];
+      const chosen = allItems.slice(0, pairsCount);
+      const cards = [...chosen, ...chosen].sort(() => 0.5 - Math.random());
+
+      cards.forEach(val => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'memory-card';
+        card.dataset.val = val;
+        card.innerText = '❓';
+
+        card.onclick = () => {
+          if (card.classList.contains('flipped') || memoryFlipped.length >= 2) return;
+          sfxPop();
+          card.classList.add('flipped');
+          card.innerText = val;
+          memoryFlipped.push(card);
+
+          if (memoryFlipped.length === 2) {
+            if (memoryFlipped[0].dataset.val === memoryFlipped[1].dataset.val) {
+              sfxSuccess();
+              memoryMatchedCount++;
+              memoryFlipped = [];
+              if (memoryMatchedCount === pairsCount) {
+                setTimeout(() => {
+                  speak("عَاشْ يَا بَطَلْ! فُزْتَ! سَنَنْتَقِلُ لِلْمُسْتَوَى التَّالِي!", "ar-EG");
+                  memoryLevel = memoryLevel < 3 ? memoryLevel + 1 : 1;
+                  resetMemoryGame();
+                }, 1100);
+              }
+            } else {
+              loseOneLife();
+              setTimeout(() => {
+                memoryFlipped.forEach(c => {
+                  c.classList.remove('flipped');
+                  c.innerText = '❓';
+                });
+                memoryFlipped = [];
+              }, 700);
+            }
+          }
+        };
+
+        grid.appendChild(card);
+      });
+    }
+
+    /* 3. الشيء المختلف */
+    function initOddGame() {
+      const grid = document.getElementById('odd-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      const pairs = [
+        { normal: '🍎', odd: '🍐' },
+        { normal: '🚗', odd: '✈️' },
+        { normal: '🐱', odd: '🐶' },
+        { normal: '🍓', odd: '🍉' }
+      ];
+      const selected = pairs[Math.floor(Math.random() * pairs.length)];
+      const items = [selected.normal, selected.normal, selected.odd].sort(() => 0.5 - Math.random());
+
+      items.forEach(val => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.style.cssText = 'width: 85px; height: 85px; background: white; border: 4px solid #3B82F6; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 42px; cursor: pointer;';
+        d.innerText = val;
+        d.onclick = () => {
+          if (val === selected.odd) {
+            sfxSuccess();
+            speak("شَاطِرْ! هَذَا هُوَ الشَّيْءُ المُخْتَلِفْ! 🎉", "ar-EG");
+            setTimeout(initOddGame, 1400);
+          } else {
+            loseOneLife("هَذَا لَيْسَ المُخْتَلِفْ!");
+          }
+        };
+        grid.appendChild(d);
+      });
+    }
+
+    /* 4. فرز الألوان */
+    const sortCatalog = [
+      { item: '🍎 تفاحة حمراء', color: 'red' },
+      { item: '🍓 فراولة حمراء', color: 'red' },
+      { item: '🍌 موزة صفراء', color: 'yellow' },
+      { item: '🍋 ليمونة صفراء', color: 'yellow' },
+      { item: '🥒 خيارة خضراء', color: 'green' },
+      { item: '🍏 تفاحة خضراء', color: 'green' }
+    ];
+    let currentSortObj = null;
+
+    function initSortingGame() {
+      currentSortObj = sortCatalog[Math.floor(Math.random() * sortCatalog.length)];
+      const el = document.getElementById('sorting-current-item');
+      if (el) el.innerText = currentSortObj.item;
+    }
+
+    function checkSortingChoice(chosenColor) {
+      if (chosenColor === currentSortObj.color) {
+        sfxSuccess();
+        speak("فَرْزٌ صَحِيحٌ مُمْتَازْ! 🎉", "ar-EG");
+        setTimeout(initSortingGame, 1200);
+      } else {
+        loseOneLife("لَوْنُ الصُّنْدُوقِ غَيْرُ صَحِيحْ!");
+      }
+    }
+
+    /* 5. مطابقة الظل */
+    const shadowItems = ['🐰', '🦁', '🐘', '🐮', '🐴', '🐥'];
+    let currentShadow = null;
+
+    function initShadowGame() {
+      currentShadow = shadowItems[Math.floor(Math.random() * shadowItems.length)];
+      const targetDisp = document.getElementById('shadow-target-display');
+      if (targetDisp) targetDisp.innerText = currentShadow;
+
+      const others = shadowItems.filter(s => s !== currentShadow).sort(() => 0.5 - Math.random()).slice(0, 2);
+      const options = [currentShadow, ...others].sort(() => 0.5 - Math.random());
+
+      const row = document.getElementById('shadow-options-row');
+      if (!row) return;
+      row.innerHTML = '';
+      options.forEach(opt => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.style.cssText = 'width: 82px; height: 82px; background: white; border: 4px solid #0284C7; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 42px; cursor: pointer;';
+        d.innerText = opt;
+        d.onclick = () => {
+          if (opt === currentShadow) {
+            sfxSuccess();
+            speak("أَحْسَنْتْ! هَذَا هُوَ الظِّلُّ الصَّحِيحْ! 🎉", "ar-EG");
+            setTimeout(initShadowGame, 1300);
+          } else {
+            loseOneLife("لَيْسَ هَذَا الظِّلَّ المَطْلُوبْ!");
+          }
+        };
+        row.appendChild(d);
+      });
+    }
+
+    /* 6. عدّ الأشياء */
+    let correctCountNumber = 0;
+    function initCountGame() {
+      correctCountNumber = Math.floor(Math.random() * 5) + 1;
+      const display = document.getElementById('count-items-display');
+      if (!display) return;
+      display.innerHTML = '';
+      for (let i = 0; i < correctCountNumber; i++) {
+        display.innerHTML += '⭐ ';
+      }
+
+      const row = document.getElementById('count-options-row');
+      if (!row) return;
+      row.innerHTML = '';
+      const opts = [correctCountNumber, (correctCountNumber % 5) + 1, Math.max(1, correctCountNumber - 1)].filter((v, i, a) => a.indexOf(v) === i).sort(() => 0.5 - Math.random());
+
+      opts.forEach(num => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'arcade-btn btn-amber';
+        btn.style.cssText = 'font-size: 26px; padding: 10px 24px;';
+        btn.innerText = num;
+        btn.onclick = () => {
+          if (num === correctCountNumber) {
+            sfxSuccess();
+            speak(`عَدَدٌ صَحِيحْ! عَدَدُهَا ${correctCountNumber}! 🎉`, "ar-EG");
+            setTimeout(initCountGame, 1300);
+          } else {
+            loseOneLife("عَدَدٌ خَاطِئٌ، عُدَّهَا جَيِّداً!");
+          }
+        };
+        row.appendChild(btn);
+      });
+    }
+
+    /* 7. سرعة البديهة */
+    const speedIcons = ['⭐', '🎈', '❤️', '🍎', '🚗'];
+    let targetSpeedIcon = null;
+
+    function initSpeedGame() {
+      targetSpeedIcon = speedIcons[Math.floor(Math.random() * speedIcons.length)];
+      const title = document.getElementById('speed-task-title');
+      if (title) title.innerText = `اضغط بسرعة على شكل (${targetSpeedIcon})! ⚡`;
+      speak(`اضغط بسرعة على ${targetSpeedIcon}!`, "ar-EG");
+
+      const arena = document.getElementById('speed-items-arena');
+      if (!arena) return;
+      arena.innerHTML = '';
+
+      const items = [
+        targetSpeedIcon,
+        speedIcons[Math.floor(Math.random() * speedIcons.length)],
+        speedIcons[Math.floor(Math.random() * speedIcons.length)],
+        speedIcons[Math.floor(Math.random() * speedIcons.length)],
+        speedIcons[Math.floor(Math.random() * speedIcons.length)],
+        speedIcons[Math.floor(Math.random() * speedIcons.length)]
+      ].sort(() => 0.5 - Math.random());
+
+      items.forEach(icon => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.style.cssText = 'height: 75px; background: white; border: 3px solid #EC4899; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 36px; cursor: pointer;';
+        b.innerText = icon;
+        b.onclick = () => {
+          if (icon === targetSpeedIcon) {
+            sfxSuccess();
+            b.style.transform = 'scale(1.3)';
+            speak("سَرِيعٌ وَشَاطِرْ! 🎉", "ar-EG");
+            setTimeout(initSpeedGame, 1200);
+          } else {
+            loseOneLife();
+          }
+        };
+        arena.appendChild(b);
+      });
     }
 
     /* محرك النطق */
     let cachedVoices = [];
-    function loadVoices() { try { cachedVoices = window.speechSynthesis.getVoices(); } catch (e) {} }
+    function loadVoices() { 
+      try { cachedVoices = window.speechSynthesis.getVoices(); } catch (e) {} 
+    }
     if ('speechSynthesis' in window) {
       window.speechSynthesis.onvoiceschanged = loadVoices;
       loadVoices();
@@ -1041,6 +1686,7 @@
         u.lang = lang;
         u.rate = 0.82;
         u.pitch = 1.15;
+
         if (lang.startsWith('ar') && cachedVoices.length > 0) {
           const eg = cachedVoices.find(v => v.lang.includes('EG') || v.name.includes('Maged') || v.name.includes('Maryam'));
           if (eg) u.voice = eg;
