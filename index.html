@@ -519,7 +519,7 @@
     <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
   </div>
 
-  <div class="version-stamp">الإصدار 4.6 - صوت الموسيقى مؤكد ✔</div>
+  <div class="version-stamp">الإصدار 4.7 - التسلسل الذكي وصيد البالونات المؤكد ✔</div>
 
   <div class="game-header">
     <div class="profile-mascot">
@@ -532,13 +532,13 @@
     <button type="button" class="arcade-btn btn-blue" style="padding: 6px 12px; font-size: 13px;" onclick="forceAppUpdate()">🔄 تحديث</button>
   </div>
 
-  <!-- خريطة الجزر بأزرار أصلية 100% -->
+  <!-- خريطة الجزر -->
   <div id="screen-main" class="adventure-world-map">
     <button type="button" class="world-island-btn island-letters" onclick="enterCategory('ar')">
       <div style="font-size: 44px; pointer-events: none;">🔤</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف العربية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">نطق كامل، اختبار الحرف، صيد بالونات</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">اختبارات متسلسلة، وصيد بالونات دقيق</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -547,7 +547,7 @@
       <div style="font-size: 44px; pointer-events: none;">🔠</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف الإنجليزية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">Alphabet Learning & Fun Games</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">Sequential ABC Learning</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -556,7 +556,7 @@
       <div style="font-size: 44px; pointer-events: none;">🔢</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الأرقام (1 إلى 10)</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">الأرقام والعد وصيد بالونات</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">تسلسل الأرقام والعد وصيد بالونات</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -582,19 +582,19 @@
     <div id="skills-modal" class="modal-backdrop" onclick="toggleSkillsModal()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
         <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة 🌟</div>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحرف المتكرر اللانهائي (4 خيارات)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحرف المتسلسل (من A إلى الحرف الحالي)</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 2. بطاقة الحرف الكبيرة</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('match')">🔄 3. توصيل متجدد الحروف والصور</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 4. صيد البالونات الطائرة</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 4. صيد البالونات الطائرة (تسلسلي دقيق)</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('color')">🎨 5. تلوين الحرف العملاق بملء الشاشة</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('jump')">🐸 6. قفز الضفدع نحو الحرف</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('bubbles')">🫧 7. صيد وفرقعة الفقاعات</button>
         <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('write')">✍️ 8. كتابة الحرف بفحص متسامح</button>
-        <button type="button" class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleSkillsModal()">إلغاء ✕</button>
+        <button type="button" class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleSkillsModal()">إغلاق ✕</button>
       </div>
     </div>
 
-    <!-- 0. اختبار الحرف اللانهائي -->
+    <!-- 0. اختبار الحرف المتسلسل التراكمي -->
     <div id="cat-view-pick4" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 20px; font-weight: 900; color: #1D4ED8;" id="pick4-instructions">اضغط على الحرف المطلوب 👇</div>
       <div class="pick4-grid" id="pick4-grid-container"></div>
@@ -617,7 +617,7 @@
       </div>
     </div>
 
-    <!-- 3. صيد البالونات الطائرة -->
+    <!-- 3. صيد البالونات الطائرة التسلسلي -->
     <div id="cat-view-balloon" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 18px; font-weight: 900; color: #1D4ED8;" id="balloon-task-title">اصطد بالون الحرف قبل أن يطير! 🎈</div>
       <div class="balloon-sky-stage" id="balloon-stage"></div>
@@ -687,7 +687,7 @@
       </div>
     </div>
 
-    <!-- 1. الآلة الموسيقية والبيانو السحري مع زر تفعيل مباشر -->
+    <!-- 1. الآلة الموسيقية -->
     <div id="subgame-simon" class="arcade-card-panel" style="border-color: #F59E0B;">
       <div id="audio-enable-banner" style="background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 14px; padding: 8px; margin-bottom: 10px; cursor: pointer;" onclick="enableAudioAndPlayWelcome()">
         <div style="font-size: 15px; font-weight: 900; color: #B45309;">اضغط هنا لتفعيل الصوت أولاً 🎵</div>
@@ -934,12 +934,12 @@
         { char: "2", name: "رَقَمْ اِتْنِينْ", word: "عينان اثنتان", emoji: "👀", speech: "رَقَمْ اِتْنِينْ .. عِينَيَّا الاِتْنِينْ", altWords: [{ w: "أذنان", e: "👂" }] },
         { char: "3", name: "رَقَمْ تَلاَتَة", word: "3 تفاحات", emoji: "🍎", speech: "رَقَمْ تَلاَتَة .. تَلاَتْ تُفَّاحَاتْ", altWords: [{ w: "3 نجوم", e: "⭐" }] },
         { char: "4", name: "أَرْبَعَة", word: "4 فراشات", emoji: "🦋", speech: "رَقَمْ أَرْبَعَة .. أَرْبَعْ فَرَاشَاتْ", altWords: [{ w: "4 عجلات", e: "🚗" }] },
-        { char: "5", name: "خَمْسَة", word: "5 أصابع", emoji: "✋", speech: "خَمْسَة .. خَمْس صَوَابِعْ", altWords: [{ w: "5 بالونات", e: "🎈" }] },
-        { char: "6", name: "سِتَّة", word: "6 نجوم", emoji: "⭐", speech: "سِتَّة .. سِتْ نُجُومْ", altWords: [{ w: "6 كرات", e: "⚽" }] },
-        { char: "7", name: "سَبْعَة", word: "7 بالونات", emoji: "🎈", speech: "سَبْعَة .. سَبْع بَالُونَاتْ", altWords: [{ w: "7 أزهار", e: "🌸" }] },
+        { char: "5", name: "خَمْسَة", word: "5 أصابع", emoji: "✋", speech: "رَقَمْ خَمْسَة .. خَمْس صَوَابِعْ", altWords: [{ w: "5 بالونات", e: "🎈" }] },
+        { char: "6", name: "سِتَّة", word: "6 نجوم", emoji: "⭐", speech: "رَقَمْ سِتَّة .. سِتْ نُجُومْ", altWords: [{ w: "6 كرات", e: "⚽" }] },
+        { char: "7", name: "سَبْعَة", word: "7 بالونات", emoji: "🎈", speech: "رَقَمْ سَبْعَة .. سَبْع بَالُونَاتْ", altWords: [{ w: "7 أزهار", e: "🌸" }] },
         { char: "8", name: "تَمَانْيَة", word: "8 أزهار", emoji: "🌸", speech: "تَمَانْيَة .. تَمَانْ زُهُورْ", altWords: [{ w: "8 أسماك", e: "🐟" }] },
-        { char: "9", name: "تِسْعَة", word: "9 كرات", emoji: "⚽", speech: "تِسْعَة .. تِسْع كُوَر", altWords: [{ w: "9 قطع حلوى", e: "🍬" }] },
-        { char: "10", name: "عَشَرَة", word: "10 أصابع", emoji: "🙌", speech: "عَشَرَة .. عَشَر صَوَابِعْ", altWords: [{ w: "10 نقاط", e: "🔟" }] }
+        { char: "9", name: "تِسْعَة", word: "9 كرات", emoji: "⚽", speech: "رَقَمْ تِسْعَة .. تِسْع كُوَر", altWords: [{ w: "9 قطع حلوى", e: "🍬" }] },
+        { char: "10", name: "عَشَرَة", word: "10 أصابع", emoji: "🙌", speech: "رَقَمْ عَشَرَة .. عَشَر صَوَابِعْ", altWords: [{ w: "10 نقاط", e: "🔟" }] }
       ]
     };
 
@@ -1046,6 +1046,7 @@
       else if (tab === 'write') initWritingCanvas();
     }
 
+    /* النظام المتسلسل التراكمي لاختبار الحرف (من البداية وحتى الحرف المختار حالياً) */
     function startPick4Game() {
       const container = document.getElementById('pick4-grid-container');
       if (!container) return;
@@ -1056,7 +1057,16 @@
       if (instructions) instructions.innerText = `فِينْ حَرْف (${target.name})؟ اضغط عليه 👇`;
       speak(`فِينْ حَرْف ${target.name}؟`, target.lang || 'ar-EG');
 
-      const others = currentCategoryData.filter((_, i) => i !== selectedLetterIndex).sort(() => 0.5 - Math.random()).slice(0, 3);
+      // مجموعة الحروف المتاحة للاختبار تشمل جميع الحروف من البداية وحتى الحرف الذي وصل إليه الطفل
+      const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
+      const others = availablePool.filter((_, i) => i !== selectedLetterIndex).sort(() => 0.5 - Math.random()).slice(0, 3);
+      
+      // إذا كان عدد الحروف السابقة أقل من 3، نكمل من بقية الحروف المتاحة في القاموس
+      if (others.length < 3) {
+        const extra = currentCategoryData.filter((_, i) => i > selectedLetterIndex).sort(() => 0.5 - Math.random()).slice(0, 3 - others.length);
+        others.push(...extra);
+      }
+
       const options = [target, ...others].sort(() => 0.5 - Math.random());
 
       const bgColors = ['#EFF6FF', '#FEFCE8', '#ECFDF5', '#FDF2F8'];
@@ -1219,10 +1229,14 @@
         const durationSec = Math.random() * 2.5 + 4.8;
         b.style.animationDuration = durationSec + 's';
 
+        // استخدام القائمة المتاحة (التراكمية حتى الحرف الحالي لزيادة المتعة)
+        const currentPool = currentCategoryData.slice(0, selectedLetterIndex + 1);
         const isTarget = Math.random() < 0.45;
-        const charObj = isTarget ? target : currentCategoryData[Math.floor(Math.random() * currentCategoryData.length)];
+        const charObj = isTarget ? target : currentPool[Math.floor(Math.random() * currentPool.length)];
+        
         b.innerText = charObj.char;
-        b.dataset.isTarget = isTarget ? "yes" : "no";
+        b.dataset.charVal = charObj.char;
+        b.dataset.isTarget = (charObj.char === target.char) ? "yes" : "no";
 
         b.onclick = () => {
           if (b.dataset.isTarget === "yes") {
@@ -1233,7 +1247,7 @@
             setTimeout(() => b.remove(), 200);
             speak("أَحْسَنْتْ! بَالُونْ رَائِعْ! 🎉", target.lang || 'ar-EG');
           } else {
-            loseOneLife(`غَلَطْ! اخْتَارْ بَالُونْ ${target.name}`);
+            loseOneLife(`غَلَطْ! كُنْتَ تَبْحَثُ عَنْ بَالُونْ ${target.name}`);
             triggerShakeElement(b);
           }
         };
@@ -1562,7 +1576,7 @@
       window.ontouchend = stop;
     }
 
-    /* ================= ألعاب الذكاء والآلة الموسيقية ================= */
+    /* ================= ألعاب الذكاء والمرح ================= */
     function toggleBrainGamesMenu() {
       const m = document.getElementById('brain-menu-modal');
       if (m) m.classList.toggle('active');
@@ -1590,7 +1604,7 @@
       else if (gameKey === 'speed') initSpeedGame();
     }
 
-    /* 1. الآلة الموسيقية والبيانو السحري */
+    /* 1. الآلة الموسيقية */
     const simonMusicalPitches = [261.63, 329.63, 392.00, 523.25];
     let simonSeq = [];
     let simonUserStep = 0;
