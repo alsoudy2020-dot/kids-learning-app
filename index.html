@@ -520,7 +520,7 @@
     <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
   </div>
 
-  <div class="version-stamp">الإصدار 5.2 - تدرج هادئ للموسيقى ✔</div>
+  <div class="version-stamp">الإصدار 5.3 - إيقاف تام في الخلفية وتناوب سليم ✔</div>
 
   <div class="game-header">
     <div class="profile-mascot">
@@ -595,7 +595,7 @@
       </div>
     </div>
 
-    <!-- 0. اختبار الحرف المتسلسل بالتناوب الحقيقي -->
+    <!-- 0. اختبار الحرف المتسلسل -->
     <div id="cat-view-pick4" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 20px; font-weight: 900; color: #1D4ED8;" id="pick4-instructions">اضغط على الحرف المطلوب 👇</div>
       <div class="pick4-grid" id="pick4-grid-container"></div>
@@ -688,7 +688,7 @@
       </div>
     </div>
 
-    <!-- 1. الآلة الموسيقية الهادئة المتدرجة ببطء وإتقان -->
+    <!-- 1. الآلة الموسيقية -->
     <div id="subgame-simon" class="arcade-card-panel" style="border-color: #F59E0B;">
       <div id="audio-enable-banner" style="background: #FEF3C7; border: 2px solid #F59E0B; border-radius: 14px; padding: 8px; margin-bottom: 10px; cursor: pointer;" onclick="enableAudioAndPlayWelcome()">
         <div style="font-size: 15px; font-weight: 900; color: #B45309;">اضغط هنا لتفعيل الصوت أولاً 🎵</div>
@@ -949,7 +949,29 @@
     let selectedLetterIndex = 0;
     let currentActiveTab = 'pick4';
 
+    let balloonInterval = null;
+    let activeBalloonTimeouts = [];
+
+    // دالة تنظيف وإيقاف فوري لجميع العمليات والمؤقتات لعدم عملها في الخلفية
+    function cleanupActiveTimers() {
+      if (balloonInterval) {
+        clearInterval(balloonInterval);
+        balloonInterval = null;
+      }
+      activeBalloonTimeouts.forEach(t => clearTimeout(t));
+      activeBalloonTimeouts = [];
+
+      const stage = document.getElementById('balloon-stage');
+      if (stage) stage.innerHTML = '';
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
     function showScreen(screenId) {
+      cleanupActiveTimers();
+
       const screens = ['screen-main', 'screen-category', 'screen-minigames'];
       screens.forEach(s => {
         const el = document.getElementById(s);
@@ -1016,6 +1038,7 @@
     }
 
     function refreshActiveActivity() {
+      cleanupActiveTimers();
       if (currentActiveTab === 'pick4') startPick4Game();
       else if (currentActiveTab === 'learn') renderSingleFullscreenCard();
       else if (currentActiveTab === 'match') startMatchingGame();
@@ -1027,6 +1050,7 @@
     }
 
     function switchCategoryTab(tab) {
+      cleanupActiveTimers();
       currentActiveTab = tab;
       const tabs = ['pick4', 'learn', 'match', 'balloon', 'color', 'jump', 'bubbles', 'write'];
       tabs.forEach(t => {
@@ -1199,13 +1223,12 @@
       setTimeout(() => el.classList.remove('shake-error'), 450);
     }
 
-    /* صيد البالونات المتسلسلة التراكمية */
-    let balloonInterval = null;
+    /* صيد البالونات */
     function startBalloonGame() {
+      cleanupActiveTimers();
       const stage = document.getElementById('balloon-stage');
       if (!stage) return;
       stage.innerHTML = '';
-      if (balloonInterval) clearInterval(balloonInterval);
 
       const availablePool = currentCategoryData.slice(0, selectedLetterIndex + 1);
       const target = availablePool[Math.floor(Math.random() * availablePool.length)];
@@ -1217,7 +1240,7 @@
 
       const spawnBalloon = () => {
         if (currentActiveTab !== 'balloon') {
-          clearInterval(balloonInterval);
+          cleanupActiveTimers();
           return;
         }
         const b = document.createElement('div');
@@ -1251,14 +1274,16 @@
 
         stage.appendChild(b);
 
-        setTimeout(() => {
-          if (b.parentNode && b.dataset.isTarget === "yes" && b.dataset.popped !== "true") {
+        const escapeTimeout = setTimeout(() => {
+          if (currentActiveTab === 'balloon' && b.parentNode && b.dataset.isTarget === "yes" && b.dataset.popped !== "true") {
             b.remove();
             loseOneLife(`فَاتَكَ بَالُونْ ${target.name}!`);
           } else if (b.parentNode) {
             b.remove();
           }
         }, durationSec * 1000 - 150);
+
+        activeBalloonTimeouts.push(escapeTimeout);
       };
 
       spawnBalloon();
@@ -1584,6 +1609,7 @@
     }
 
     function switchBrainGame(gameKey) {
+      cleanupActiveTimers();
       const m = document.getElementById('brain-menu-modal');
       if (m) m.classList.remove('active');
 
@@ -1605,31 +1631,24 @@
       else if (gameKey === 'speed') initSpeedGame();
     }
 
-    /* 1. الآلة الموسيقية المتدرجة ببطء وهدوء للأطفال */
+    /* 1. الآلة الموسيقية */
     const simonMusicalPitches = [261.63, 329.63, 392.00, 523.25];
     let simonSeq = [];
     let simonUserStep = 0;
     let simonStreak = 0;
 
-    // حساب عدد النغمات بناءً على جولات النجاح التراكمية
     function getSimonNotesCount() {
-      if (simonStreak < 6) {
-        return 1; // أول 6 مرات: نغمة واحدة فقط
-      } else if (simonStreak < 16) {
-        return 2; // الـ 10 مرات التالية (من 6 إلى 15): نغمتان اثنتان
-      } else if (simonStreak < 26) {
-        return 3; // الـ 10 مرات التالية: 3 نغمات
-      } else if (simonStreak < 36) {
-        return 4; // الـ 10 مرات التالية: 4 نغمات
-      } else {
-        return 5; // بعدها: 5 نغمات
-      }
+      if (simonStreak < 6) return 1;
+      else if (simonStreak < 16) return 2;
+      else if (simonStreak < 26) return 3;
+      else if (simonStreak < 36) return 4;
+      else return 5;
     }
 
     function playSimonNote(idx) {
       getSafeAudioContext();
       const freq = simonMusicalPitches[idx] || 350;
-      playTone(freq, 'sine', 0.45); // رنين هادئ ومريح
+      playTone(freq, 'sine', 0.45);
     }
 
     function updateSimonUI() {
@@ -1656,7 +1675,6 @@
 
     function playSimonSequence() {
       simonSeq.forEach((val, idx) => {
-        // بطء هادئ: ثانية كاملة (1000ms) بين النغمة والأخرى لتركيز الطفل
         setTimeout(() => {
           const btn = document.getElementById('simon-btn-' + val);
           if (btn) {
