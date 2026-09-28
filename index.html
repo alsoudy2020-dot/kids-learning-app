@@ -436,6 +436,18 @@
       cursor: pointer;
     }
 
+    /* لوحة كتابة الحرف التفاعلية المتسامحة */
+    .write-canvas-arcade {
+      width: 92vw;
+      max-width: 420px;
+      height: 46vh;
+      background: #FFFFFF;
+      border: 4px dashed #60A5FA;
+      border-radius: 24px;
+      touch-action: none;
+      margin-top: 8px;
+    }
+
     .memory-grid {
       display: grid;
       gap: 12px;
@@ -475,7 +487,7 @@
     <div class="cloud-sprite" style="top: 25%; animation-duration: 35s; animation-delay: -8s;">☁️</div>
   </div>
 
-  <div class="version-stamp">الإصدار 7.0 - النسخة المستقرة المصلحة بالكامل ✔</div>
+  <div class="version-stamp">الإصدار 7.1 - إعادة كتابة الحرف والتحقق المتسامح ✔</div>
 
   <div class="game-header">
     <div class="profile-mascot">
@@ -494,7 +506,7 @@
       <div style="font-size: 44px; pointer-events: none;">🔤</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف العربية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">اختبارات متسلسلة وتناوب الحروف السابقة</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">كتابة الحروف، اختبارات متسلسلة، وصيد بالونات</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -503,7 +515,7 @@
       <div style="font-size: 44px; pointer-events: none;">🔠</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الحروف الإنجليزية</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">Sequential ABC Random Test</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">Writing ABC & Fun Games</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -512,7 +524,7 @@
       <div style="font-size: 44px; pointer-events: none;">🔢</div>
       <div style="text-align: right; flex: 1; margin-right: 14px; pointer-events: none;">
         <div style="font-size: 22px; font-weight: 900; color: #1E293B;">جزيرة الأرقام (1 إلى 10)</div>
-        <div style="font-size: 13px; font-weight: 700; color: #64748B;">تسلسل الأرقام واختبارات متنوعة</div>
+        <div style="font-size: 13px; font-weight: 700; color: #64748B;">كتابة الأرقام، تسلسل، واختبارات متنوعة</div>
       </div>
       <div style="font-size: 24px; pointer-events: none;">▶</div>
     </button>
@@ -539,23 +551,35 @@
     <div id="skills-modal" class="modal-backdrop" onclick="toggleSkillsModal()">
       <div class="skills-sheet" onclick="event.stopPropagation()">
         <div style="font-size: 20px; font-weight: 900; color: #1E293B; margin-bottom: 12px; text-align: center;">اخْتَارِ اللُّعْبَة 🌟</div>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 1. اختبار الحروف المتسلسلة (تناوب الحروف السابقة)</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 2. بطاقة الحرف الكبيرة الناطقة</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('match')">🔄 3. توصيل متجدد الحروف والصور</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 4. صيد البالونات الطائرة (متسلسلة بالتناوب)</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('jump')">🐸 5. قفز الضفدع نحو الحرف</button>
-        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('bubbles')">🫧 6. صيد وفرقعة الفقاعات</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('write')">✍️ 1. تدريب كتابة الحرف وتتبع المسار (مفعل)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('pick4')">🎯 2. اختبار الحروف المتسلسلة (تناوب الحروف السابقة)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('learn')">📖 3. بطاقة الحرف الكبيرة الناطقة</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('match')">🔄 4. توصيل متجدد الحروف والصور</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('balloon')">🎈 5. صيد البالونات الطائرة (متسلسلة بالتناوب)</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('jump')">🐸 6. قفز الضفدع نحو الحرف</button>
+        <button type="button" class="skill-choice-item" onclick="selectSkillFromModal('bubbles')">🫧 7. صيد وفرقعة الفقاعات</button>
         <button type="button" class="arcade-btn btn-red" style="width: 100%; margin-top: 10px; border-radius: 18px; padding: 10px;" onclick="toggleSkillsModal()">إغلاق ✕</button>
       </div>
     </div>
 
-    <!-- 1. اختبار الحرف المتسلسل التراكمي -->
+    <!-- 1. شاشة كتابة الحرف التفاعلية المتسامحة -->
+    <div id="cat-view-write" class="arcade-card-panel" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 38px;" id="write-hero-emoji">🐰</span>
+        <span style="font-size: 20px; font-weight: 900; color: #1E3A8A;" id="write-title-text">اكتب الحرف بإصبعك</span>
+        <button type="button" class="arcade-btn btn-amber" style="padding: 4px 12px; font-size: 13px;" onclick="clearWriteCanvas(); sfxClick();">مسح 🗑️</button>
+      </div>
+      <canvas id="write-canvas" class="write-canvas-arcade"></canvas>
+      <button type="button" class="arcade-btn btn-green" style="width: 100%; margin-top: 10px; padding: 12px; font-size: 18px;" onclick="verifyUserHandwriting()">تأكيد وافحص خطك ✅</button>
+    </div>
+
+    <!-- 2. اختبار الحرف المتسلسل التراكمي -->
     <div id="cat-view-pick4" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 20px; font-weight: 900; color: #1D4ED8;" id="pick4-instructions">اضغط على الحرف المطلوب 👇</div>
       <div class="pick4-grid" id="pick4-grid-container"></div>
     </div>
 
-    <!-- 2. البطاقة الكبيرة -->
+    <!-- 3. البطاقة الكبيرة -->
     <div id="cat-view-learn" class="magic-card" onclick="speakCurrentLetter(); sfxPop(); addGameScore(5);">
       <div class="char-big-render" id="card-hero-char">أ</div>
       <div class="emoji-big-render" id="card-hero-emoji">🐰</div>
@@ -563,7 +587,7 @@
       <div style="font-size: 16px; font-weight: 900; color: #B45309; background: #FEF3C7; padding: 8px 24px; border-radius: 24px; box-shadow: 0 3px 0 #F59E0B;">🔊 اضغط للاستماع وكسب نقاط</div>
     </div>
 
-    <!-- 3. لعبة التوصيل -->
+    <!-- 4. لعبة التوصيل -->
     <div id="cat-view-match" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="match-instructions">وصّل الحرف بصورته المناسبة 👇</div>
       <div class="match-columns-grid">
@@ -572,13 +596,13 @@
       </div>
     </div>
 
-    <!-- 4. صيد البالونات الطائرة -->
+    <!-- 5. صيد البالونات الطائرة -->
     <div id="cat-view-balloon" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 18px; font-weight: 900; color: #1D4ED8;" id="balloon-task-title">اصطد بالون الحرف قبل أن يطير! 🎈</div>
       <div class="balloon-sky-stage" id="balloon-stage"></div>
     </div>
 
-    <!-- 5. قفز الضفدع -->
+    <!-- 6. قفز الضفدع -->
     <div id="cat-view-jump" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="jump-task-title">ساعد الضفدع يقفز على الحرف! 🐸</div>
       <div class="jumping-stage" id="jump-stage">
@@ -586,7 +610,7 @@
       </div>
     </div>
 
-    <!-- 6. فرقعة الفقاعات -->
+    <!-- 7. فرقعة الفقاعات -->
     <div id="cat-view-bubbles" class="arcade-card-panel" style="display: none;">
       <div style="font-size: 18px; font-weight: 900; color: #065F46;" id="bubbles-task-title">فرقع فقاعة الحرف المطلوب! 🫧</div>
       <div class="bubble-container" id="bubble-stage"></div>
@@ -850,12 +874,12 @@
         { char: "ي", name: "يَاءْ", word: "يد", emoji: "👋", speech: "يَاءْ .. إِيدْ", altWords: [{ w: "يمامة", e: "🕊️" }] }
       ],
       en: [
-        { char: "A", name: "Letter A", word: "Apple", emoji: "🍎", lang: "en-US", speech: "Letter A .. Apple", altWords: [{ w: "Ant", e: "🐜" }] },
-        { char: "B", name: "Letter B", word: "Ball", emoji: "⚽", lang: "en-US", speech: "Letter B .. Ball", altWords: [{ w: "Banana", e: "🍌" }] },
-        { char: "C", name: "Letter C", word: "Cat", emoji: "🐱", lang: "en-US", speech: "Letter C .. Cat", altWords: [{ w: "Car", e: "🚗" }] },
-        { char: "D", name: "Letter D", word: "Dog", emoji: "🐶", lang: "en-US", speech: "Letter D .. Dog", altWords: [{ w: "Duck", e: "🦆" }] },
-        { char: "E", name: "Letter E", word: "Elephant", emoji: "🐘", lang: "en-US", speech: "Letter E .. Elephant", altWords: [{ w: "Egg", e: "🥚" }] },
-        { char: "F", name: "Letter F", word: "Fish", emoji: "🐟", lang: "en-US", speech: "Letter F .. Fish", altWords: [{ w: "Frog", e: "🐸" }] }
+        { char: "A", name: "Letter A", word: "Apple", emoji: "🍎", lang: "en-US", speech: "Letter A .. Apple" },
+        { char: "B", name: "Letter B", word: "Ball", emoji: "⚽", lang: "en-US", speech: "Letter B .. Ball" },
+        { char: "C", name: "Letter C", word: "Cat", emoji: "🐱", lang: "en-US", speech: "Letter C .. Cat" },
+        { char: "D", name: "Letter D", word: "Dog", emoji: "🐶", lang: "en-US", speech: "Letter D .. Dog" },
+        { char: "E", name: "Letter E", word: "Elephant", emoji: "🐘", lang: "en-US", speech: "Letter E .. Elephant" },
+        { char: "F", name: "Letter F", word: "Fish", emoji: "🐟", lang: "en-US", speech: "Letter F .. Fish" }
       ],
       numbers: [
         { char: "1", name: "رَقَمْ وَاحِدْ", word: "شمس واحدة", emoji: "☀️", speech: "رَقَمْ وَاحِدْ .. شَمْس وَاحْدَة" },
@@ -965,7 +989,8 @@
 
     function refreshActiveActivity() {
       cleanupActiveTimers();
-      if (currentActiveTab === 'pick4') startPick4Game();
+      if (currentActiveTab === 'write') initWritingCanvas();
+      else if (currentActiveTab === 'pick4') startPick4Game();
       else if (currentActiveTab === 'learn') renderSingleFullscreenCard();
       else if (currentActiveTab === 'match') startMatchingGame();
       else if (currentActiveTab === 'balloon') startBalloonGame();
@@ -976,7 +1001,7 @@
     function switchCategoryTab(tab) {
       cleanupActiveTimers();
       currentActiveTab = tab;
-      const tabs = ['pick4', 'learn', 'match', 'balloon', 'jump', 'bubbles'];
+      const tabs = ['write', 'pick4', 'learn', 'match', 'balloon', 'jump', 'bubbles'];
       tabs.forEach(t => {
         const el = document.getElementById('cat-view-' + t);
         if (el) el.style.display = 'none';
@@ -985,7 +1010,8 @@
       const active = document.getElementById('cat-view-' + tab);
       if (active) active.style.display = (tab === 'learn') ? 'flex' : 'block';
 
-      if (tab === 'pick4') startPick4Game();
+      if (tab === 'write') initWritingCanvas();
+      else if (tab === 'pick4') startPick4Game();
       else if (tab === 'learn') renderSingleFullscreenCard();
       else if (tab === 'match') startMatchingGame();
       else if (tab === 'balloon') startBalloonGame();
@@ -993,7 +1019,125 @@
       else if (tab === 'bubbles') startBubblesGame();
     }
 
-    /* 1. اختبار الحرف المتسلسل التراكمي */
+    /* 1. تدريب وكتابة الحرف المتسامحة الذكية */
+    let writeCanvas, writeCtx, writingState = false;
+    let targetLetterMaskData = null;
+
+    function initWritingCanvas() {
+      writeCanvas = document.getElementById('write-canvas');
+      if (!writeCanvas) return;
+      writeCanvas.width = writeCanvas.clientWidth * window.devicePixelRatio;
+      writeCanvas.height = writeCanvas.clientHeight * window.devicePixelRatio;
+      writeCtx = writeCanvas.getContext('2d');
+      setupWritingEvents();
+      drawLetterGuideTrace();
+    }
+
+    function drawLetterGuideTrace() {
+      if (!writeCtx) return;
+      writeCtx.clearRect(0, 0, writeCanvas.width, writeCanvas.height);
+      const item = currentCategoryData[selectedLetterIndex];
+
+      document.getElementById('write-hero-emoji').innerText = item.emoji;
+      document.getElementById('write-title-text').innerText = `اكتب (${item.name})`;
+
+      const fontSize = Math.floor(writeCanvas.height * 0.72);
+      writeCtx.font = `900 ${fontSize}px sans-serif`;
+      writeCtx.textAlign = 'center';
+      writeCtx.textBaseline = 'middle';
+
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = writeCanvas.width;
+      offCanvas.height = writeCanvas.height;
+      const offCtx = offCanvas.getContext('2d');
+      offCtx.font = writeCtx.font;
+      offCtx.textAlign = 'center';
+      offCtx.textBaseline = 'middle';
+      offCtx.fillStyle = '#000000';
+      offCtx.lineWidth = 44;
+      offCtx.strokeText(item.char, offCanvas.width / 2, offCanvas.height / 2 + 10);
+      offCtx.fillText(item.char, offCanvas.width / 2, offCanvas.height / 2 + 10);
+      targetLetterMaskData = offCtx.getImageData(0, 0, offCanvas.width, offCanvas.height).data;
+
+      writeCtx.lineWidth = 6;
+      writeCtx.strokeStyle = '#CBD5E1';
+      writeCtx.setLineDash([12, 10]);
+      writeCtx.strokeText(item.char, writeCanvas.width / 2, writeCanvas.height / 2 + 10);
+      writeCtx.setLineDash([]);
+
+      speak(`يَلَّا نِكْتِبْ ${item.name}!`, item.lang || 'ar-EG');
+    }
+
+    function clearWriteCanvas() {
+      drawLetterGuideTrace();
+    }
+
+    function verifyUserHandwriting() {
+      const userImg = writeCtx.getImageData(0, 0, writeCanvas.width, writeCanvas.height).data;
+      let matchedPixels = 0;
+      let totalLetterPixels = 0;
+      let strayPixels = 0;
+
+      for (let i = 0; i < targetLetterMaskData.length; i += 8) {
+        const isLetterArea = targetLetterMaskData[i + 3] > 80;
+        const isUserDrawn = userImg[i + 2] > 140;
+
+        if (isLetterArea) totalLetterPixels++;
+        if (isLetterArea && isUserDrawn) matchedPixels++;
+        if (!isLetterArea && isUserDrawn) strayPixels++;
+      }
+
+      const coverageRatio = matchedPixels / (totalLetterPixels || 1);
+
+      if (coverageRatio >= 0.15 && strayPixels <= (matchedPixels * 1.6)) {
+        sfxSuccess();
+        speak("شَاطِرْ جِدّاً! كَتَبْتَ الحَرْف صَحِيحْ! 🌟", currentCategoryData[selectedLetterIndex]?.lang || 'ar-EG');
+        alert("أحسنت يا بطل! خط جميل ومقبول! ⭐");
+      } else {
+        loseOneLife(`مَكَتَبْتِش ${currentCategoryData[selectedLetterIndex].name} صَحْ، امْشِي عَلَى النِّقَاط!`);
+        triggerShakeElement(document.getElementById('cat-view-write'));
+      }
+    }
+
+    function setupWritingEvents() {
+      const getPos = e => {
+        const rect = writeCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const scaleX = writeCanvas.width / rect.width;
+        const scaleY = writeCanvas.height / rect.height;
+        return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
+      };
+
+      const start = e => {
+        writingState = true;
+        writeCtx.beginPath();
+        const p = getPos(e);
+        writeCtx.moveTo(p.x, p.y);
+      };
+
+      const move = e => {
+        if (!writingState) return;
+        const p = getPos(e);
+        writeCtx.strokeStyle = '#2563EB';
+        writeCtx.lineWidth = 26;
+        writeCtx.lineCap = 'round';
+        writeCtx.lineJoin = 'round';
+        writeCtx.lineTo(p.x, p.y);
+        writeCtx.stroke();
+      };
+
+      const stop = () => { writingState = false; };
+
+      writeCanvas.onmousedown = start;
+      window.onmousemove = move;
+      window.onmouseup = stop;
+      writeCanvas.ontouchstart = start;
+      window.ontouchmove = move;
+      window.ontouchend = stop;
+    }
+
+    /* 2. اختبار الحروف المتسلسلة التراكمي */
     function startPick4Game() {
       const container = document.getElementById('pick4-grid-container');
       if (!container) return;
@@ -1037,6 +1181,7 @@
       });
     }
 
+    /* 3. البطاقة الكبيرة */
     function renderSingleFullscreenCard() {
       const item = currentCategoryData[selectedLetterIndex];
       if (!item) return;
@@ -1046,7 +1191,7 @@
       speak(item.speech, item.lang || 'ar-EG');
     }
 
-    /* 2. التوصيل المتجدد */
+    /* 4. لعبة التوصيل المتجدد */
     let selectedLetterBtn = null;
     let matchPairsList = [];
 
@@ -1146,7 +1291,7 @@
       setTimeout(() => el.classList.remove('shake-error'), 450);
     }
 
-    /* 3. صيد البالونات المتسلسلة التراكمية */
+    /* 5. صيد البالونات المتسلسلة التراكمية */
     function startBalloonGame() {
       cleanupActiveTimers();
       const stage = document.getElementById('balloon-stage');
@@ -1213,7 +1358,7 @@
       balloonInterval = setInterval(spawnBalloon, 1400);
     }
 
-    /* 4. قفز الضفدع */
+    /* 6. قفز الضفدع */
     function startJumpingGame() {
       const stage = document.getElementById('jump-stage');
       const frog = document.getElementById('frog-hero');
@@ -1266,7 +1411,7 @@
       }, 350);
     }
 
-    /* 5. فرقعة الفقاعات */
+    /* 7. فرقعة الفقاعات */
     function startBubblesGame() {
       const stage = document.getElementById('bubble-stage');
       if (!stage) return;
@@ -1314,7 +1459,7 @@
       });
     }
 
-    /* ================= ألعاب الذكاء والمرح ================= */
+    /* ================= ألعاب الذكاء والموسيقى ================= */
     function toggleBrainGamesMenu() {
       const m = document.getElementById('brain-menu-modal');
       if (m) m.classList.toggle('active');
@@ -1343,7 +1488,7 @@
       else if (gameKey === 'speed') initSpeedGame();
     }
 
-    /* 1. الآلة الموسيقية */
+    /* الآلة الموسيقية المتدرجة ببطء */
     const simonMusicalPitches = [261.63, 329.63, 392.00, 523.25];
     let simonSeq = [];
     let simonUserStep = 0;
@@ -1436,7 +1581,7 @@
       }
     }
 
-    /* 2. الذاكرة */
+    /* لعبة الذاكرة المتدرجة */
     let memoryLevel = 1;
     let memoryFlipped = [];
     let memoryMatchedCount = 0;
@@ -1499,7 +1644,7 @@
       });
     }
 
-    /* 3. الشيء المختلف */
+    /* الشيء المختلف */
     function initOddGame() {
       const grid = document.getElementById('odd-grid');
       if (!grid) return;
@@ -1531,7 +1676,7 @@
       });
     }
 
-    /* 4. فرز الألوان */
+    /* فرز الألوان */
     const sortCatalog = [
       { item: '🍎 تفاحة حمراء', color: 'red' },
       { item: '🍓 فراولة حمراء', color: 'red' },
@@ -1558,7 +1703,7 @@
       }
     }
 
-    /* 5. مطابقة الظل */
+    /* مطابقة الظل */
     const shadowItems = ['🐰', '🦁', '🐘', '🐮', '🐴', '🐥'];
     let currentShadow = null;
 
@@ -1591,7 +1736,7 @@
       });
     }
 
-    /* 6. عدّ الأشياء */
+    /* عدّ الأشياء */
     let correctCountNumber = 0;
     function initCountGame() {
       correctCountNumber = Math.floor(Math.random() * 5) + 1;
@@ -1626,7 +1771,7 @@
       });
     }
 
-    /* 7. سرعة البديهة */
+    /* سرعة البديهة */
     const speedIcons = ['⭐', '🎈', '❤️', '🍎', '🚗'];
     let targetSpeedIcon = null;
 
